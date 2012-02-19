@@ -161,6 +161,19 @@ clean-test-results/fast:
 .PHONY : clean-test-results/fast
 
 #=============================================================================
+# Target rules for targets named parallax_board
+
+# Build rule for target.
+parallax_board: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 parallax_board
+.PHONY : parallax_board
+
+# fast build rule for target.
+parallax_board/fast:
+	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/build
+.PHONY : parallax_board/fast
+
+#=============================================================================
 # Target rules for targets named rosbuild_precompile
 
 # Build rule for target.
@@ -290,6 +303,21 @@ tests/fast:
 	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
 .PHONY : tests/fast
 
+# target to build an object file
+src/parallax_board.o:
+	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/src/parallax_board.o
+.PHONY : src/parallax_board.o
+
+# target to preprocess a source file
+src/parallax_board.i:
+	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/src/parallax_board.i
+.PHONY : src/parallax_board.i
+
+# target to generate assembly for a file
+src/parallax_board.s:
+	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/src/parallax_board.s
+.PHONY : src/parallax_board.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -302,6 +330,7 @@ help:
 	@echo "... ROSBUILD_gensrv_lisp"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
+	@echo "... parallax_board"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
@@ -313,6 +342,9 @@ help:
 	@echo "... test-results"
 	@echo "... test-results-run"
 	@echo "... tests"
+	@echo "... src/parallax_board.o"
+	@echo "... src/parallax_board.i"
+	@echo "... src/parallax_board.s"
 .PHONY : help
 
 
