@@ -6,17 +6,71 @@
 
 #IncludeRegexTransform: 
 
+../msg_gen/cpp/include/parallax_eddie_robot/ADC.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/serialization.h
+ros/builtin_message_traits.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/builtin_message_traits.h
+ros/message_operations.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/message_operations.h
+ros/time.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/time.h
+ros/macros.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/macros.h
+ros/assert.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/assert.h
+
+../msg_gen/cpp/include/parallax_eddie_robot/Ping.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/serialization.h
+ros/builtin_message_traits.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/builtin_message_traits.h
+ros/message_operations.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/message_operations.h
+ros/time.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/time.h
+ros/macros.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/macros.h
+ros/assert.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/assert.h
+
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_board.cpp
 ros/ros.h
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/ros/ros.h
 parallax_board.h
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_board.h
+sstream
+-
 
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_board.h
+fcntl.h
+-
+termios.h
+-
 string
 -
 map
 -
+parallax_eddie_robot/Ping.h
+/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_eddie_robot/Ping.h
+parallax_eddie_robot/ADC.h
+/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_eddie_robot/ADC.h
 
 /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_options.h
 ros/forwards.h
@@ -493,6 +547,10 @@ ros/time.h
 /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/ros/time.h
 
 /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/message_forward.h
+
+/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/message_operations.h
+ostream
+-
 
 /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/message_traits.h
 message_forward.h

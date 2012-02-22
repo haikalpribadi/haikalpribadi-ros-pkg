@@ -1,4 +1,7 @@
 FILE(REMOVE_RECURSE
+  "../msg_gen"
+  "../src/parallax_eddie_robot/msg"
+  "../msg_gen"
   "CMakeFiles/ROSBUILD_gensrv_cpp"
 )
 

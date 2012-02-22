@@ -6,6 +6,7 @@
 
 #include "ros/ros.h"
 #include "parallax_board.h"
+#include <sstream>
 typedef std::map<std::string, unsigned char[6] > CommandMap;
 
 ParallaxBoard::ParallaxBoard(std::string port) :
@@ -50,16 +51,17 @@ ParallaxBoard::~ParallaxBoard()
 
 void ParallaxBoard::initialize(std::string port)
 {
-  memset(&stdio, 0, sizeof (stdio));
-  stdio.c_iflag = 0;
-  stdio.c_oflag = 0;
-  stdio.c_cflag = 0;
-  stdio.c_lflag = 0;
-  stdio.c_cc[VMIN] = 1;
-  stdio.c_cc[VTIME] = 0;
-  tcsetattr(STDOUT_FILENO, TCSANOW, &stdio);
-  tcsetattr(STDOUT_FILENO, TCSAFLUSH, &stdio);
-  fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK); // make the reads non-blocking
+  ROS_INFO("Initializing Parallax board serial port connection");
+  //memset(&stdio, 0, sizeof (stdio));
+  //stdio.c_iflag = 0;
+  //stdio.c_oflag = 0;
+  //stdio.c_cflag = 0;
+  //stdio.c_lflag = 0;
+  //stdio.c_cc[VMIN] = 1;
+  //stdio.c_cc[VTIME] = 0;
+  //tcsetattr(STDOUT_FILENO, TCSANOW, &stdio);
+  //tcsetattr(STDOUT_FILENO, TCSAFLUSH, &stdio);
+  //fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK); // make the reads non-blocking
 
   memset(&tio, 0, sizeof (tio));
   tio.c_iflag = 0;
@@ -74,20 +76,99 @@ void ParallaxBoard::initialize(std::string port)
   cfsetispeed(&tio, B115200); // 115200 baud
 
   tcsetattr(tty_fd, TCSANOW, &tio);
+  std::string result;
+  result = command("PING");
+  ROS_INFO("%s",result.data());
 }
 
-unsigned char* ParallaxBoard::convertToByte(std::string str)
+std::string ParallaxBoard::command(std::string str)
 {
-  unsigned char command[str.size()];
+  std::stringstream result;
+  unsigned char c;
+  int size = str.size() + 1;
+  unsigned char command[size];
+  
+  for (int i = 0; i < size - 1; i++)
+  {
+    command[i] = str[i];
+  }
+  command[size - 1] = '\r';
+  write(tty_fd, command, size);
+  usleep(100); //Give some time for the board to process
+  while (c != '\r')
+  {
+    if (read(tty_fd, &c, 1) > 0)
+    {
+      result << c;
+    }
+  }
+  return result.str();
+}
 
-  return command;
+parallax_eddie_robot::Ping ParallaxBoard::getPingData()
+{
+  std::stringstream value;
+  std::string result = command(GET_PING_VALUE_STRING);
+  //std::string result = "000 8CB\r";
+  parallax_eddie_robot::Ping ping_data;
+  if(result.size()==1){
+    ping_data.status = "EMPTY";
+    return ping_data;
+  }
+  else if(result.size()>=6){
+    if(result.substr(0,5)=="ERROR"){
+      ping_data.status = "ERROR";
+    }
+  }
+  ping_data.status = "SUCCESS";
+  value << std::hex << result.substr(0,3);
+  ROS_INFO(value.str().data());
+  value >> ping_data.value1;
+  value.flush();
+  value << std::hex << result.substr(4,3);
+  value >> ping_data.value2;
+  ROS_INFO(value.str().data());
+  ROS_INFO("PING_DATA msg :-%d-%d-", ping_data.value1, ping_data.value2);
+  return ping_data;
+}
+
+parallax_eddie_robot::ADC ParallaxBoard::getADCData()
+{
+  std::string result = command(GET_ADC_VALUE_STRING);
+  parallax_eddie_robot::ADC adc_data;
+  
+  return adc_data;
 }
 
 int main(int argc, char** argv)
 {
+  ROS_INFO("Parallax Board booting up");
+  ParallaxBoard Board("/dev/ttyUSB0"); //set port to connect to Paralax controller board
   ros::init(argc, argv, "parallax_board");
   ros::NodeHandle node;
+  ros::Rate loop_rate(1);
 
+  ros::Publisher ping_pub = node.advertise<parallax_eddie_robot::Ping > ("ping_data", 1000);
+  ros::Publisher adc_pub = node.advertise<parallax_eddie_robot::ADC > ("adc_data", 1000);
+
+  int counter = 0;
+  while (ros::ok())
+  {
+    ROS_INFO("LOOP STEP [%d]", counter++);
+
+    parallax_eddie_robot::Ping ping_msg;
+    ROS_INFO("ABOUT TO READ PING DATA");
+    ping_msg = Board.getPingData();
+    ROS_INFO("ABOUT TO PUBLISH PING DATA");
+    ping_pub.publish(ping_msg);
+
+    //parallax_eddie_robot::ADC adc_msg;
+    //adc_msg = Board.getADCData();
+    //adc_pub.publish(adc_msg);
+
+    ros::spinOnce();
+    loop_rate.sleep();
+  }
 
   return 0;
 }

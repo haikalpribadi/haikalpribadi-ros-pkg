@@ -7,13 +7,15 @@
 
 #ifndef _PARALLAXBOARD_H
 #define	_PARALLAXBOARD_H
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+//#include <stdlib.h>
+//#include <stdio.h>
+//#include <unistd.h>
 #include <fcntl.h>
 #include <termios.h>
 #include <string>
 #include <map>
+#include "parallax_eddie_robot/Ping.h"
+#include "parallax_eddie_robot/ADC.h"
 
 class ParallaxBoard {
 public:
@@ -108,7 +110,7 @@ public:
     //Return the ADC values as 8 separate 12 bits words: "ADC"
     const std::string GET_ADC_VALUE_STRING;
 
-    //Return the digital PING values as 10|n separate 16 bits words: "PING"
+    //Return the digital PING values as 10|N separate 16 bits words: "PING"
     const std::string GET_PING_VALUE_STRING;
 
     //Sets drive power using 8 bits (signed) for each wheel -128|-127 is full reverse, 127 is full forward: "GO"
@@ -147,16 +149,19 @@ public:
     //Send a series of 3 carriage returns to reset the FW serial buffer: "\r\r\r"
     const std::string FLUSH_BUFFERS_STRING;
 
+    parallax_eddie_robot::Ping getPingData();
+    parallax_eddie_robot::ADC getADCData();
+
 private:
     //Associative lookups for command string -> packet bytes (char)
     std::map<std::string, unsigned char[6] > command_set_map_;
     struct termios tio;
-    struct termios stdio;
+    //struct termios stdio;
     int tty_fd;
-    fd_set rdset;
+    //fd_set rdset;
 
     void initialize(std::string port);
-    unsigned char* convertToByte(std::string command = NULL);
+    std::string command(std::string str);
 
 };
 
