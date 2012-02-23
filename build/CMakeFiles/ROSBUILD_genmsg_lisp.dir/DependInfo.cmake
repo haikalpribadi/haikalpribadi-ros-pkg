@@ -7,7 +7,10 @@ SET(CMAKE_DEPENDS_LANGUAGES
 SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/_package.lisp" "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/ADC.lisp"
   "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/_package_ADC.lisp" "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/ADC.lisp"
+  "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/_package_BatteryLevel.lisp" "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/BatteryLevel.lisp"
+  "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/_package_Distances.lisp" "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/Distances.lisp"
   "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/_package_Ping.lisp" "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/Ping.lisp"
+  "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/_package_Voltages.lisp" "/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/lisp/Voltages.lisp"
   )
 
 

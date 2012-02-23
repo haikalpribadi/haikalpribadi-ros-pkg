@@ -183,7 +183,7 @@ TOOLCHAINCONFIG:FILEPATH=TOOLCHAINCONFIG-NOTFOUND
 USERCONFIG:FILEPATH=USERCONFIG-NOTFOUND
 
 //Path to a file.
-_file_name:FILEPATH=/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_board.cpp
+_file_name:FILEPATH=/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_ping.cpp
 
 //Value Computed by CMake
 parallax_eddie_robot_BINARY_DIR:STATIC=/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build

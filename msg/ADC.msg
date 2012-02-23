@@ -1,9 +1,2 @@
 string status
-int16 value1
-int16 value2
-int16 value3
-int16 value4
-int16 value5
-int16 value6
-int16 value7
-int16 value8
+uint16[] value

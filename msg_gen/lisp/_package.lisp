@@ -3,6 +3,12 @@
   (:export
    "<ADC>"
    "ADC"
+   "<BATTERYLEVEL>"
+   "BATTERYLEVEL"
+   "<DISTANCES>"
+   "DISTANCES"
+   "<VOLTAGES>"
+   "VOLTAGES"
    "<PING>"
    "PING"
   ))

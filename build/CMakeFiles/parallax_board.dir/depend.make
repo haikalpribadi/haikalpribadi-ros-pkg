@@ -3,6 +3,16 @@
 
 CMakeFiles/parallax_board.dir/src/parallax_board.o: ../msg_gen/cpp/include/parallax_eddie_robot/ADC.h
 CMakeFiles/parallax_board.dir/src/parallax_board.o: ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h
+CMakeFiles/parallax_board.dir/src/parallax_board.o: ../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h
+CMakeFiles/parallax_board.dir/src/parallax_board.o: ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h
+CMakeFiles/parallax_board.dir/src/parallax_board.o: ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h
+CMakeFiles/parallax_board.dir/src/parallax_board.o: ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h
+CMakeFiles/parallax_board.dir/src/parallax_board.o: ../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h
+CMakeFiles/parallax_board.dir/src/parallax_board.o: ../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h
+CMakeFiles/parallax_board.dir/src/parallax_board.o: ../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h
+CMakeFiles/parallax_board.dir/src/parallax_board.o: ../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h
+CMakeFiles/parallax_board.dir/src/parallax_board.o: ../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h
+CMakeFiles/parallax_board.dir/src/parallax_board.o: ../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h
 CMakeFiles/parallax_board.dir/src/parallax_board.o: ../src/parallax_board.cpp
 CMakeFiles/parallax_board.dir/src/parallax_board.o: ../src/parallax_board.h
 CMakeFiles/parallax_board.dir/src/parallax_board.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_options.h

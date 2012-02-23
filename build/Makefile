@@ -161,6 +161,19 @@ ROSBUILD_gensrv_lisp/fast:
 .PHONY : ROSBUILD_gensrv_lisp/fast
 
 #=============================================================================
+# Target rules for targets named ROSBUILD_gensrv_py
+
+# Build rule for target.
+ROSBUILD_gensrv_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ROSBUILD_gensrv_py
+.PHONY : ROSBUILD_gensrv_py
+
+# fast build rule for target.
+ROSBUILD_gensrv_py/fast:
+	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_py.dir/build.make CMakeFiles/ROSBUILD_gensrv_py.dir/build
+.PHONY : ROSBUILD_gensrv_py/fast
+
+#=============================================================================
 # Target rules for targets named clean-test-results
 
 # Build rule for target.
@@ -174,6 +187,19 @@ clean-test-results/fast:
 .PHONY : clean-test-results/fast
 
 #=============================================================================
+# Target rules for targets named parallax_adc
+
+# Build rule for target.
+parallax_adc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 parallax_adc
+.PHONY : parallax_adc
+
+# fast build rule for target.
+parallax_adc/fast:
+	$(MAKE) -f CMakeFiles/parallax_adc.dir/build.make CMakeFiles/parallax_adc.dir/build
+.PHONY : parallax_adc/fast
+
+#=============================================================================
 # Target rules for targets named parallax_board
 
 # Build rule for target.
@@ -185,6 +211,19 @@ parallax_board: cmake_check_build_system
 parallax_board/fast:
 	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/build
 .PHONY : parallax_board/fast
+
+#=============================================================================
+# Target rules for targets named parallax_ping
+
+# Build rule for target.
+parallax_ping: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 parallax_ping
+.PHONY : parallax_ping
+
+# fast build rule for target.
+parallax_ping/fast:
+	$(MAKE) -f CMakeFiles/parallax_ping.dir/build.make CMakeFiles/parallax_ping.dir/build
+.PHONY : parallax_ping/fast
 
 #=============================================================================
 # Target rules for targets named rosbuild_precompile
@@ -265,6 +304,19 @@ rospack_gensrv/fast:
 .PHONY : rospack_gensrv/fast
 
 #=============================================================================
+# Target rules for targets named rospack_gensrv_all
+
+# Build rule for target.
+rospack_gensrv_all: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rospack_gensrv_all
+.PHONY : rospack_gensrv_all
+
+# fast build rule for target.
+rospack_gensrv_all/fast:
+	$(MAKE) -f CMakeFiles/rospack_gensrv_all.dir/build.make CMakeFiles/rospack_gensrv_all.dir/build
+.PHONY : rospack_gensrv_all/fast
+
+#=============================================================================
 # Target rules for targets named test
 
 # Build rule for target.
@@ -330,6 +382,21 @@ tests/fast:
 .PHONY : tests/fast
 
 # target to build an object file
+src/parallax_adc.o:
+	$(MAKE) -f CMakeFiles/parallax_adc.dir/build.make CMakeFiles/parallax_adc.dir/src/parallax_adc.o
+.PHONY : src/parallax_adc.o
+
+# target to preprocess a source file
+src/parallax_adc.i:
+	$(MAKE) -f CMakeFiles/parallax_adc.dir/build.make CMakeFiles/parallax_adc.dir/src/parallax_adc.i
+.PHONY : src/parallax_adc.i
+
+# target to generate assembly for a file
+src/parallax_adc.s:
+	$(MAKE) -f CMakeFiles/parallax_adc.dir/build.make CMakeFiles/parallax_adc.dir/src/parallax_adc.s
+.PHONY : src/parallax_adc.s
+
+# target to build an object file
 src/parallax_board.o:
 	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/src/parallax_board.o
 .PHONY : src/parallax_board.o
@@ -344,6 +411,21 @@ src/parallax_board.s:
 	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/src/parallax_board.s
 .PHONY : src/parallax_board.s
 
+# target to build an object file
+src/parallax_ping.o:
+	$(MAKE) -f CMakeFiles/parallax_ping.dir/build.make CMakeFiles/parallax_ping.dir/src/parallax_ping.o
+.PHONY : src/parallax_ping.o
+
+# target to preprocess a source file
+src/parallax_ping.i:
+	$(MAKE) -f CMakeFiles/parallax_ping.dir/build.make CMakeFiles/parallax_ping.dir/src/parallax_ping.i
+.PHONY : src/parallax_ping.i
+
+# target to generate assembly for a file
+src/parallax_ping.s:
+	$(MAKE) -f CMakeFiles/parallax_ping.dir/build.make CMakeFiles/parallax_ping.dir/src/parallax_ping.s
+.PHONY : src/parallax_ping.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -355,9 +437,12 @@ help:
 	@echo "... ROSBUILD_genmsg_py"
 	@echo "... ROSBUILD_gensrv_cpp"
 	@echo "... ROSBUILD_gensrv_lisp"
+	@echo "... ROSBUILD_gensrv_py"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
+	@echo "... parallax_adc"
 	@echo "... parallax_board"
+	@echo "... parallax_ping"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
@@ -365,14 +450,21 @@ help:
 	@echo "... rospack_genmsg_all"
 	@echo "... rospack_genmsg_libexe"
 	@echo "... rospack_gensrv"
+	@echo "... rospack_gensrv_all"
 	@echo "... test"
 	@echo "... test-future"
 	@echo "... test-results"
 	@echo "... test-results-run"
 	@echo "... tests"
+	@echo "... src/parallax_adc.o"
+	@echo "... src/parallax_adc.i"
+	@echo "... src/parallax_adc.s"
 	@echo "... src/parallax_board.o"
 	@echo "... src/parallax_board.i"
 	@echo "... src/parallax_board.s"
+	@echo "... src/parallax_ping.o"
+	@echo "... src/parallax_ping.i"
+	@echo "... src/parallax_ping.s"
 .PHONY : help
 
 

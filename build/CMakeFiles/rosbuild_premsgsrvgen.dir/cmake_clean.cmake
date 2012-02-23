@@ -1,7 +1,10 @@
 FILE(REMOVE_RECURSE
   "../msg_gen"
+  "../srv_gen"
   "../src/parallax_eddie_robot/msg"
+  "../src/parallax_eddie_robot/srv"
   "../msg_gen"
+  "../srv_gen"
   "CMakeFiles/rosbuild_premsgsrvgen"
 )
 

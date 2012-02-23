@@ -4,22 +4,15 @@ import struct
 
 
 class ADC(roslib.message.Message):
-  _md5sum = "5007bc3b23ea814869e7acca4b5c929c"
+  _md5sum = "fd06a43da03c247f617c08d65c3562e9"
   _type = "parallax_eddie_robot/ADC"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """string status
-int16 value1
-int16 value2
-int16 value3
-int16 value4
-int16 value5
-int16 value6
-int16 value7
-int16 value8
+uint16[] value
 
 """
-  __slots__ = ['status','value1','value2','value3','value4','value5','value6','value7','value8']
-  _slot_types = ['string','int16','int16','int16','int16','int16','int16','int16','int16']
+  __slots__ = ['status','value']
+  _slot_types = ['string','uint16[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -29,7 +22,7 @@ int16 value8
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       status,value1,value2,value3,value4,value5,value6,value7,value8
+       status,value
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -40,32 +33,11 @@ int16 value8
       #message fields cannot be None, assign default values for those that are
       if self.status is None:
         self.status = ''
-      if self.value1 is None:
-        self.value1 = 0
-      if self.value2 is None:
-        self.value2 = 0
-      if self.value3 is None:
-        self.value3 = 0
-      if self.value4 is None:
-        self.value4 = 0
-      if self.value5 is None:
-        self.value5 = 0
-      if self.value6 is None:
-        self.value6 = 0
-      if self.value7 is None:
-        self.value7 = 0
-      if self.value8 is None:
-        self.value8 = 0
+      if self.value is None:
+        self.value = []
     else:
       self.status = ''
-      self.value1 = 0
-      self.value2 = 0
-      self.value3 = 0
-      self.value4 = 0
-      self.value5 = 0
-      self.value6 = 0
-      self.value7 = 0
-      self.value8 = 0
+      self.value = []
 
   def _get_types(self):
     """
@@ -83,8 +55,10 @@ int16 value8
       _x = self.status
       length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
-      _x = self
-      buff.write(_struct_8h.pack(_x.value1, _x.value2, _x.value3, _x.value4, _x.value5, _x.value6, _x.value7, _x.value8))
+      length = len(self.value)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sH'%length
+      buff.write(struct.pack(pattern, *self.value))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -102,10 +76,13 @@ int16 value8
       start = end
       end += length
       self.status = str[start:end]
-      _x = self
       start = end
-      end += 16
-      (_x.value1, _x.value2, _x.value3, _x.value4, _x.value5, _x.value6, _x.value7, _x.value8,) = _struct_8h.unpack(str[start:end])
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sH'%length
+      start = end
+      end += struct.calcsize(pattern)
+      self.value = struct.unpack(pattern, str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -123,8 +100,10 @@ int16 value8
       _x = self.status
       length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
-      _x = self
-      buff.write(_struct_8h.pack(_x.value1, _x.value2, _x.value3, _x.value4, _x.value5, _x.value6, _x.value7, _x.value8))
+      length = len(self.value)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sH'%length
+      buff.write(self.value.tostring())
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -144,13 +123,15 @@ int16 value8
       start = end
       end += length
       self.status = str[start:end]
-      _x = self
       start = end
-      end += 16
-      (_x.value1, _x.value2, _x.value3, _x.value4, _x.value5, _x.value6, _x.value7, _x.value8,) = _struct_8h.unpack(str[start:end])
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sH'%length
+      start = end
+      end += struct.calcsize(pattern)
+      self.value = numpy.frombuffer(str[start:end], dtype=numpy.uint16, count=length)
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = roslib.message.struct_I
-_struct_8h = struct.Struct("<8h")

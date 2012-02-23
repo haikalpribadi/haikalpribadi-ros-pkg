@@ -40,6 +40,9 @@ CMAKE_BINARY_DIR = /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build
 # Utility rule file for ROSBUILD_genmsg_cpp.
 
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/ADC.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/Distances.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h
 
 ../msg_gen/cpp/include/parallax_eddie_robot/ADC.h: ../msg/ADC.msg
@@ -67,6 +70,81 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/Ping
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/parallax_eddie_robot/ADC.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/ADC.msg
 
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: ../msg/BatteryLevel.msg
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: ../manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/BatteryLevel.msg
+
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: ../msg/Distances.msg
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: ../manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../msg_gen/cpp/include/parallax_eddie_robot/Distances.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/parallax_eddie_robot/Distances.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Distances.msg
+
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: ../msg/Voltages.msg
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: ../manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Voltages.msg
+
 ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h: ../msg/Ping.msg
 ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
 ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
@@ -88,12 +166,15 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/Ping
 ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Ping.msg
 
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/ADC.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/Distances.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/Voltages.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make
 .PHONY : ROSBUILD_genmsg_cpp

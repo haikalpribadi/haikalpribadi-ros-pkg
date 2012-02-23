@@ -39,9 +39,288 @@ CMAKE_BINARY_DIR = /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build
 
 # Utility rule file for ROSBUILD_gensrv_cpp.
 
-CMakeFiles/ROSBUILD_gensrv_cpp:
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h
+
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: ../srv/DriveWithSpeed.srv
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: ../manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv/DriveWithSpeed.srv
+
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: ../srv/DriveWithDistance.srv
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: ../manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv/DriveWithDistance.srv
+
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: ../srv/DriveWithPower.srv
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: ../manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv/DriveWithPower.srv
+
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: ../srv/Rotate.srv
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: ../manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv/Rotate.srv
+
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: ../srv/ResetEncoder.srv
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: ../manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv/ResetEncoder.srv
+
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: ../srv/GetSpeed.srv
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: ../manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv/GetSpeed.srv
+
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: ../srv/GetHeading.srv
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: ../manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv/GetHeading.srv
+
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: ../srv/GetDistance.srv
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: ../manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv/GetDistance.srv
+
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: ../srv/Accelerate.srv
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: ../manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv/Accelerate.srv
+
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: ../srv/StopAtDistance.srv
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: ../manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv/StopAtDistance.srv
 
 ROSBUILD_gensrv_cpp: CMakeFiles/ROSBUILD_gensrv_cpp
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h
 ROSBUILD_gensrv_cpp: CMakeFiles/ROSBUILD_gensrv_cpp.dir/build.make
 .PHONY : ROSBUILD_gensrv_cpp
 

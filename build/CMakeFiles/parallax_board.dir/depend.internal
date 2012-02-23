@@ -4,6 +4,16 @@
 CMakeFiles/parallax_board.dir/src/parallax_board.o
  ../msg_gen/cpp/include/parallax_eddie_robot/ADC.h
  ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h
+ ../srv_gen/cpp/include/parallax_eddie_robot/Accelerate.h
+ ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithDistance.h
+ ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithPower.h
+ ../srv_gen/cpp/include/parallax_eddie_robot/DriveWithSpeed.h
+ ../srv_gen/cpp/include/parallax_eddie_robot/GetDistance.h
+ ../srv_gen/cpp/include/parallax_eddie_robot/GetHeading.h
+ ../srv_gen/cpp/include/parallax_eddie_robot/GetSpeed.h
+ ../srv_gen/cpp/include/parallax_eddie_robot/ResetEncoder.h
+ ../srv_gen/cpp/include/parallax_eddie_robot/Rotate.h
+ ../srv_gen/cpp/include/parallax_eddie_robot/StopAtDistance.h
  /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_board.cpp
  /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_board.h
  /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_options.h

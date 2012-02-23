@@ -4,16 +4,15 @@ import struct
 
 
 class Ping(roslib.message.Message):
-  _md5sum = "a9ac828bf931795f5243ecde9378b11f"
+  _md5sum = "fd06a43da03c247f617c08d65c3562e9"
   _type = "parallax_eddie_robot/Ping"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """string status
-int16 value1
-int16 value2
+uint16[] value
 
 """
-  __slots__ = ['status','value1','value2']
-  _slot_types = ['string','int16','int16']
+  __slots__ = ['status','value']
+  _slot_types = ['string','uint16[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -23,7 +22,7 @@ int16 value2
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       status,value1,value2
+       status,value
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -34,14 +33,11 @@ int16 value2
       #message fields cannot be None, assign default values for those that are
       if self.status is None:
         self.status = ''
-      if self.value1 is None:
-        self.value1 = 0
-      if self.value2 is None:
-        self.value2 = 0
+      if self.value is None:
+        self.value = []
     else:
       self.status = ''
-      self.value1 = 0
-      self.value2 = 0
+      self.value = []
 
   def _get_types(self):
     """
@@ -59,8 +55,10 @@ int16 value2
       _x = self.status
       length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
-      _x = self
-      buff.write(_struct_2h.pack(_x.value1, _x.value2))
+      length = len(self.value)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sH'%length
+      buff.write(struct.pack(pattern, *self.value))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -78,10 +76,13 @@ int16 value2
       start = end
       end += length
       self.status = str[start:end]
-      _x = self
       start = end
       end += 4
-      (_x.value1, _x.value2,) = _struct_2h.unpack(str[start:end])
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sH'%length
+      start = end
+      end += struct.calcsize(pattern)
+      self.value = struct.unpack(pattern, str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -99,8 +100,10 @@ int16 value2
       _x = self.status
       length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
-      _x = self
-      buff.write(_struct_2h.pack(_x.value1, _x.value2))
+      length = len(self.value)
+      buff.write(_struct_I.pack(length))
+      pattern = '<%sH'%length
+      buff.write(self.value.tostring())
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -120,13 +123,15 @@ int16 value2
       start = end
       end += length
       self.status = str[start:end]
-      _x = self
       start = end
       end += 4
-      (_x.value1, _x.value2,) = _struct_2h.unpack(str[start:end])
+      (length,) = _struct_I.unpack(str[start:end])
+      pattern = '<%sH'%length
+      start = end
+      end += struct.calcsize(pattern)
+      self.value = numpy.frombuffer(str[start:end], dtype=numpy.uint16, count=length)
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = roslib.message.struct_I
-_struct_2h = struct.Struct("<2h")

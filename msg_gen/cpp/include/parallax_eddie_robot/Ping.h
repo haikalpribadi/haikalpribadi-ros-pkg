@@ -23,28 +23,27 @@ struct Ping_ {
 
   Ping_()
   : status()
-  , value1(0)
-  , value2(0)
+  , value()
   {
   }
 
   Ping_(const ContainerAllocator& _alloc)
   : status(_alloc)
-  , value1(0)
-  , value2(0)
+  , value(_alloc)
   {
   }
 
   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _status_type;
   std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  status;
 
-  typedef int16_t _value1_type;
-  int16_t value1;
-
-  typedef int16_t _value2_type;
-  int16_t value2;
+  typedef std::vector<uint16_t, typename ContainerAllocator::template rebind<uint16_t>::other >  _value_type;
+  std::vector<uint16_t, typename ContainerAllocator::template rebind<uint16_t>::other >  value;
 
 
+  ROS_DEPRECATED uint32_t get_value_size() const { return (uint32_t)value.size(); }
+  ROS_DEPRECATED void set_value_size(uint32_t size) { value.resize((size_t)size); }
+  ROS_DEPRECATED void get_value_vec(std::vector<uint16_t, typename ContainerAllocator::template rebind<uint16_t>::other > & vec) const { vec = this->value; }
+  ROS_DEPRECATED void set_value_vec(const std::vector<uint16_t, typename ContainerAllocator::template rebind<uint16_t>::other > & vec) { this->value = vec; }
 private:
   static const char* __s_getDataType_() { return "parallax_eddie_robot/Ping"; }
 public:
@@ -53,7 +52,7 @@ public:
   ROS_DEPRECATED const std::string __getDataType() const { return __s_getDataType_(); }
 
 private:
-  static const char* __s_getMD5Sum_() { return "a9ac828bf931795f5243ecde9378b11f"; }
+  static const char* __s_getMD5Sum_() { return "fd06a43da03c247f617c08d65c3562e9"; }
 public:
   ROS_DEPRECATED static const std::string __s_getMD5Sum() { return __s_getMD5Sum_(); }
 
@@ -61,8 +60,7 @@ public:
 
 private:
   static const char* __s_getMessageDefinition_() { return "string status\n\
-int16 value1\n\
-int16 value2\n\
+uint16[] value\n\
 \n\
 "; }
 public:
@@ -74,8 +72,7 @@ public:
   {
     ros::serialization::OStream stream(write_ptr, 1000000000);
     ros::serialization::serialize(stream, status);
-    ros::serialization::serialize(stream, value1);
-    ros::serialization::serialize(stream, value2);
+    ros::serialization::serialize(stream, value);
     return stream.getData();
   }
 
@@ -83,8 +80,7 @@ public:
   {
     ros::serialization::IStream stream(read_ptr, 1000000000);
     ros::serialization::deserialize(stream, status);
-    ros::serialization::deserialize(stream, value1);
-    ros::serialization::deserialize(stream, value2);
+    ros::serialization::deserialize(stream, value);
     return stream.getData();
   }
 
@@ -92,8 +88,7 @@ public:
   {
     uint32_t size = 0;
     size += ros::serialization::serializationLength(status);
-    size += ros::serialization::serializationLength(value1);
-    size += ros::serialization::serializationLength(value2);
+    size += ros::serialization::serializationLength(value);
     return size;
   }
 
@@ -125,12 +120,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::parallax_eddie_robot::Ping_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "a9ac828bf931795f5243ecde9378b11f";
+    return "fd06a43da03c247f617c08d65c3562e9";
   }
 
   static const char* value(const  ::parallax_eddie_robot::Ping_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0xa9ac828bf931795fULL;
-  static const uint64_t static_value2 = 0x5243ecde9378b11fULL;
+  static const uint64_t static_value1 = 0xfd06a43da03c247fULL;
+  static const uint64_t static_value2 = 0x617c08d65c3562e9ULL;
 };
 
 template<class ContainerAllocator>
@@ -148,8 +143,7 @@ struct Definition< ::parallax_eddie_robot::Ping_<ContainerAllocator> > {
   static const char* value() 
   {
     return "string status\n\
-int16 value1\n\
-int16 value2\n\
+uint16[] value\n\
 \n\
 ";
   }
@@ -170,8 +164,7 @@ template<class ContainerAllocator> struct Serializer< ::parallax_eddie_robot::Pi
   template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
   {
     stream.next(m.status);
-    stream.next(m.value1);
-    stream.next(m.value2);
+    stream.next(m.value);
   }
 
   ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -191,10 +184,12 @@ struct Printer< ::parallax_eddie_robot::Ping_<ContainerAllocator> >
   {
     s << indent << "status: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.status);
-    s << indent << "value1: ";
-    Printer<int16_t>::stream(s, indent + "  ", v.value1);
-    s << indent << "value2: ";
-    Printer<int16_t>::stream(s, indent + "  ", v.value2);
+    s << indent << "value[]" << std::endl;
+    for (size_t i = 0; i < v.value.size(); ++i)
+    {
+      s << indent << "  value[" << i << "]: ";
+      Printer<uint16_t>::stream(s, indent + "  ", v.value[i]);
+    }
   }
 };
 

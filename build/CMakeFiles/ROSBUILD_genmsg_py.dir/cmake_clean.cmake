@@ -1,10 +1,16 @@
 FILE(REMOVE_RECURSE
   "../msg_gen"
+  "../srv_gen"
   "../src/parallax_eddie_robot/msg"
+  "../src/parallax_eddie_robot/srv"
   "../msg_gen"
+  "../srv_gen"
   "CMakeFiles/ROSBUILD_genmsg_py"
   "../src/parallax_eddie_robot/msg/__init__.py"
   "../src/parallax_eddie_robot/msg/_ADC.py"
+  "../src/parallax_eddie_robot/msg/_BatteryLevel.py"
+  "../src/parallax_eddie_robot/msg/_Distances.py"
+  "../src/parallax_eddie_robot/msg/_Voltages.py"
   "../src/parallax_eddie_robot/msg/_Ping.py"
 )
 

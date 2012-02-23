@@ -12,20 +12,32 @@
 //#include <unistd.h>
 #include <fcntl.h>
 #include <termios.h>
+#include <semaphore.h>
 #include <string>
 #include <map>
 #include "parallax_eddie_robot/Ping.h"
 #include "parallax_eddie_robot/ADC.h"
+#include "parallax_eddie_robot/Accelerate.h"
+#include "parallax_eddie_robot/DriveWithDistance.h"
+#include "parallax_eddie_robot/DriveWithPower.h"
+#include "parallax_eddie_robot/DriveWithSpeed.h"
+#include "parallax_eddie_robot/GetDistance.h"
+#include "parallax_eddie_robot/GetHeading.h"
+#include "parallax_eddie_robot/GetSpeed.h"
+#include "parallax_eddie_robot/ResetEncoder.h"
+#include "parallax_eddie_robot/Rotate.h"
+#include "parallax_eddie_robot/StopAtDistance.h"
+#include "parallax_eddie_robot/DriveWithDistance.h"
 
 class ParallaxBoard {
 public:
-    ParallaxBoard(std::string port="/dev/ttyUSB0");
-    ParallaxBoard(const ParallaxBoard& orig);
+    ParallaxBoard(std::string port = "/dev/ttyUSB0");
     virtual ~ParallaxBoard();
 
-    //=======================================//
-    //PARALLAX EDDIE CONTROL BOARD ATTRIBUTES//
-    //=======================================//
+    //==============================================//
+    //PARALLAX EDDIE CONTROL BOARD ATTRIBUTES       //
+    //TO DO :: IMPLEMENT ALL THESE AS ROS PARAMETERS//
+    //==============================================//
 
     //Number of potential GPIO pins available: 10
     const int GPIO_COUNT;
@@ -45,7 +57,7 @@ public:
     //There are encoders for each wheel: 2
     const int ENCODER_COUNT;
 
-    //FW returns values representing 1/892.v for ADC pins: 1/2819.2
+    //FW returns values representing 1/819v for ADC pins: 1/819
     const double ADC_VOLTAGE_MULTIPLIER;
 
     //FW returns a battery voltage diveded: 3.21
@@ -137,7 +149,7 @@ public:
     //Returns the left and right encoder ticks as a pair of signed 16 bits: "DIST"
     const std::string GET_ENCODER_TICKS_STRING;
 
-    //Zeros out the internal registers where encoder ticks are accumulated: "DIST"
+    //Zeros out the internal registers where encoder ticks are accumulated: "RST"
     const std::string RESET_ENCODER_TICKS_STRING;
 
     //Sets a velocity ramping value for drive system: "ACC"
@@ -149,16 +161,50 @@ public:
     //Send a series of 3 carriage returns to reset the FW serial buffer: "\r\r\r"
     const std::string FLUSH_BUFFERS_STRING;
 
+    ros::Publisher ping_pub_;
+    ros::Publisher adc_pub_;
+
+    ros::ServiceServer accelerate_srv_;
+    ros::ServiceServer drive_with_distance_srv_;
+    ros::ServiceServer drive_with_power_srv_;
+    ros::ServiceServer drive_with_speed_srv_;
+    ros::ServiceServer get_distance_srv_;
+    ros::ServiceServer get_heading_srv_;
+    ros::ServiceServer get_speed_srv_;
+    ros::ServiceServer reset_encoder_srv_;
+    ros::ServiceServer rotate_srv_;
+    ros::ServiceServer stop_at_distance_srv_;
+
     parallax_eddie_robot::Ping getPingData();
     parallax_eddie_robot::ADC getADCData();
 
+    bool accelerate(parallax_eddie_robot::Accelerate::Request &req,
+            parallax_eddie_robot::Accelerate::Response &res);
+    bool driveWithDistance(parallax_eddie_robot::DriveWithDistance::Request &req,
+            parallax_eddie_robot::DriveWithDistance::Response &res);
+    bool driveWithPower(parallax_eddie_robot::DriveWithPower::Request &req,
+            parallax_eddie_robot::DriveWithPower::Response &res);
+    bool driveWithSpeed(parallax_eddie_robot::DriveWithSpeed::Request &req,
+            parallax_eddie_robot::DriveWithSpeed::Response &res);
+    bool getDistance(parallax_eddie_robot::GetDistance::Request &req,
+            parallax_eddie_robot::GetDistance::Response &res);
+    bool getHeading(parallax_eddie_robot::GetHeading::Request &req,
+            parallax_eddie_robot::GetHeading::Response &res);
+    bool GetSpeed(parallax_eddie_robot::GetSpeed::Request &req,
+            parallax_eddie_robot::GetSpeed::Response &res);
+    bool resetEncoder(parallax_eddie_robot::ResetEncoder::Request &req,
+            parallax_eddie_robot::ResetEncoder::Response &res);
+    bool rotate(parallax_eddie_robot::Rotate::Request &req,
+            parallax_eddie_robot::Rotate::Response &res);
+    bool stopAtDistance(parallax_eddie_robot::StopAtDistance::Request &req,
+            parallax_eddie_robot::StopAtDistance::Response &res);
+
+
 private:
-    //Associative lookups for command string -> packet bytes (char)
-    std::map<std::string, unsigned char[6] > command_set_map_;
+    ros::NodeHandle node_handle_;
+    sem_t mutex;
     struct termios tio;
-    //struct termios stdio;
     int tty_fd;
-    //fd_set rdset;
 
     void initialize(std::string port);
     std::string command(std::string str);
