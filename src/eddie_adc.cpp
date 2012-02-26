@@ -10,10 +10,10 @@
 #include "parallax_eddie_robot/BatteryLevel.h"
 #include "parallax_eddie_robot/Voltages.h"
 
-class ParallaxADC
+class EddieADC
 {
 public:
-  ParallaxADC();
+  EddieADC();
 
   void adcCallback(const parallax_eddie_robot::ADC::ConstPtr& message);
 
@@ -27,16 +27,16 @@ private:
   
 };
 
-ParallaxADC::ParallaxADC() :
+EddieADC::EddieADC() :
   ADC_VOLTAGE_DIVIDER(819),
   BATTERY_VOLTAGE_MULTIPLIER(3.21)
 {
   ir_pub_ = node_handle_.advertise<parallax_eddie_robot::Voltages > ("ir_voltages", 1);
   battery_pub_ = node_handle_.advertise<parallax_eddie_robot::BatteryLevel > ("battery_level", 1);
-  adc_sub_ = node_handle_.subscribe("adc_data", 1, &ParallaxADC::adcCallback, this);
+  adc_sub_ = node_handle_.subscribe("adc_data", 1, &EddieADC::adcCallback, this);
 }
 
-void ParallaxADC::adcCallback(const parallax_eddie_robot::ADC::ConstPtr& message)
+void EddieADC::adcCallback(const parallax_eddie_robot::ADC::ConstPtr& message)
 {
   parallax_eddie_robot::Voltages voltages_;
   parallax_eddie_robot::BatteryLevel level_;
@@ -67,7 +67,7 @@ void ParallaxADC::adcCallback(const parallax_eddie_robot::ADC::ConstPtr& message
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "parallax_adc");
-  ParallaxADC adc;
+  EddieADC adc;
   ros::spin();
 
   return 0;

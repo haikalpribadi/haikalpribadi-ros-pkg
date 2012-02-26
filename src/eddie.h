@@ -5,8 +5,8 @@
  * Created on February 19, 2012, 5:34 PM
  */
 
-#ifndef _PARALLAXBOARD_H
-#define	_PARALLAXBOARD_H
+#ifndef _EDDIE_H
+#define	_EDDIE_H
 //#include <stdlib.h>
 //#include <stdio.h>
 //#include <unistd.h>
@@ -29,10 +29,10 @@
 #include "parallax_eddie_robot/StopAtDistance.h"
 #include "parallax_eddie_robot/DriveWithDistance.h"
 
-class ParallaxBoard {
+class Eddie {
 public:
-    ParallaxBoard(std::string port = "/dev/ttyUSB0");
-    virtual ~ParallaxBoard();
+    Eddie(std::string port = "/dev/ttyUSB0");
+    virtual ~Eddie();
 
     //==============================================//
     //PARALLAX EDDIE CONTROL BOARD ATTRIBUTES       //
@@ -72,6 +72,17 @@ public:
     //Parallax motor power levels go from -128 (full reverse) to 127 (full forward): -127
     //But -128 is clipped to -127 to maintain symmetry
     const signed char MOTOR_POWER_MAX_REVERSE;
+
+    //Parallax TRVL command may travel a distance in the range of -32767 to 32767
+    //Parallax GOSPD command may travel a speed in the range of -32767 to 32767
+    const int TRAVEL_SPEED_MAX_FORWARD;
+
+    //Parallax TRVL command may travel a distance in the range of -32767 to 32767
+    //Parallax GOSPD command may travel a speed in the range of -32767 to 32767
+    const int TRAVEL_SPEED_MAX_REVERSE;
+
+    //Parallax TRVL comman may travel at a speed up to 65535
+    const int TRAVEL_MAX_SPEED;
 
     //3.3v Solid State Relay is located on GPIO pin 11: 16
     const unsigned char RELAY_33V_PIN_NUMBER;
@@ -208,8 +219,12 @@ private:
 
     void initialize(std::string port);
     std::string command(std::string str);
+    std::string intToHexString(int num);
+    std::string generateCommand(std::string str1);
+    std::string generateCommand(std::string str1, int num1);
+    std::string generateCommand(std::string str1, int num1, int num2);
 
 };
 
-#endif	/* _PARALLAXBOARD_H */
+#endif	/* _EDDIE_H */
 

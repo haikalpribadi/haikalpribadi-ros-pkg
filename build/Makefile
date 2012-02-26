@@ -187,43 +187,95 @@ clean-test-results/fast:
 .PHONY : clean-test-results/fast
 
 #=============================================================================
-# Target rules for targets named parallax_adc
+# Target rules for targets named eddie
 
 # Build rule for target.
-parallax_adc: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 parallax_adc
-.PHONY : parallax_adc
+eddie: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eddie
+.PHONY : eddie
 
 # fast build rule for target.
-parallax_adc/fast:
-	$(MAKE) -f CMakeFiles/parallax_adc.dir/build.make CMakeFiles/parallax_adc.dir/build
-.PHONY : parallax_adc/fast
+eddie/fast:
+	$(MAKE) -f CMakeFiles/eddie.dir/build.make CMakeFiles/eddie.dir/build
+.PHONY : eddie/fast
 
 #=============================================================================
-# Target rules for targets named parallax_board
+# Target rules for targets named eddie_adc
 
 # Build rule for target.
-parallax_board: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 parallax_board
-.PHONY : parallax_board
+eddie_adc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eddie_adc
+.PHONY : eddie_adc
 
 # fast build rule for target.
-parallax_board/fast:
-	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/build
-.PHONY : parallax_board/fast
+eddie_adc/fast:
+	$(MAKE) -f CMakeFiles/eddie_adc.dir/build.make CMakeFiles/eddie_adc.dir/build
+.PHONY : eddie_adc/fast
 
 #=============================================================================
-# Target rules for targets named parallax_ping
+# Target rules for targets named eddie_controller
 
 # Build rule for target.
-parallax_ping: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 parallax_ping
-.PHONY : parallax_ping
+eddie_controller: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eddie_controller
+.PHONY : eddie_controller
 
 # fast build rule for target.
-parallax_ping/fast:
-	$(MAKE) -f CMakeFiles/parallax_ping.dir/build.make CMakeFiles/parallax_ping.dir/build
-.PHONY : parallax_ping/fast
+eddie_controller/fast:
+	$(MAKE) -f CMakeFiles/eddie_controller.dir/build.make CMakeFiles/eddie_controller.dir/build
+.PHONY : eddie_controller/fast
+
+#=============================================================================
+# Target rules for targets named eddie_ping
+
+# Build rule for target.
+eddie_ping: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eddie_ping
+.PHONY : eddie_ping
+
+# fast build rule for target.
+eddie_ping/fast:
+	$(MAKE) -f CMakeFiles/eddie_ping.dir/build.make CMakeFiles/eddie_ping.dir/build
+.PHONY : eddie_ping/fast
+
+#=============================================================================
+# Target rules for targets named eddie_speech
+
+# Build rule for target.
+eddie_speech: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eddie_speech
+.PHONY : eddie_speech
+
+# fast build rule for target.
+eddie_speech/fast:
+	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/build
+.PHONY : eddie_speech/fast
+
+#=============================================================================
+# Target rules for targets named eddie_teleop
+
+# Build rule for target.
+eddie_teleop: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eddie_teleop
+.PHONY : eddie_teleop
+
+# fast build rule for target.
+eddie_teleop/fast:
+	$(MAKE) -f CMakeFiles/eddie_teleop.dir/build.make CMakeFiles/eddie_teleop.dir/build
+.PHONY : eddie_teleop/fast
+
+#=============================================================================
+# Target rules for targets named eddie_text
+
+# Build rule for target.
+eddie_text: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eddie_text
+.PHONY : eddie_text
+
+# fast build rule for target.
+eddie_text/fast:
+	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/build
+.PHONY : eddie_text/fast
 
 #=============================================================================
 # Target rules for targets named rosbuild_precompile
@@ -382,49 +434,109 @@ tests/fast:
 .PHONY : tests/fast
 
 # target to build an object file
-src/parallax_adc.o:
-	$(MAKE) -f CMakeFiles/parallax_adc.dir/build.make CMakeFiles/parallax_adc.dir/src/parallax_adc.o
-.PHONY : src/parallax_adc.o
+src/eddie.o:
+	$(MAKE) -f CMakeFiles/eddie.dir/build.make CMakeFiles/eddie.dir/src/eddie.o
+.PHONY : src/eddie.o
 
 # target to preprocess a source file
-src/parallax_adc.i:
-	$(MAKE) -f CMakeFiles/parallax_adc.dir/build.make CMakeFiles/parallax_adc.dir/src/parallax_adc.i
-.PHONY : src/parallax_adc.i
+src/eddie.i:
+	$(MAKE) -f CMakeFiles/eddie.dir/build.make CMakeFiles/eddie.dir/src/eddie.i
+.PHONY : src/eddie.i
 
 # target to generate assembly for a file
-src/parallax_adc.s:
-	$(MAKE) -f CMakeFiles/parallax_adc.dir/build.make CMakeFiles/parallax_adc.dir/src/parallax_adc.s
-.PHONY : src/parallax_adc.s
+src/eddie.s:
+	$(MAKE) -f CMakeFiles/eddie.dir/build.make CMakeFiles/eddie.dir/src/eddie.s
+.PHONY : src/eddie.s
 
 # target to build an object file
-src/parallax_board.o:
-	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/src/parallax_board.o
-.PHONY : src/parallax_board.o
+src/eddie_adc.o:
+	$(MAKE) -f CMakeFiles/eddie_adc.dir/build.make CMakeFiles/eddie_adc.dir/src/eddie_adc.o
+.PHONY : src/eddie_adc.o
 
 # target to preprocess a source file
-src/parallax_board.i:
-	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/src/parallax_board.i
-.PHONY : src/parallax_board.i
+src/eddie_adc.i:
+	$(MAKE) -f CMakeFiles/eddie_adc.dir/build.make CMakeFiles/eddie_adc.dir/src/eddie_adc.i
+.PHONY : src/eddie_adc.i
 
 # target to generate assembly for a file
-src/parallax_board.s:
-	$(MAKE) -f CMakeFiles/parallax_board.dir/build.make CMakeFiles/parallax_board.dir/src/parallax_board.s
-.PHONY : src/parallax_board.s
+src/eddie_adc.s:
+	$(MAKE) -f CMakeFiles/eddie_adc.dir/build.make CMakeFiles/eddie_adc.dir/src/eddie_adc.s
+.PHONY : src/eddie_adc.s
 
 # target to build an object file
-src/parallax_ping.o:
-	$(MAKE) -f CMakeFiles/parallax_ping.dir/build.make CMakeFiles/parallax_ping.dir/src/parallax_ping.o
-.PHONY : src/parallax_ping.o
+src/eddie_controller.o:
+	$(MAKE) -f CMakeFiles/eddie_controller.dir/build.make CMakeFiles/eddie_controller.dir/src/eddie_controller.o
+.PHONY : src/eddie_controller.o
 
 # target to preprocess a source file
-src/parallax_ping.i:
-	$(MAKE) -f CMakeFiles/parallax_ping.dir/build.make CMakeFiles/parallax_ping.dir/src/parallax_ping.i
-.PHONY : src/parallax_ping.i
+src/eddie_controller.i:
+	$(MAKE) -f CMakeFiles/eddie_controller.dir/build.make CMakeFiles/eddie_controller.dir/src/eddie_controller.i
+.PHONY : src/eddie_controller.i
 
 # target to generate assembly for a file
-src/parallax_ping.s:
-	$(MAKE) -f CMakeFiles/parallax_ping.dir/build.make CMakeFiles/parallax_ping.dir/src/parallax_ping.s
-.PHONY : src/parallax_ping.s
+src/eddie_controller.s:
+	$(MAKE) -f CMakeFiles/eddie_controller.dir/build.make CMakeFiles/eddie_controller.dir/src/eddie_controller.s
+.PHONY : src/eddie_controller.s
+
+# target to build an object file
+src/eddie_ping.o:
+	$(MAKE) -f CMakeFiles/eddie_ping.dir/build.make CMakeFiles/eddie_ping.dir/src/eddie_ping.o
+.PHONY : src/eddie_ping.o
+
+# target to preprocess a source file
+src/eddie_ping.i:
+	$(MAKE) -f CMakeFiles/eddie_ping.dir/build.make CMakeFiles/eddie_ping.dir/src/eddie_ping.i
+.PHONY : src/eddie_ping.i
+
+# target to generate assembly for a file
+src/eddie_ping.s:
+	$(MAKE) -f CMakeFiles/eddie_ping.dir/build.make CMakeFiles/eddie_ping.dir/src/eddie_ping.s
+.PHONY : src/eddie_ping.s
+
+# target to build an object file
+src/eddie_speech.o:
+	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/src/eddie_speech.o
+.PHONY : src/eddie_speech.o
+
+# target to preprocess a source file
+src/eddie_speech.i:
+	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/src/eddie_speech.i
+.PHONY : src/eddie_speech.i
+
+# target to generate assembly for a file
+src/eddie_speech.s:
+	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/src/eddie_speech.s
+.PHONY : src/eddie_speech.s
+
+# target to build an object file
+src/eddie_teleop.o:
+	$(MAKE) -f CMakeFiles/eddie_teleop.dir/build.make CMakeFiles/eddie_teleop.dir/src/eddie_teleop.o
+.PHONY : src/eddie_teleop.o
+
+# target to preprocess a source file
+src/eddie_teleop.i:
+	$(MAKE) -f CMakeFiles/eddie_teleop.dir/build.make CMakeFiles/eddie_teleop.dir/src/eddie_teleop.i
+.PHONY : src/eddie_teleop.i
+
+# target to generate assembly for a file
+src/eddie_teleop.s:
+	$(MAKE) -f CMakeFiles/eddie_teleop.dir/build.make CMakeFiles/eddie_teleop.dir/src/eddie_teleop.s
+.PHONY : src/eddie_teleop.s
+
+# target to build an object file
+src/eddie_text.o:
+	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/src/eddie_text.o
+.PHONY : src/eddie_text.o
+
+# target to preprocess a source file
+src/eddie_text.i:
+	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/src/eddie_text.i
+.PHONY : src/eddie_text.i
+
+# target to generate assembly for a file
+src/eddie_text.s:
+	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/src/eddie_text.s
+.PHONY : src/eddie_text.s
 
 # Help Target
 help:
@@ -439,10 +551,14 @@ help:
 	@echo "... ROSBUILD_gensrv_lisp"
 	@echo "... ROSBUILD_gensrv_py"
 	@echo "... clean-test-results"
+	@echo "... eddie"
+	@echo "... eddie_adc"
+	@echo "... eddie_controller"
+	@echo "... eddie_ping"
+	@echo "... eddie_speech"
+	@echo "... eddie_teleop"
+	@echo "... eddie_text"
 	@echo "... edit_cache"
-	@echo "... parallax_adc"
-	@echo "... parallax_board"
-	@echo "... parallax_ping"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
@@ -456,15 +572,27 @@ help:
 	@echo "... test-results"
 	@echo "... test-results-run"
 	@echo "... tests"
-	@echo "... src/parallax_adc.o"
-	@echo "... src/parallax_adc.i"
-	@echo "... src/parallax_adc.s"
-	@echo "... src/parallax_board.o"
-	@echo "... src/parallax_board.i"
-	@echo "... src/parallax_board.s"
-	@echo "... src/parallax_ping.o"
-	@echo "... src/parallax_ping.i"
-	@echo "... src/parallax_ping.s"
+	@echo "... src/eddie.o"
+	@echo "... src/eddie.i"
+	@echo "... src/eddie.s"
+	@echo "... src/eddie_adc.o"
+	@echo "... src/eddie_adc.i"
+	@echo "... src/eddie_adc.s"
+	@echo "... src/eddie_controller.o"
+	@echo "... src/eddie_controller.i"
+	@echo "... src/eddie_controller.s"
+	@echo "... src/eddie_ping.o"
+	@echo "... src/eddie_ping.i"
+	@echo "... src/eddie_ping.s"
+	@echo "... src/eddie_speech.o"
+	@echo "... src/eddie_speech.i"
+	@echo "... src/eddie_speech.s"
+	@echo "... src/eddie_teleop.o"
+	@echo "... src/eddie_teleop.i"
+	@echo "... src/eddie_teleop.s"
+	@echo "... src/eddie_text.o"
+	@echo "... src/eddie_text.i"
+	@echo "... src/eddie_text.s"
 .PHONY : help
 
 

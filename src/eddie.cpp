@@ -6,15 +6,16 @@
  */
 
 #include "ros/ros.h"
-#include "parallax_board.h"
+#include "eddie.h"
 #include <sstream>
 typedef std::map<std::string, unsigned char[6] > CommandMap;
 
-ParallaxBoard::ParallaxBoard(std::string port) :
+Eddie::Eddie(std::string port) :
   GPIO_COUNT(10), ADC_PIN_COUNT(8), DIGITAL_PIN_COUNT(10), AUXILIARY_POWER_RELAY_COUNT(3),
   PARALLAX_MAX_BUFFER(256), ENCODER_COUNT(2), ADC_VOLTAGE_MULTIPLIER(1 / 819),
   BATTERY_VOLTAGE_DIVIDER(3.21), MOTOR_POWER_STOP(0), MOTOR_POWER_MAX_FORWARD(127),
-  MOTOR_POWER_MAX_REVERSE(-127), RELAY_33V_PIN_NUMBER(17), RELAY_5V_PIN_NUMBER(17),
+  MOTOR_POWER_MAX_REVERSE(-127), TRAVEL_SPEED_MAX_FORWARD(32767), TRAVEL_SPEED_MAX_REVERSE(-32767),
+  TRAVEL_MAX_SPEED(65535), RELAY_33V_PIN_NUMBER(17), RELAY_5V_PIN_NUMBER(17),
   RELAY_12V_PIN_NUMBER(18), PACKET_TERMINATOR('\r'), PARAMETER_DELIMITER(' '),
   ERROR("ERROR"), DEFAULT_WHEEL_RADIUS(0.0762), DEFAULT_TICKS_PER_REVOLUTION(36),
   GET_VERSION_STRING("VER"), SET_GPIO_DIRECTION_OUT_STRING("OUT"), SET_GPIO_DIRECTION_IN_STRING("IN"),
@@ -28,26 +29,28 @@ ParallaxBoard::ParallaxBoard(std::string port) :
   sem_init(&mutex, 0, 1);
   ping_pub_ = node_handle_.advertise<parallax_eddie_robot::Ping > ("ping_data", 1);
   adc_pub_ = node_handle_.advertise<parallax_eddie_robot::ADC > ("adc_data", 1);
-  
-  accelerate_srv_ = node_handle_.advertiseService("accelerate", &ParallaxBoard::accelerate, this);
-  drive_with_distance_srv_ = node_handle_.advertiseService("drive_with_distance", &ParallaxBoard::driveWithDistance, this);
-  drive_with_power_srv_ = node_handle_.advertiseService("drive_with_power", &ParallaxBoard::driveWithPower, this);
-  drive_with_speed_srv_ = node_handle_.advertiseService("drive_with_speed", &ParallaxBoard::driveWithSpeed, this);
-  get_distance_srv_ = node_handle_.advertiseService("get_distance", &ParallaxBoard::getDistance, this);
-  get_heading_srv_ = node_handle_.advertiseService("get_heading", &ParallaxBoard::getHeading, this);
-  get_speed_srv_ = node_handle_.advertiseService("get_speed", &ParallaxBoard::GetSpeed, this);
-  reset_encoder_srv_ = node_handle_.advertiseService("reset_encoder", &ParallaxBoard::resetEncoder, this);
-  stop_at_distance_srv_ = node_handle_.advertiseService("stop_at_distance", &ParallaxBoard::stopAtDistance, this);
+
+  accelerate_srv_ = node_handle_.advertiseService("accelerate", &Eddie::accelerate, this);
+  drive_with_distance_srv_ = node_handle_.advertiseService("drive_with_distance", &Eddie::driveWithDistance, this);
+  drive_with_power_srv_ = node_handle_.advertiseService("drive_with_power", &Eddie::driveWithPower, this);
+  drive_with_speed_srv_ = node_handle_.advertiseService("drive_with_speed", &Eddie::driveWithSpeed, this);
+  get_distance_srv_ = node_handle_.advertiseService("get_distance", &Eddie::getDistance, this);
+  get_heading_srv_ = node_handle_.advertiseService("get_heading", &Eddie::getHeading, this);
+  get_speed_srv_ = node_handle_.advertiseService("get_speed", &Eddie::GetSpeed, this);
+  reset_encoder_srv_ = node_handle_.advertiseService("reset_encoder", &Eddie::resetEncoder, this);
+  rotate_srv_ = node_handle_.advertiseService("rotate", &Eddie::rotate, this);
+  stop_at_distance_srv_ = node_handle_.advertiseService("stop_at_distance", &Eddie::stopAtDistance, this);
 
   initialize(port);
 }
 
-ParallaxBoard::~ParallaxBoard()
+Eddie::~Eddie()
 {
+  command("STOP 0");
   close(tty_fd);
 }
 
-void ParallaxBoard::initialize(std::string port)
+void Eddie::initialize(std::string port)
 {
   ROS_INFO("Initializing Parallax board serial port connection");
 
@@ -64,10 +67,13 @@ void ParallaxBoard::initialize(std::string port)
   cfsetispeed(&tio, B115200); // 115200 baud
 
   tcsetattr(tty_fd, TCSANOW, &tio);
+  //std::string result = command("GO 36 36");
+
 }
 
-std::string ParallaxBoard::command(std::string str)
+std::string Eddie::command(std::string str)
 {
+  ROS_INFO("EXECUTE COMMAND !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   sem_wait(&mutex);
   ssize_t written;
   std::stringstream result;
@@ -79,8 +85,10 @@ std::string ParallaxBoard::command(std::string str)
   {
     command[i] = str[i];
   }
-  command[size - 1] = '\r';
+  command[size - 1] = PACKET_TERMINATOR; // Having exces terminator is okay, it's good to guarantee
+  ROS_INFO("EXECUTING COMMAND NOW !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   written = write(tty_fd, command, size);
+  ROS_INFO("COMMAND HAVE BEEN EXECUTED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   usleep(100); //Give some time for the board to process
   while (c != '\r')
   {
@@ -93,7 +101,28 @@ std::string ParallaxBoard::command(std::string str)
   return result.str();
 }
 
-parallax_eddie_robot::Ping ParallaxBoard::getPingData()
+std::string Eddie::generateCommand(std::string str1){
+  std::stringstream ss;
+  ss << str1 << PACKET_TERMINATOR;
+  return ss.str();
+}
+std::string Eddie::generateCommand(std::string str1, int num1){
+  std::stringstream ss;
+  ss << str1 << PARAMETER_DELIMITER << intToHexString(num1) << PACKET_TERMINATOR;
+  return ss.str();
+}
+std::string Eddie::generateCommand(std::string str1, int num1, int num2){
+  std::stringstream ss;
+  ss << str1 << PARAMETER_DELIMITER << intToHexString(num1) << PARAMETER_DELIMITER << intToHexString(num2) << PACKET_TERMINATOR;
+  return ss.str();
+}
+std::string Eddie::intToHexString(int num){
+  std::stringstream ss;
+  ss << std::hex << num;
+  return ss.str();
+}
+
+parallax_eddie_robot::Ping Eddie::getPingData()
 {
   std::string result = command(GET_PING_VALUE_STRING);
   parallax_eddie_robot::Ping ping_data;
@@ -125,7 +154,7 @@ parallax_eddie_robot::Ping ParallaxBoard::getPingData()
   return ping_data;
 }
 
-parallax_eddie_robot::ADC ParallaxBoard::getADCData()
+parallax_eddie_robot::ADC Eddie::getADCData()
 {
   std::string result = command(GET_ADC_VALUE_STRING);
   parallax_eddie_robot::ADC adc_data;
@@ -157,62 +186,68 @@ parallax_eddie_robot::ADC ParallaxBoard::getADCData()
   return adc_data;
 }
 
-bool ParallaxBoard::accelerate(parallax_eddie_robot::Accelerate::Request &req,
+bool Eddie::accelerate(parallax_eddie_robot::Accelerate::Request &req,
   parallax_eddie_robot::Accelerate::Response &res)
 {
-  std::stringstream cmd;
-  cmd << SET_RAMPING_VALUE_STRING << PARAMETER_DELIMITER << req.rate;
-  std::string cmd_response = command(cmd.str());
+  //this feature does not need to validate the parameters due the limited range of parameter data type
+  std::string cmd;
+  cmd = generateCommand(SET_RAMPING_VALUE_STRING, req.rate);
+  std::string cmd_response = command(cmd);
   if (cmd_response == "\r")
-  {
-    res.message = "SUCCESS";
     return true;
-  }
   else
-  {
-    res.message = cmd_response;
-    ROS_INFO("ERROR: %s", cmd_response.c_str());
     return false;
-  }
 }
 
-bool ParallaxBoard::driveWithPower(parallax_eddie_robot::DriveWithPower::Request &req,
+bool Eddie::driveWithDistance(parallax_eddie_robot::DriveWithDistance::Request &req,
+  parallax_eddie_robot::DriveWithDistance::Response &res)
+{
+  ROS_INFO("ABOUT EXECUTE DRIVE_WITH_DISTANCE");
+  //this feature does not need to validate the parameters due the limited range of parameter data type
+  std::string cmd;
+  cmd = generateCommand(SET_DRIVE_DISTANCE_STRING, req.distance, req.speed);
+  std::string cmd_response = command(cmd);
+  if (cmd_response == "\r")
+    return true;
+  else
+    return false;
+}
+
+bool Eddie::driveWithPower(parallax_eddie_robot::DriveWithPower::Request &req,
   parallax_eddie_robot::DriveWithPower::Response &res)
 {
-  std::stringstream cmd;
-  cmd << SET_DRIVE_POWER_STRING << PARAMETER_DELIMITER << req.left << PARAMETER_DELIMITER << req.right;
-  std::string cmd_response = command(cmd.str());
-  if (cmd_response == "\r")
+  if (req.left > MOTOR_POWER_MAX_FORWARD || req.right > MOTOR_POWER_MAX_FORWARD ||
+      req.left < MOTOR_POWER_MAX_REVERSE || req.right < MOTOR_POWER_MAX_REVERSE)
   {
-    res.message = "SUCCESS";
-    return true;
-  }
-  else
-  {
-    res.message = cmd_response;
     return false;
   }
+  std::string cmd;
+  cmd = generateCommand(SET_DRIVE_POWER_STRING, req.left, req.right);
+  std::string cmd_response = command(cmd);
+  if (cmd_response == "\r")
+    return true;
+  else
+    return false;
 }
 
-bool ParallaxBoard::driveWithSpeed(parallax_eddie_robot::DriveWithSpeed::Request &req,
+bool Eddie::driveWithSpeed(parallax_eddie_robot::DriveWithSpeed::Request &req,
   parallax_eddie_robot::DriveWithSpeed::Response &res)
 {
-  std::stringstream cmd;
-  cmd << SET_DRIVE_SPEED_STRING << PARAMETER_DELIMITER + req.left << PARAMETER_DELIMITER << req.right;
-  std::string cmd_response = command(cmd.str());
-  if (cmd_response == "\r")
+  if (req.left > TRAVEL_SPEED_MAX_FORWARD || req.right > TRAVEL_SPEED_MAX_FORWARD ||
+      req.left < TRAVEL_SPEED_MAX_REVERSE || req.right < TRAVEL_SPEED_MAX_REVERSE)
   {
-    res.message = "SUCCESS";
-    return true;
-  }
-  else
-  {
-    res.message = cmd_response;
     return false;
   }
+  std::string cmd;
+  cmd = generateCommand(SET_DRIVE_SPEED_STRING, req.left, req.right);
+  std::string cmd_response = command(cmd);
+  if (cmd_response == "\r")
+    return true;
+  else
+    return false;
 }
 
-bool ParallaxBoard::getDistance(parallax_eddie_robot::GetDistance::Request &req,
+bool Eddie::getDistance(parallax_eddie_robot::GetDistance::Request &req,
   parallax_eddie_robot::GetDistance::Response &res)
 {
   std::string cmd = GET_ENCODER_TICKS_STRING;
@@ -220,7 +255,6 @@ bool ParallaxBoard::getDistance(parallax_eddie_robot::GetDistance::Request &req,
   if (cmd_response.substr(0, 5) != "ERROR" && cmd_response.size() >= 18)
   {
     std::stringstream value;
-    res.message = "SUCCESS";
     value << std::hex << cmd_response.substr(0, 8);
     value >> res.left;
     value.str(std::string());
@@ -230,13 +264,10 @@ bool ParallaxBoard::getDistance(parallax_eddie_robot::GetDistance::Request &req,
     return true;
   }
   else
-  {
-    res.message = cmd_response;
     return false;
-  }
 }
 
-bool ParallaxBoard::getHeading(parallax_eddie_robot::GetHeading::Request &req,
+bool Eddie::getHeading(parallax_eddie_robot::GetHeading::Request &req,
   parallax_eddie_robot::GetHeading::Response &res)
 {
   std::string cmd = GET_CURRENT_HEADING_STRING;
@@ -244,19 +275,15 @@ bool ParallaxBoard::getHeading(parallax_eddie_robot::GetHeading::Request &req,
   if (cmd_response.substr(0, 5) != "ERROR" && cmd_response.size() >= 4)
   {
     std::stringstream value;
-    res.message = "SUCCESS";
     value << std::hex << cmd_response.substr(0, 3);
     value >> res.heading;
     return true;
   }
   else
-  {
-    res.message = cmd_response;
     return false;
-  }
 }
 
-bool ParallaxBoard::GetSpeed(parallax_eddie_robot::GetSpeed::Request &req,
+bool Eddie::GetSpeed(parallax_eddie_robot::GetSpeed::Request &req,
   parallax_eddie_robot::GetSpeed::Response &res)
 {
   std::string cmd = GET_CURRENT_SPEED_STRING;
@@ -264,7 +291,6 @@ bool ParallaxBoard::GetSpeed(parallax_eddie_robot::GetSpeed::Request &req,
   if (cmd_response.substr(0, 5) != "ERROR" && cmd_response.size() >= 10)
   {
     std::stringstream value;
-    res.message = "SUCCESS";
     value << std::hex << cmd_response.substr(0, 4);
     value >> res.left;
     value.str(std::string());
@@ -274,98 +300,58 @@ bool ParallaxBoard::GetSpeed(parallax_eddie_robot::GetSpeed::Request &req,
     return true;
   }
   else
-  {
-    res.message = cmd_response;
     return false;
-  }
 }
 
-bool ParallaxBoard::resetEncoder(parallax_eddie_robot::ResetEncoder::Request &req,
+bool Eddie::resetEncoder(parallax_eddie_robot::ResetEncoder::Request &req,
   parallax_eddie_robot::ResetEncoder::Response &res)
 {
   std::string cmd = RESET_ENCODER_TICKS_STRING;
   std::string cmd_response = command(cmd);
   if (cmd_response == "\r")
-  {
-    res.message = "SUCCESS";
     return true;
-  }
   else
-  {
-    res.message = cmd_response;
     return false;
-  }
 }
 
-bool ParallaxBoard::rotate(parallax_eddie_robot::Rotate::Request &req,
+bool Eddie::rotate(parallax_eddie_robot::Rotate::Request &req,
   parallax_eddie_robot::Rotate::Response &res)
 {
-  std::stringstream cmd;
-  cmd << SET_ROTATE_STRING << PARAMETER_DELIMITER + req.angle << PARAMETER_DELIMITER << req.speed;
-  std::string cmd_response = command(cmd.str());
+  std::string cmd;
+  cmd = generateCommand(SET_ROTATE_STRING, req.angle, req.speed);
+  std::string cmd_response = command(cmd);
   if (cmd_response == "\r")
-  {
-    res.message = "SUCCESS";
     return true;
-  }
   else
-  {
-    res.message = cmd_response;
     return false;
-  }
 }
 
-bool ParallaxBoard::stopAtDistance(parallax_eddie_robot::StopAtDistance::Request &req,
+bool Eddie::stopAtDistance(parallax_eddie_robot::StopAtDistance::Request &req,
   parallax_eddie_robot::StopAtDistance::Response &res)
 {
-  std::stringstream cmd;
-  cmd << SET_STOP_DISTANCE_STRING << PARAMETER_DELIMITER << req.distance;
-  std::string cmd_response = command(cmd.str());
+  std::string cmd;
+  cmd = generateCommand(SET_STOP_DISTANCE_STRING, req.distance);
+  std::string cmd_response = command(cmd);
   if (cmd_response == "\r")
-  {
-    res.message = "SUCCESS";
     return true;
-  }
   else
-  {
-    res.message = cmd_response;
-    ROS_INFO("ERROR: %s", cmd_response.c_str());
     return false;
-  }
-}
-
-bool ParallaxBoard::driveWithDistance(parallax_eddie_robot::DriveWithDistance::Request &req,
-  parallax_eddie_robot::DriveWithDistance::Response &res)
-{
-  std::stringstream cmd;
-  cmd << SET_DRIVE_DISTANCE_STRING << PARAMETER_DELIMITER + req.distance << PARAMETER_DELIMITER << req.speed;
-  std::string cmd_response = command(cmd.str());
-  if (cmd_response == "\r")
-  {
-    res.message = "SUCCESS";
-    return true;
-  }
-  else
-  {
-    res.message = cmd_response;
-    return false;
-  }
 }
 
 int main(int argc, char** argv)
 {
   ROS_INFO("Parallax Board booting up");
   ros::init(argc, argv, "parallax_board");
-  ParallaxBoard Board("/dev/ttyUSB0"); //set port to connect to Paralax controller board
-  ros::Rate loop_rate(1);
+  Eddie eddie("/dev/ttyUSB0"); //set port to connect to Paralax controller board
+  ros::Rate loop_rate(10);
 
   int counter = 0;
   while (ros::ok())
   {
     ROS_INFO("LOOP STEP [%d]", counter++);
 
-    Board.ping_pub_.publish(Board.getPingData());
-    Board.adc_pub_.publish(Board.getADCData());
+    //eddie.ping_pub_.publish(eddie.getPingData());
+    //eddie.adc_pub_.publish(eddie.getADCData());
 
     ros::spinOnce();
     loop_rate.sleep();

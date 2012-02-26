@@ -54,7 +54,7 @@ public:
   ROS_DEPRECATED const std::string __getMD5Sum() const { return __s_getMD5Sum_(); }
 
 private:
-  static const char* __s_getServerMD5Sum_() { return "4ad421c5c9f6450a242633ba426475ea"; }
+  static const char* __s_getServerMD5Sum_() { return "4db6e4febd2342355b86e2b5ee754faf"; }
 public:
   ROS_DEPRECATED static const std::string __s_getServerMD5Sum() { return __s_getServerMD5Sum_(); }
 
@@ -105,17 +105,12 @@ struct StopAtDistanceResponse_ {
   typedef StopAtDistanceResponse_<ContainerAllocator> Type;
 
   StopAtDistanceResponse_()
-  : message()
   {
   }
 
   StopAtDistanceResponse_(const ContainerAllocator& _alloc)
-  : message(_alloc)
   {
   }
-
-  typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _message_type;
-  std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  message;
 
 
 private:
@@ -126,22 +121,21 @@ public:
   ROS_DEPRECATED const std::string __getDataType() const { return __s_getDataType_(); }
 
 private:
-  static const char* __s_getMD5Sum_() { return "5f003d6bcc824cbd51361d66d8e4f76c"; }
+  static const char* __s_getMD5Sum_() { return "d41d8cd98f00b204e9800998ecf8427e"; }
 public:
   ROS_DEPRECATED static const std::string __s_getMD5Sum() { return __s_getMD5Sum_(); }
 
   ROS_DEPRECATED const std::string __getMD5Sum() const { return __s_getMD5Sum_(); }
 
 private:
-  static const char* __s_getServerMD5Sum_() { return "4ad421c5c9f6450a242633ba426475ea"; }
+  static const char* __s_getServerMD5Sum_() { return "4db6e4febd2342355b86e2b5ee754faf"; }
 public:
   ROS_DEPRECATED static const std::string __s_getServerMD5Sum() { return __s_getServerMD5Sum_(); }
 
   ROS_DEPRECATED const std::string __getServerMD5Sum() const { return __s_getServerMD5Sum_(); }
 
 private:
-  static const char* __s_getMessageDefinition_() { return "string message\n\
-\n\
+  static const char* __s_getMessageDefinition_() { return "\n\
 \n\
 "; }
 public:
@@ -152,21 +146,18 @@ public:
   ROS_DEPRECATED virtual uint8_t *serialize(uint8_t *write_ptr, uint32_t seq) const
   {
     ros::serialization::OStream stream(write_ptr, 1000000000);
-    ros::serialization::serialize(stream, message);
     return stream.getData();
   }
 
   ROS_DEPRECATED virtual uint8_t *deserialize(uint8_t *read_ptr)
   {
     ros::serialization::IStream stream(read_ptr, 1000000000);
-    ros::serialization::deserialize(stream, message);
     return stream.getData();
   }
 
   ROS_DEPRECATED virtual uint32_t serializationLength() const
   {
     uint32_t size = 0;
-    size += ros::serialization::serializationLength(message);
     return size;
   }
 
@@ -247,12 +238,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::parallax_eddie_robot::StopAtDistanceResponse_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "5f003d6bcc824cbd51361d66d8e4f76c";
+    return "d41d8cd98f00b204e9800998ecf8427e";
   }
 
   static const char* value(const  ::parallax_eddie_robot::StopAtDistanceResponse_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0x5f003d6bcc824cbdULL;
-  static const uint64_t static_value2 = 0x51361d66d8e4f76cULL;
+  static const uint64_t static_value1 = 0xd41d8cd98f00b204ULL;
+  static const uint64_t static_value2 = 0xe9800998ecf8427eULL;
 };
 
 template<class ContainerAllocator>
@@ -269,8 +260,7 @@ template<class ContainerAllocator>
 struct Definition< ::parallax_eddie_robot::StopAtDistanceResponse_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "string message\n\
-\n\
+    return "\n\
 \n\
 ";
   }
@@ -278,6 +268,7 @@ struct Definition< ::parallax_eddie_robot::StopAtDistanceResponse_<ContainerAllo
   static const char* value(const  ::parallax_eddie_robot::StopAtDistanceResponse_<ContainerAllocator> &) { return value(); } 
 };
 
+template<class ContainerAllocator> struct IsFixedSize< ::parallax_eddie_robot::StopAtDistanceResponse_<ContainerAllocator> > : public TrueType {};
 } // namespace message_traits
 } // namespace ros
 
@@ -308,7 +299,6 @@ template<class ContainerAllocator> struct Serializer< ::parallax_eddie_robot::St
 {
   template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
   {
-    stream.next(m.message);
   }
 
   ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -324,7 +314,7 @@ template<>
 struct MD5Sum<parallax_eddie_robot::StopAtDistance> {
   static const char* value() 
   {
-    return "4ad421c5c9f6450a242633ba426475ea";
+    return "4db6e4febd2342355b86e2b5ee754faf";
   }
 
   static const char* value(const parallax_eddie_robot::StopAtDistance&) { return value(); } 
@@ -344,7 +334,7 @@ template<class ContainerAllocator>
 struct MD5Sum<parallax_eddie_robot::StopAtDistanceRequest_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "4ad421c5c9f6450a242633ba426475ea";
+    return "4db6e4febd2342355b86e2b5ee754faf";
   }
 
   static const char* value(const parallax_eddie_robot::StopAtDistanceRequest_<ContainerAllocator> &) { return value(); } 
@@ -364,7 +354,7 @@ template<class ContainerAllocator>
 struct MD5Sum<parallax_eddie_robot::StopAtDistanceResponse_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "4ad421c5c9f6450a242633ba426475ea";
+    return "4db6e4febd2342355b86e2b5ee754faf";
   }
 
   static const char* value(const parallax_eddie_robot::StopAtDistanceResponse_<ContainerAllocator> &) { return value(); } 

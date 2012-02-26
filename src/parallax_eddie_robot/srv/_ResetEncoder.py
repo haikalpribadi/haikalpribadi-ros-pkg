@@ -94,15 +94,14 @@ import struct
 
 
 class ResetEncoderResponse(roslib.message.Message):
-  _md5sum = "5f003d6bcc824cbd51361d66d8e4f76c"
+  _md5sum = "d41d8cd98f00b204e9800998ecf8427e"
   _type = "parallax_eddie_robot/ResetEncoderResponse"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """string message
-
+  _full_text = """
 
 """
-  __slots__ = ['message']
-  _slot_types = ['string']
+  __slots__ = []
+  _slot_types = []
 
   def __init__(self, *args, **kwds):
     """
@@ -112,7 +111,7 @@ class ResetEncoderResponse(roslib.message.Message):
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       message
+       
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -120,11 +119,6 @@ class ResetEncoderResponse(roslib.message.Message):
     """
     if args or kwds:
       super(ResetEncoderResponse, self).__init__(*args, **kwds)
-      #message fields cannot be None, assign default values for those that are
-      if self.message is None:
-        self.message = ''
-    else:
-      self.message = ''
 
   def _get_types(self):
     """
@@ -139,9 +133,7 @@ class ResetEncoderResponse(roslib.message.Message):
     @type  buff: StringIO
     """
     try:
-      _x = self.message
-      length = len(_x)
-      buff.write(struct.pack('<I%ss'%length, length, _x))
+      pass
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -153,12 +145,6 @@ class ResetEncoderResponse(roslib.message.Message):
     """
     try:
       end = 0
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      self.message = str[start:end]
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -173,9 +159,7 @@ class ResetEncoderResponse(roslib.message.Message):
     @type  numpy module
     """
     try:
-      _x = self.message
-      length = len(_x)
-      buff.write(struct.pack('<I%ss'%length, length, _x))
+      pass
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -189,12 +173,6 @@ class ResetEncoderResponse(roslib.message.Message):
     """
     try:
       end = 0
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      self.message = str[start:end]
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -202,6 +180,6 @@ class ResetEncoderResponse(roslib.message.Message):
 _struct_I = roslib.message.struct_I
 class ResetEncoder(roslib.message.ServiceDefinition):
   _type          = 'parallax_eddie_robot/ResetEncoder'
-  _md5sum = '5f003d6bcc824cbd51361d66d8e4f76c'
+  _md5sum = 'd41d8cd98f00b204e9800998ecf8427e'
   _request_class  = ResetEncoderRequest
   _response_class = ResetEncoderResponse

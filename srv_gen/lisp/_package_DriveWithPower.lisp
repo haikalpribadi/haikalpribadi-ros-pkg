@@ -3,6 +3,4 @@
           LEFT
           RIGHT-VAL
           RIGHT
-          MESSAGE-VAL
-          MESSAGE
 ))

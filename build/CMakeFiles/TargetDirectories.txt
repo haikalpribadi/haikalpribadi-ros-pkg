@@ -5,9 +5,13 @@
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/ROSBUILD_gensrv_lisp.dir
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/ROSBUILD_gensrv_py.dir
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/clean-test-results.dir
-/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/parallax_adc.dir
-/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/parallax_board.dir
-/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/parallax_ping.dir
+/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/eddie.dir
+/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/eddie_adc.dir
+/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/eddie_controller.dir
+/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/eddie_ping.dir
+/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/eddie_speech.dir
+/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/eddie_teleop.dir
+/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/eddie_text.dir
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/rosbuild_precompile.dir
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles/rospack_genmsg.dir

@@ -3,6 +3,4 @@
           ANGLE
           SPEED-VAL
           SPEED
-          MESSAGE-VAL
-          MESSAGE
 ))

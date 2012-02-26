@@ -49,7 +49,7 @@ public:
   ROS_DEPRECATED const std::string __getMD5Sum() const { return __s_getMD5Sum_(); }
 
 private:
-  static const char* __s_getServerMD5Sum_() { return "15ce3af46664ba56d07de9daa31408bd"; }
+  static const char* __s_getServerMD5Sum_() { return "09d1b2323a1aeae9343e81809a820b60"; }
 public:
   ROS_DEPRECATED static const std::string __s_getServerMD5Sum() { return __s_getServerMD5Sum_(); }
 
@@ -97,21 +97,16 @@ struct GetSpeedResponse_ {
   typedef GetSpeedResponse_<ContainerAllocator> Type;
 
   GetSpeedResponse_()
-  : message()
-  , left(0)
+  : left(0)
   , right(0)
   {
   }
 
   GetSpeedResponse_(const ContainerAllocator& _alloc)
-  : message(_alloc)
-  , left(0)
+  : left(0)
   , right(0)
   {
   }
-
-  typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _message_type;
-  std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  message;
 
   typedef int16_t _left_type;
   int16_t left;
@@ -128,22 +123,21 @@ public:
   ROS_DEPRECATED const std::string __getDataType() const { return __s_getDataType_(); }
 
 private:
-  static const char* __s_getMD5Sum_() { return "15ce3af46664ba56d07de9daa31408bd"; }
+  static const char* __s_getMD5Sum_() { return "09d1b2323a1aeae9343e81809a820b60"; }
 public:
   ROS_DEPRECATED static const std::string __s_getMD5Sum() { return __s_getMD5Sum_(); }
 
   ROS_DEPRECATED const std::string __getMD5Sum() const { return __s_getMD5Sum_(); }
 
 private:
-  static const char* __s_getServerMD5Sum_() { return "15ce3af46664ba56d07de9daa31408bd"; }
+  static const char* __s_getServerMD5Sum_() { return "09d1b2323a1aeae9343e81809a820b60"; }
 public:
   ROS_DEPRECATED static const std::string __s_getServerMD5Sum() { return __s_getServerMD5Sum_(); }
 
   ROS_DEPRECATED const std::string __getServerMD5Sum() const { return __s_getServerMD5Sum_(); }
 
 private:
-  static const char* __s_getMessageDefinition_() { return "string message\n\
-int16 left\n\
+  static const char* __s_getMessageDefinition_() { return "int16 left\n\
 int16 right\n\
 \n\
 \n\
@@ -156,7 +150,6 @@ public:
   ROS_DEPRECATED virtual uint8_t *serialize(uint8_t *write_ptr, uint32_t seq) const
   {
     ros::serialization::OStream stream(write_ptr, 1000000000);
-    ros::serialization::serialize(stream, message);
     ros::serialization::serialize(stream, left);
     ros::serialization::serialize(stream, right);
     return stream.getData();
@@ -165,7 +158,6 @@ public:
   ROS_DEPRECATED virtual uint8_t *deserialize(uint8_t *read_ptr)
   {
     ros::serialization::IStream stream(read_ptr, 1000000000);
-    ros::serialization::deserialize(stream, message);
     ros::serialization::deserialize(stream, left);
     ros::serialization::deserialize(stream, right);
     return stream.getData();
@@ -174,7 +166,6 @@ public:
   ROS_DEPRECATED virtual uint32_t serializationLength() const
   {
     uint32_t size = 0;
-    size += ros::serialization::serializationLength(message);
     size += ros::serialization::serializationLength(left);
     size += ros::serialization::serializationLength(right);
     return size;
@@ -257,12 +248,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::parallax_eddie_robot::GetSpeedResponse_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "15ce3af46664ba56d07de9daa31408bd";
+    return "09d1b2323a1aeae9343e81809a820b60";
   }
 
   static const char* value(const  ::parallax_eddie_robot::GetSpeedResponse_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0x15ce3af46664ba56ULL;
-  static const uint64_t static_value2 = 0xd07de9daa31408bdULL;
+  static const uint64_t static_value1 = 0x09d1b2323a1aeae9ULL;
+  static const uint64_t static_value2 = 0x343e81809a820b60ULL;
 };
 
 template<class ContainerAllocator>
@@ -279,8 +270,7 @@ template<class ContainerAllocator>
 struct Definition< ::parallax_eddie_robot::GetSpeedResponse_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "string message\n\
-int16 left\n\
+    return "int16 left\n\
 int16 right\n\
 \n\
 \n\
@@ -290,6 +280,7 @@ int16 right\n\
   static const char* value(const  ::parallax_eddie_robot::GetSpeedResponse_<ContainerAllocator> &) { return value(); } 
 };
 
+template<class ContainerAllocator> struct IsFixedSize< ::parallax_eddie_robot::GetSpeedResponse_<ContainerAllocator> > : public TrueType {};
 } // namespace message_traits
 } // namespace ros
 
@@ -319,7 +310,6 @@ template<class ContainerAllocator> struct Serializer< ::parallax_eddie_robot::Ge
 {
   template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
   {
-    stream.next(m.message);
     stream.next(m.left);
     stream.next(m.right);
   }
@@ -337,7 +327,7 @@ template<>
 struct MD5Sum<parallax_eddie_robot::GetSpeed> {
   static const char* value() 
   {
-    return "15ce3af46664ba56d07de9daa31408bd";
+    return "09d1b2323a1aeae9343e81809a820b60";
   }
 
   static const char* value(const parallax_eddie_robot::GetSpeed&) { return value(); } 
@@ -357,7 +347,7 @@ template<class ContainerAllocator>
 struct MD5Sum<parallax_eddie_robot::GetSpeedRequest_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "15ce3af46664ba56d07de9daa31408bd";
+    return "09d1b2323a1aeae9343e81809a820b60";
   }
 
   static const char* value(const parallax_eddie_robot::GetSpeedRequest_<ContainerAllocator> &) { return value(); } 
@@ -377,7 +367,7 @@ template<class ContainerAllocator>
 struct MD5Sum<parallax_eddie_robot::GetSpeedResponse_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "15ce3af46664ba56d07de9daa31408bd";
+    return "09d1b2323a1aeae9343e81809a820b60";
   }
 
   static const char* value(const parallax_eddie_robot::GetSpeedResponse_<ContainerAllocator> &) { return value(); } 

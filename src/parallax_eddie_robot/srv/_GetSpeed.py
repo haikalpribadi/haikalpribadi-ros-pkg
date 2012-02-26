@@ -94,17 +94,16 @@ import struct
 
 
 class GetSpeedResponse(roslib.message.Message):
-  _md5sum = "15ce3af46664ba56d07de9daa31408bd"
+  _md5sum = "09d1b2323a1aeae9343e81809a820b60"
   _type = "parallax_eddie_robot/GetSpeedResponse"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """string message
-int16 left
+  _full_text = """int16 left
 int16 right
 
 
 """
-  __slots__ = ['message','left','right']
-  _slot_types = ['string','int16','int16']
+  __slots__ = ['left','right']
+  _slot_types = ['int16','int16']
 
   def __init__(self, *args, **kwds):
     """
@@ -114,7 +113,7 @@ int16 right
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       message,left,right
+       left,right
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -123,14 +122,11 @@ int16 right
     if args or kwds:
       super(GetSpeedResponse, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
-      if self.message is None:
-        self.message = ''
       if self.left is None:
         self.left = 0
       if self.right is None:
         self.right = 0
     else:
-      self.message = ''
       self.left = 0
       self.right = 0
 
@@ -147,9 +143,6 @@ int16 right
     @type  buff: StringIO
     """
     try:
-      _x = self.message
-      length = len(_x)
-      buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
       buff.write(_struct_2h.pack(_x.left, _x.right))
     except struct.error as se: self._check_types(se)
@@ -163,12 +156,6 @@ int16 right
     """
     try:
       end = 0
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      self.message = str[start:end]
       _x = self
       start = end
       end += 4
@@ -187,9 +174,6 @@ int16 right
     @type  numpy module
     """
     try:
-      _x = self.message
-      length = len(_x)
-      buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
       buff.write(_struct_2h.pack(_x.left, _x.right))
     except struct.error as se: self._check_types(se)
@@ -205,12 +189,6 @@ int16 right
     """
     try:
       end = 0
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      self.message = str[start:end]
       _x = self
       start = end
       end += 4
@@ -223,6 +201,6 @@ _struct_I = roslib.message.struct_I
 _struct_2h = struct.Struct("<2h")
 class GetSpeed(roslib.message.ServiceDefinition):
   _type          = 'parallax_eddie_robot/GetSpeed'
-  _md5sum = '15ce3af46664ba56d07de9daa31408bd'
+  _md5sum = '09d1b2323a1aeae9343e81809a820b60'
   _request_class  = GetSpeedRequest
   _response_class = GetSpeedResponse

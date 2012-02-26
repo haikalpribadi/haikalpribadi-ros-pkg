@@ -13,10 +13,10 @@
 //==============================================================================//
 // This class is provided as a template for future features on the Ping sensors //
 //==============================================================================//
-class ParallaxPing
+class EddiePing
 {
 public:
-  ParallaxPing();
+  EddiePing();
 
   void pingCallback(const parallax_eddie_robot::Ping::ConstPtr& message);
 
@@ -26,13 +26,13 @@ private:
   ros::Subscriber ping_sub_;
 };
 
-ParallaxPing::ParallaxPing()
+EddiePing::EddiePing()
 {
   ping_pub_ = node_handle_.advertise<parallax_eddie_robot::Distances > ("ping_distances", 1);
-  ping_sub_ = node_handle_.subscribe("ping_data", 1, &ParallaxPing::pingCallback, this);
+  ping_sub_ = node_handle_.subscribe("ping_data", 1, &EddiePing::pingCallback, this);
 }
 
-void ParallaxPing::pingCallback(const parallax_eddie_robot::Ping::ConstPtr& message)
+void EddiePing::pingCallback(const parallax_eddie_robot::Ping::ConstPtr& message)
 {
   parallax_eddie_robot::Distances distances;
   uint16_t d;
@@ -54,7 +54,7 @@ void ParallaxPing::pingCallback(const parallax_eddie_robot::Ping::ConstPtr& mess
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "parallax_ping");
-  ParallaxPing ping;
+  EddiePing ping;
   ros::spin();
 
   return 0;

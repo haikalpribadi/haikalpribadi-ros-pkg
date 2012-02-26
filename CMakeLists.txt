@@ -15,6 +15,7 @@ rosbuild_init()
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 #set the default path for built libraries to the "lib" directory
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include/festival -I/usr/lib/speech_tools/include")
 
 #uncomment if you have defined messages
 rosbuild_genmsg()
@@ -29,6 +30,12 @@ rosbuild_gensrv()
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
-rosbuild_add_executable(parallax_board src/parallax_board.cpp)
-rosbuild_add_executable(parallax_adc src/parallax_adc.cpp)
-rosbuild_add_executable(parallax_ping src/parallax_ping.cpp)
+rosbuild_add_executable(eddie src/eddie.cpp)
+rosbuild_add_executable(eddie_adc src/eddie_adc.cpp)
+rosbuild_add_executable(eddie_ping src/eddie_ping.cpp)
+rosbuild_add_executable(eddie_teleop src/eddie_teleop.cpp)
+rosbuild_add_executable(eddie_controller src/eddie_controller.cpp)
+rosbuild_add_executable(eddie_text src/eddie_text.cpp)
+rosbuild_add_executable(eddie_speech src/eddie_speech.cpp)
+target_link_libraries(eddie_speech Festival eststring estools estbase)
+

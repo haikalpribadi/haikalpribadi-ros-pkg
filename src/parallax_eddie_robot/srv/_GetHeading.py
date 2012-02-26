@@ -94,16 +94,15 @@ import struct
 
 
 class GetHeadingResponse(roslib.message.Message):
-  _md5sum = "7865e925662a7442aa42e1f76faa32f2"
+  _md5sum = "3204bea69e84bbd63420c608a176827e"
   _type = "parallax_eddie_robot/GetHeadingResponse"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """string message
-uint16 heading
+  _full_text = """uint16 heading
 
 
 """
-  __slots__ = ['message','heading']
-  _slot_types = ['string','uint16']
+  __slots__ = ['heading']
+  _slot_types = ['uint16']
 
   def __init__(self, *args, **kwds):
     """
@@ -113,7 +112,7 @@ uint16 heading
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       message,heading
+       heading
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -122,12 +121,9 @@ uint16 heading
     if args or kwds:
       super(GetHeadingResponse, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
-      if self.message is None:
-        self.message = ''
       if self.heading is None:
         self.heading = 0
     else:
-      self.message = ''
       self.heading = 0
 
   def _get_types(self):
@@ -143,9 +139,6 @@ uint16 heading
     @type  buff: StringIO
     """
     try:
-      _x = self.message
-      length = len(_x)
-      buff.write(struct.pack('<I%ss'%length, length, _x))
       buff.write(_struct_H.pack(self.heading))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
@@ -158,12 +151,6 @@ uint16 heading
     """
     try:
       end = 0
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      self.message = str[start:end]
       start = end
       end += 2
       (self.heading,) = _struct_H.unpack(str[start:end])
@@ -181,9 +168,6 @@ uint16 heading
     @type  numpy module
     """
     try:
-      _x = self.message
-      length = len(_x)
-      buff.write(struct.pack('<I%ss'%length, length, _x))
       buff.write(_struct_H.pack(self.heading))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
@@ -199,12 +183,6 @@ uint16 heading
     try:
       end = 0
       start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      self.message = str[start:end]
-      start = end
       end += 2
       (self.heading,) = _struct_H.unpack(str[start:end])
       return self
@@ -215,6 +193,6 @@ _struct_I = roslib.message.struct_I
 _struct_H = struct.Struct("<H")
 class GetHeading(roslib.message.ServiceDefinition):
   _type          = 'parallax_eddie_robot/GetHeading'
-  _md5sum = '7865e925662a7442aa42e1f76faa32f2'
+  _md5sum = '3204bea69e84bbd63420c608a176827e'
   _request_class  = GetHeadingRequest
   _response_class = GetHeadingResponse

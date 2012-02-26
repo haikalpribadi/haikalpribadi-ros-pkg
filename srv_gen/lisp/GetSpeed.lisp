@@ -32,10 +32,10 @@
   "parallax_eddie_robot/GetSpeedRequest")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<GetSpeed-request>)))
   "Returns md5sum for a message object of type '<GetSpeed-request>"
-  "15ce3af46664ba56d07de9daa31408bd")
+  "09d1b2323a1aeae9343e81809a820b60")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'GetSpeed-request)))
   "Returns md5sum for a message object of type 'GetSpeed-request"
-  "15ce3af46664ba56d07de9daa31408bd")
+  "09d1b2323a1aeae9343e81809a820b60")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<GetSpeed-request>)))
   "Returns full string definition for message of type '<GetSpeed-request>"
   (cl:format cl:nil "~%~%~%"))
@@ -52,12 +52,7 @@
 ;//! \htmlinclude GetSpeed-response.msg.html
 
 (cl:defclass <GetSpeed-response> (roslisp-msg-protocol:ros-message)
-  ((message
-    :reader message
-    :initarg :message
-    :type cl:string
-    :initform "")
-   (left
+  ((left
     :reader left
     :initarg :left
     :type cl:fixnum
@@ -77,11 +72,6 @@
   (cl:unless (cl:typep m 'GetSpeed-response)
     (roslisp-msg-protocol:msg-deprecation-warning "using old message class name parallax_eddie_robot-srv:<GetSpeed-response> is deprecated: use parallax_eddie_robot-srv:GetSpeed-response instead.")))
 
-(cl:ensure-generic-function 'message-val :lambda-list '(m))
-(cl:defmethod message-val ((m <GetSpeed-response>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader parallax_eddie_robot-srv:message-val is deprecated.  Use parallax_eddie_robot-srv:message instead.")
-  (message m))
-
 (cl:ensure-generic-function 'left-val :lambda-list '(m))
 (cl:defmethod left-val ((m <GetSpeed-response>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader parallax_eddie_robot-srv:left-val is deprecated.  Use parallax_eddie_robot-srv:left instead.")
@@ -93,12 +83,6 @@
   (right m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <GetSpeed-response>) ostream)
   "Serializes a message object of type '<GetSpeed-response>"
-  (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'message))))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
-  (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'message))
   (cl:let* ((signed (cl:slot-value msg 'left)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
@@ -110,14 +94,6 @@
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <GetSpeed-response>) istream)
   "Deserializes a message object of type '<GetSpeed-response>"
-    (cl:let ((__ros_str_len 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 16) __ros_str_len) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 24) __ros_str_len) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'message) (cl:make-string __ros_str_len))
-      (cl:dotimes (__ros_str_idx __ros_str_len msg)
-        (cl:setf (cl:char (cl:slot-value msg 'message) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
@@ -136,26 +112,24 @@
   "parallax_eddie_robot/GetSpeedResponse")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<GetSpeed-response>)))
   "Returns md5sum for a message object of type '<GetSpeed-response>"
-  "15ce3af46664ba56d07de9daa31408bd")
+  "09d1b2323a1aeae9343e81809a820b60")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'GetSpeed-response)))
   "Returns md5sum for a message object of type 'GetSpeed-response"
-  "15ce3af46664ba56d07de9daa31408bd")
+  "09d1b2323a1aeae9343e81809a820b60")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<GetSpeed-response>)))
   "Returns full string definition for message of type '<GetSpeed-response>"
-  (cl:format cl:nil "string message~%int16 left~%int16 right~%~%~%~%"))
+  (cl:format cl:nil "int16 left~%int16 right~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'GetSpeed-response)))
   "Returns full string definition for message of type 'GetSpeed-response"
-  (cl:format cl:nil "string message~%int16 left~%int16 right~%~%~%~%"))
+  (cl:format cl:nil "int16 left~%int16 right~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <GetSpeed-response>))
   (cl:+ 0
-     4 (cl:length (cl:slot-value msg 'message))
      2
      2
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <GetSpeed-response>))
   "Converts a ROS message object to a list"
   (cl:list 'GetSpeed-response
-    (cl:cons ':message (message msg))
     (cl:cons ':left (left msg))
     (cl:cons ':right (right msg))
 ))

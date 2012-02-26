@@ -167,6 +167,9 @@ LIBRARY_OUTPUT_PATH:PATH=
 //Path to a file.
 PROJECTCONFIG:FILEPATH=PROJECTCONFIG-NOTFOUND
 
+//Path to a program.
+PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2.6
+
 //Value Computed by CMake
 Project_BINARY_DIR:STATIC=/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build
 
@@ -183,7 +186,7 @@ TOOLCHAINCONFIG:FILEPATH=TOOLCHAINCONFIG-NOTFOUND
 USERCONFIG:FILEPATH=USERCONFIG-NOTFOUND
 
 //Path to a file.
-_file_name:FILEPATH=/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_ping.cpp
+_file_name:FILEPATH=/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/eddie_speech.cpp
 
 //Value Computed by CMake
 parallax_eddie_robot_BINARY_DIR:STATIC=/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build
@@ -316,6 +319,10 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PythonInterp
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python2.6]
+//ADVANCED property for variable: PYTHON_EXECUTABLE
+PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 _rosbuild_EXPORTS:INTERNAL=
 _rosbuild_cached_flag_time:INTERNAL=1329822042.8
 _roslang_LANGS:INTERNAL=roslisp;rospy;roscpp
