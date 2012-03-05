@@ -172,9 +172,14 @@ public:
     //Send a series of 3 carriage returns to reset the FW serial buffer: "\r\r\r"
     const std::string FLUSH_BUFFERS_STRING;
 
+private:
+    sem_t mutex;
+    struct termios tio;
+    int tty_fd;
+
+    ros::NodeHandle node_handle_;
     ros::Publisher ping_pub_;
     ros::Publisher adc_pub_;
-
     ros::ServiceServer accelerate_srv_;
     ros::ServiceServer drive_with_distance_srv_;
     ros::ServiceServer drive_with_power_srv_;
@@ -185,6 +190,13 @@ public:
     ros::ServiceServer reset_encoder_srv_;
     ros::ServiceServer rotate_srv_;
     ros::ServiceServer stop_at_distance_srv_;
+
+    void initialize(std::string port);
+    std::string command(std::string str);
+    std::string intToHexString(int num);
+    std::string generateCommand(std::string str1);
+    std::string generateCommand(std::string str1, int num1);
+    std::string generateCommand(std::string str1, int num1, int num2);
 
     parallax_eddie_robot::Ping getPingData();
     parallax_eddie_robot::ADC getADCData();
@@ -209,21 +221,6 @@ public:
             parallax_eddie_robot::Rotate::Response &res);
     bool stopAtDistance(parallax_eddie_robot::StopAtDistance::Request &req,
             parallax_eddie_robot::StopAtDistance::Response &res);
-
-
-private:
-    ros::NodeHandle node_handle_;
-    sem_t mutex;
-    struct termios tio;
-    int tty_fd;
-
-    void initialize(std::string port);
-    std::string command(std::string str);
-    std::string intToHexString(int num);
-    std::string generateCommand(std::string str1);
-    std::string generateCommand(std::string str1, int num1);
-    std::string generateCommand(std::string str1, int num1, int num2);
-
 };
 
 #endif	/* _EDDIE_H */

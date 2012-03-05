@@ -15,8 +15,6 @@ class EddieADC
 public:
   EddieADC();
 
-  void adcCallback(const parallax_eddie_robot::ADC::ConstPtr& message);
-
 private:
   ros::NodeHandle node_handle_;
   ros::Publisher ir_pub_;
@@ -24,7 +22,8 @@ private:
   ros::Subscriber adc_sub_;
   const double ADC_VOLTAGE_DIVIDER;
   const double BATTERY_VOLTAGE_MULTIPLIER;
-  
+
+  void adcCallback(const parallax_eddie_robot::ADC::ConstPtr& message);
 };
 
 EddieADC::EddieADC() :

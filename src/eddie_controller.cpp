@@ -18,14 +18,14 @@ class EddieController
 public:
   EddieController();
 
-  void velocityCallback(const parallax_eddie_robot::Velocity::ConstPtr& message);
 private:
   ros::NodeHandle node_handle_;
   ros::Subscriber velocity_sub_;
   ros::ServiceClient eddie_drive_power_;
   ros::ServiceClient eddie_turn_;
   ros::ServiceClient eddie_stop_;
-
+  
+  void velocityCallback(const parallax_eddie_robot::Velocity::ConstPtr& message);
 };
 
 EddieController::EddieController()

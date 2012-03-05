@@ -349,7 +349,7 @@ int main(int argc, char** argv)
   Eddie eddie("/dev/ttyUSB0"); //set port to connect to Paralax controller board
   ros::Rate loop_rate(10);
 
-  int counter = 0;
+  //int counter = 0;
   while (ros::ok())
   {
     //ROS_INFO("LOOP STEP [%d]", counter++);

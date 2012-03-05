@@ -18,12 +18,12 @@ class EddiePing
 public:
   EddiePing();
 
-  void pingCallback(const parallax_eddie_robot::Ping::ConstPtr& message);
-
 private:
   ros::NodeHandle node_handle_;
   ros::Publisher ping_pub_;
   ros::Subscriber ping_sub_;
+
+  void pingCallback(const parallax_eddie_robot::Ping::ConstPtr& message);
 };
 
 EddiePing::EddiePing()
