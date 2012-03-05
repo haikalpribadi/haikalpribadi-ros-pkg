@@ -45,7 +45,7 @@ void EddieController::velocityCallback(const parallax_eddie_robot::Velocity::Con
   if (linear == 0 && angular == 0)
   {
     parallax_eddie_robot::StopAtDistance dist;
-    dist.request.distance = 5;
+    dist.request.distance = 3;
     for(int i=0; !eddie_stop_.call(dist) && i<5; i++)
     {
       ROS_ERROR("ERROR: at trying to stop Eddie. Trying to auto send command again...");
@@ -54,11 +54,14 @@ void EddieController::velocityCallback(const parallax_eddie_robot::Velocity::Con
   else if (linear != 0 && angular == 0)
   {
     parallax_eddie_robot::DriveWithPower power;
-    power.request.left = 40 * (linear / abs(linear));
-    power.request.right = 40 * (linear / abs(linear));
+    power.request.left = 60 * (linear / abs(linear));
+    power.request.right = 62 * (linear / abs(linear));
     if (eddie_drive_power_.call(power))
     {
-      ROS_INFO("SUCCESS: Moving FORWARD/REVERSE");
+      if(linear/abs(linear) > 0)
+        ROS_INFO("SUCCESS: Moving FORWARD");
+      else
+        ROS_INFO("SUCCESS: Moving REVERSE");
     }
     else
     {
@@ -72,7 +75,10 @@ void EddieController::velocityCallback(const parallax_eddie_robot::Velocity::Con
     degree.request.speed = 36;
     if (eddie_turn_.call(degree))
     {
-      ROS_INFO("SUCCESS: rotating RIGHT/LEFT");
+      if(angular / abs(angular) > 0)
+        ROS_INFO("SUCCESS: rotating RIGHT");
+      else
+        ROS_INFO("SUCCESS: rotating LEFT");
     }
     else
     {

@@ -51,6 +51,8 @@ void EddieTeleop::keyLoop()
   std::vector<int> stack;
   bool move = false;
   bool talk = false; //THIS IS JUST TEMPORARY FOR DEMO-ING eddie_speech
+  int r; //THIS IS JUST TEMPORARY FOR DEMO
+
   std::string text;
 
   //get the console in raw mode
@@ -97,12 +99,11 @@ void EddieTeleop::keyLoop()
     {
       continue;
     }
-    ROS_INFO("GOT HERE, char: %s", &c);
 
     cp = c;
     linear_ = angular_ = 0;
     //ROS_INFO("value: 0x%02X\n", c);
-    ROS_INFO("KEY PRESSED: %s", &c);
+    //ROS_INFO("KEY PRESSED: %s", &c);
     switch (c)
     {
       case KEYCODE_L:
@@ -127,32 +128,55 @@ void EddieTeleop::keyLoop()
         break;
         //the following letters 'a' to 'g' are temporary cases to test eddie_speech and images
       case 'a':
-        ROS_DEBUG("TALK: Coming right up!");
-        text = "Coming right up!";
+        ROS_DEBUG("TALK: Would you like a drink, Sir?");
+        text = "Would you like a drink, Sir?";
         talk = true;
         break;
       case 's':
+        ROS_DEBUG("TALK: Coming right up, Sir!");
+        text = "Coming right up!";
+        talk = true;
+        break;
+      case 'd':
         ROS_DEBUG("TALK: Yes, Sir!");
         text = "Yes, Sir!";
         talk = true;
         break;
-      case 'd':
+      case 'f':
+        ROS_DEBUG("TALK: Here you go, Sir!");
+        text = "Here you go, Sir!";
+        talk = true;
+        break;
+      case 'g':
+        ROS_DEBUG("TALK: Thank you, Sir!");
+        text = "Thank you, Sir!";
+        talk = true;
+        break;
+      case 'h':
         ROS_DEBUG("TALK: I'm sorry, Sir.");
         text = "I'm sorry, Sir.";
         talk = true;
         break;
-      case 'f':
+      case 'j':
         ROS_DEBUG("TALK: Why do you want another drink?");
         text = "Why do you want another drink?";
         talk = true;
         break;
-      case 'g':
+      case 'k':
         ROS_DEBUG("TALK: Don't you already have enough drinks?");
         text = "Don't you already have enough drinks?";
         talk = true;
         break;
+      case 'i':
+        ROS_DEBUG("TALK: I don't feel really well.");
+        text = "I dont feel really well";
+        talk = true;
+        break;
       case 'q':
-        system("eog -f $HOME/Pictures/test.jpg &");
+        r = system("eog -f $HOME/Pictures/black.jpg &");
+        break;
+      case 'w':
+        r = system("eog -f $HOME/Pictures/gin.jpg &");
         break;
       case ' ':
       case KEYCODE_x:

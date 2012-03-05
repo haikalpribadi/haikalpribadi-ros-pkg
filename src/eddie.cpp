@@ -67,16 +67,17 @@ void Eddie::initialize(std::string port)
   cfsetispeed(&tio, B115200); // 115200 baud
 
   tcsetattr(tty_fd, TCSANOW, &tio);
+  usleep(100000);
   //std::string result = command("GO 36 36");
 
 }
 
 std::string Eddie::command(std::string str)
 {
-  ROS_INFO("EXECUTE COMMAND !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   sem_wait(&mutex);
   ssize_t written;
-  std::stringstream result;
+  std::stringstream result("");
+  int count = 0;
   unsigned char c;
   int size = str.size() + 1;
   unsigned char command[size];
@@ -86,16 +87,20 @@ std::string Eddie::command(std::string str)
     command[i] = str[i];
   }
   command[size - 1] = PACKET_TERMINATOR; // Having exces terminator is okay, it's good to guarantee
-  ROS_INFO("EXECUTING COMMAND NOW !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   written = write(tty_fd, command, size);
-  ROS_INFO("COMMAND HAVE BEEN EXECUTED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   usleep(100); //Give some time for the board to process
-  while (c != '\r')
+  while (c != '\r' && count < 1000)
   {
     if (read(tty_fd, &c, 1) > 0)
     {
       result << c;
     }
+    else{
+      count++;
+    }
+  }
+  if(count==1000){
+    ROS_ERROR("ERROR: NO PARALLAX EDDIE ROBOT IS CONNECTED.");
   }
   sem_post(&mutex);
   return result.str();
@@ -202,7 +207,6 @@ bool Eddie::accelerate(parallax_eddie_robot::Accelerate::Request &req,
 bool Eddie::driveWithDistance(parallax_eddie_robot::DriveWithDistance::Request &req,
   parallax_eddie_robot::DriveWithDistance::Response &res)
 {
-  ROS_INFO("ABOUT EXECUTE DRIVE_WITH_DISTANCE");
   //this feature does not need to validate the parameters due the limited range of parameter data type
   std::string cmd;
   cmd = generateCommand(SET_DRIVE_DISTANCE_STRING, req.distance, req.speed);
@@ -348,8 +352,9 @@ int main(int argc, char** argv)
   int counter = 0;
   while (ros::ok())
   {
-    ROS_INFO("LOOP STEP [%d]", counter++);
+    //ROS_INFO("LOOP STEP [%d]", counter++);
 
+    //THIS SECTION IS COMMENTED OUT JUST FOR THIS DEMO SESSION;
     //eddie.ping_pub_.publish(eddie.getPingData());
     //eddie.adc_pub_.publish(eddie.getADCData());
 

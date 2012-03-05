@@ -1,0 +1,10 @@
+<!--%Tag(FULL)%-->
+<launch>
+
+	<node pkg="parallax_eddie_robot" type="eddie" name="eddie" />
+	<node pkg="parallax_eddie_robot" type="eddie_controller" name="eddie_controller" />
+	<node pkg="parallax_eddie_robot" type="eddie_speech" name="eddie_speech" />
+	<node pkg="parallax_eddie_robot" type="eddie_teleop" name="eddie_teleop"/>
+	
+</launch>
+<!--%EndTag(FULL)%-->
