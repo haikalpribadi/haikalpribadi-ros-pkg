@@ -4,6 +4,8 @@
 (defsystem "parallax_eddie_robot-msg"
   :depends-on (:roslisp-msg-protocol :roslisp-utils )
   :components ((:file "_package")
+    (:file "KeyStroke" :depends-on ("_package_KeyStroke"))
+    (:file "_package_KeyStroke" :depends-on ("_package"))
     (:file "Speech" :depends-on ("_package_Speech"))
     (:file "_package_Speech" :depends-on ("_package"))
     (:file "ADC" :depends-on ("_package_ADC"))

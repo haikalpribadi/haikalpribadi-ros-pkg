@@ -41,6 +41,7 @@ CMAKE_BINARY_DIR = /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build
 
 CMakeFiles/ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/__init__.py
 
+../src/parallax_eddie_robot/msg/__init__.py: ../src/parallax_eddie_robot/msg/_KeyStroke.py
 ../src/parallax_eddie_robot/msg/__init__.py: ../src/parallax_eddie_robot/msg/_Speech.py
 ../src/parallax_eddie_robot/msg/__init__.py: ../src/parallax_eddie_robot/msg/_ADC.py
 ../src/parallax_eddie_robot/msg/__init__.py: ../src/parallax_eddie_robot/msg/_BatteryLevel.py
@@ -50,7 +51,32 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/__init__.py
 ../src/parallax_eddie_robot/msg/__init__.py: ../src/parallax_eddie_robot/msg/_Ping.py
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/parallax_eddie_robot/msg/__init__.py"
-	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --initpy /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Speech.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/ADC.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/BatteryLevel.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Velocity.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Distances.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Voltages.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Ping.msg
+	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --initpy /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/KeyStroke.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Speech.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/ADC.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/BatteryLevel.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Velocity.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Distances.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Voltages.msg /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Ping.msg
+
+../src/parallax_eddie_robot/msg/_KeyStroke.py: ../msg/KeyStroke.msg
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../src/parallax_eddie_robot/msg/_KeyStroke.py: ../manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/ros/core/roslib/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/ros/core/roslang/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../src/parallax_eddie_robot/msg/_KeyStroke.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/parallax_eddie_robot/msg/_KeyStroke.py"
+	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/KeyStroke.msg
 
 ../src/parallax_eddie_robot/msg/_Speech.py: ../msg/Speech.msg
 ../src/parallax_eddie_robot/msg/_Speech.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py
@@ -73,7 +99,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/__init__.py
 ../src/parallax_eddie_robot/msg/_Speech.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_Speech.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_Speech.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/parallax_eddie_robot/msg/_Speech.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Speech.msg
 
@@ -98,7 +124,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/__init__.py
 ../src/parallax_eddie_robot/msg/_ADC.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_ADC.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_ADC.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/parallax_eddie_robot/msg/_ADC.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/ADC.msg
 
@@ -123,7 +149,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/__init__.py
 ../src/parallax_eddie_robot/msg/_BatteryLevel.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_BatteryLevel.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_BatteryLevel.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/parallax_eddie_robot/msg/_BatteryLevel.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/BatteryLevel.msg
 
@@ -148,7 +174,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/__init__.py
 ../src/parallax_eddie_robot/msg/_Velocity.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_Velocity.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_Velocity.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/parallax_eddie_robot/msg/_Velocity.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Velocity.msg
 
@@ -173,7 +199,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/__init__.py
 ../src/parallax_eddie_robot/msg/_Distances.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_Distances.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_Distances.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/parallax_eddie_robot/msg/_Distances.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Distances.msg
 
@@ -198,7 +224,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/__init__.py
 ../src/parallax_eddie_robot/msg/_Voltages.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_Voltages.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_Voltages.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/parallax_eddie_robot/msg/_Voltages.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Voltages.msg
 
@@ -223,12 +249,13 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/__init__.py
 ../src/parallax_eddie_robot/msg/_Ping.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_Ping.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../src/parallax_eddie_robot/msg/_Ping.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/parallax_eddie_robot/msg/_Ping.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg/Ping.msg
 
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py
 ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/__init__.py
+ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/_KeyStroke.py
 ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/_Speech.py
 ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/_ADC.py
 ROSBUILD_genmsg_py: ../src/parallax_eddie_robot/msg/_BatteryLevel.py

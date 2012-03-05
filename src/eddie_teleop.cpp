@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include "parallax_eddie_robot/Velocity.h"
+#include "parallax_eddie_robot/KeyStroke.h"
 #include "parallax_eddie_robot/Speech.h"
 
 #define KEYCODE_U 0x41
@@ -33,6 +34,7 @@ public:
 private:
   ros::NodeHandle node_handle_;
   ros::Publisher velocity_pub_;
+  ros::Publisher keyboard_pub_;
   ros::Publisher speech_pub_; //THIS IS JUST TEMPORARY FOR DEMO-ING eddie_speech
   float linear_, angular_, l_scale_, a_scale_;
 
@@ -42,6 +44,7 @@ EddieTeleop::EddieTeleop() :
   linear_(0), angular_(0), l_scale_(2.0), a_scale_(2.0)
 {
   velocity_pub_ = node_handle_.advertise<parallax_eddie_robot::Velocity > ("command_velocity", 1);
+  keyboard_pub_ = node_handle_.advertise<parallax_eddie_robot::KeyStroke > ("key_stroke", 1);
   speech_pub_ = node_handle_.advertise<parallax_eddie_robot::Speech > ("text_to_speech", 1);
 }
 
@@ -69,9 +72,9 @@ void EddieTeleop::keyLoop()
   flags |= O_NONBLOCK;
   fcntl(0, F_SETFL, flags);
 
-  puts("Reading from keyboard");
-  puts("=====================");
-  puts("Use arrow keys to navigate");
+  ROS_INFO("Reading from keyboard");
+  ROS_INFO("=====================");
+  ROS_INFO("Use arrow keys to navigate");
 
   cp = 'x'; //just to initialize;
   while (true)
@@ -79,6 +82,7 @@ void EddieTeleop::keyLoop()
     cb = 0;
     usleep(100000); //in microseconds
     //get the next event from the keyboard
+    //by getting the very last value stored in the keyboard buffer
     while (read(kfd, &c, 1) >= 0)
     {
       cb = c;

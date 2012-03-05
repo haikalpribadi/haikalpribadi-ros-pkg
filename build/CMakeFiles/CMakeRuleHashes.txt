@@ -2,6 +2,7 @@
 da79b02e6bc17bc036429b390f2ff8ab ../msg_gen/cpp/include/parallax_eddie_robot/ADC.h
 7d5dbff0de7445f8774bf8092a1c732a ../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h
 e848e7a80fe58ade4ee130759ee9674e ../msg_gen/cpp/include/parallax_eddie_robot/Distances.h
+b60b1a1359d62eb883bdbe9f1b28a29b ../msg_gen/cpp/include/parallax_eddie_robot/KeyStroke.h
 d32d513230a81f323176fc0cd90d4269 ../msg_gen/cpp/include/parallax_eddie_robot/Ping.h
 2a5401aad8126f4df0c2229240f3352d ../msg_gen/cpp/include/parallax_eddie_robot/Speech.h
 b40f26eda800777fc321e37e57c304da ../msg_gen/cpp/include/parallax_eddie_robot/Velocity.h
@@ -9,6 +10,7 @@ b40f26eda800777fc321e37e57c304da ../msg_gen/cpp/include/parallax_eddie_robot/Vel
 e3550914c54f2b020aaa619463d3352d ../msg_gen/lisp/ADC.lisp
 7ab8b6f2400dcc2607a4a682cdc04f91 ../msg_gen/lisp/BatteryLevel.lisp
 a7d95f970d3e2c507133492125540c55 ../msg_gen/lisp/Distances.lisp
+b5594b52bba7979de499dc1c391aa1e4 ../msg_gen/lisp/KeyStroke.lisp
 37241c4042ecd75417042c3f61b918bd ../msg_gen/lisp/Ping.lisp
 1fabd6cd3129fceaaaae22fe15267ab8 ../msg_gen/lisp/Speech.lisp
 af31aa60b3d4d27b4bb44d1bc6bbea81 ../msg_gen/lisp/Velocity.lisp
@@ -16,11 +18,12 @@ af31aa60b3d4d27b4bb44d1bc6bbea81 ../msg_gen/lisp/Velocity.lisp
 00f50ee35ef0e472436ed6c16ca07104 ../src/parallax_eddie_robot/msg/_ADC.py
 083f736acf84f6198e343f960dd3f38c ../src/parallax_eddie_robot/msg/_BatteryLevel.py
 f38adbe963c49f550fa7b2af1ef1814d ../src/parallax_eddie_robot/msg/_Distances.py
+91f5d3f2c196061c8f2326cf7e8c8658 ../src/parallax_eddie_robot/msg/_KeyStroke.py
 2541c2c494f17a0de14d8c821fe28d4b ../src/parallax_eddie_robot/msg/_Ping.py
 c750a5b1107e8c9ee9c7e04baa0ea0fb ../src/parallax_eddie_robot/msg/_Speech.py
 2ec54eb1331c44565951fe8d089faf8b ../src/parallax_eddie_robot/msg/_Velocity.py
 df037226ea7d13fd010c5033391c4945 ../src/parallax_eddie_robot/msg/_Voltages.py
-6259415b2bc91c772c7c83d47763c778 ../src/parallax_eddie_robot/msg/__init__.py
+cc11215c6ba72931ad3fda03064d82e2 ../src/parallax_eddie_robot/msg/__init__.py
 327d9f3b87728aa9c52449d2f1000a0b ../src/parallax_eddie_robot/srv/_Accelerate.py
 a59638e24c7a9419fa189d0267ff32f5 ../src/parallax_eddie_robot/srv/_DriveWithDistance.py
 f035b3c401a58adf99443e1dca6bb06d ../src/parallax_eddie_robot/srv/_DriveWithPower.py

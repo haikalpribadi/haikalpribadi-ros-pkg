@@ -13,11 +13,11 @@ class EddieSpeech
 {
 public:
   EddieSpeech();
-  void speechCallback(const parallax_eddie_robot::Speech::ConstPtr& message);
+
 private:
   ros::NodeHandle node_handle_;
   ros::Subscriber speech_sub_;
-
+  void speechCallback(const parallax_eddie_robot::Speech::ConstPtr& message);
 };
 
 EddieSpeech::EddieSpeech()

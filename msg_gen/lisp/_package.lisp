@@ -1,6 +1,8 @@
 (cl:defpackage parallax_eddie_robot-msg
   (:use )
   (:export
+   "<KEYSTROKE>"
+   "KEYSTROKE"
    "<SPEECH>"
    "SPEECH"
    "<ADC>"

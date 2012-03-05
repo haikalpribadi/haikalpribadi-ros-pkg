@@ -6,6 +6,7 @@ FILE(REMOVE_RECURSE
   "../msg_gen"
   "../srv_gen"
   "CMakeFiles/ROSBUILD_genmsg_cpp"
+  "../msg_gen/cpp/include/parallax_eddie_robot/KeyStroke.h"
   "../msg_gen/cpp/include/parallax_eddie_robot/Speech.h"
   "../msg_gen/cpp/include/parallax_eddie_robot/ADC.h"
   "../msg_gen/cpp/include/parallax_eddie_robot/BatteryLevel.h"

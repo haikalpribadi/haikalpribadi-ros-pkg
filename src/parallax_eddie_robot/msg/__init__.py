@@ -5,3 +5,4 @@ from ._Speech import *
 from ._ADC import *
 from ._Velocity import *
 from ._BatteryLevel import *
+from ._KeyStroke import *

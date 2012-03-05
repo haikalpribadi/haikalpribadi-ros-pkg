@@ -7,6 +7,7 @@ FILE(REMOVE_RECURSE
   "../srv_gen"
   "CMakeFiles/ROSBUILD_genmsg_py"
   "../src/parallax_eddie_robot/msg/__init__.py"
+  "../src/parallax_eddie_robot/msg/_KeyStroke.py"
   "../src/parallax_eddie_robot/msg/_Speech.py"
   "../src/parallax_eddie_robot/msg/_ADC.py"
   "../src/parallax_eddie_robot/msg/_BatteryLevel.py"

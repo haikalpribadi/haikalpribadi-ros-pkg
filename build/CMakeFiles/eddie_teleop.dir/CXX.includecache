@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+../msg_gen/cpp/include/parallax_eddie_robot/KeyStroke.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/serialization.h
+ros/builtin_message_traits.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/builtin_message_traits.h
+ros/message_operations.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/message_operations.h
+ros/time.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/time.h
+ros/macros.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/macros.h
+ros/assert.h
+../msg_gen/cpp/include/parallax_eddie_robot/ros/assert.h
+
 ../msg_gen/cpp/include/parallax_eddie_robot/Speech.h
 string
 -
@@ -63,6 +85,8 @@ fcntl.h
 -
 parallax_eddie_robot/Velocity.h
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_eddie_robot/Velocity.h
+parallax_eddie_robot/KeyStroke.h
+/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_eddie_robot/KeyStroke.h
 parallax_eddie_robot/Speech.h
 /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_eddie_robot/Speech.h
 
