@@ -1,8 +1,35 @@
 /*
- * parallax_board.cpp
- * Author: Haikal Pribadi (haikal.pribadi@gmail.com)
- * 
- * Created on February 19, 2012, 5:34 PM
+ * Software License Agreement (BSD License)
+ *
+ * Copyright (c) 2012, Haikal Pribadi <haikal.pribadi@gmail.com>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *  * Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above
+ *    copyright notice, this list of conditions and the following
+ *    disclaimer in the documentation and/or other materials provided
+ *    with the distribution.
+ *  * Neither the name of the Haikal Pribadi nor the names of other
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  */
 
 #include "ros/ros.h"
@@ -10,25 +37,52 @@
 #include <sstream>
 typedef std::map<std::string, unsigned char[6] > CommandMap;
 
-Eddie::Eddie(std::string port) :
-  GPIO_COUNT(10), ADC_PIN_COUNT(8), DIGITAL_PIN_COUNT(10), AUXILIARY_POWER_RELAY_COUNT(3),
-  PARALLAX_MAX_BUFFER(256), ENCODER_COUNT(2), ADC_VOLTAGE_MULTIPLIER(1 / 819),
-  BATTERY_VOLTAGE_DIVIDER(3.21), MOTOR_POWER_STOP(0), MOTOR_POWER_MAX_FORWARD(127),
-  MOTOR_POWER_MAX_REVERSE(-127), TRAVEL_SPEED_MAX_FORWARD(32767), TRAVEL_SPEED_MAX_REVERSE(-32767),
-  TRAVEL_MAX_SPEED(65535), RELAY_33V_PIN_NUMBER(17), RELAY_5V_PIN_NUMBER(17),
-  RELAY_12V_PIN_NUMBER(18), PACKET_TERMINATOR('\r'), PARAMETER_DELIMITER(' '),
-  ERROR("ERROR"), DEFAULT_WHEEL_RADIUS(0.0762), DEFAULT_TICKS_PER_REVOLUTION(36),
-  GET_VERSION_STRING("VER"), SET_GPIO_DIRECTION_OUT_STRING("OUT"), SET_GPIO_DIRECTION_IN_STRING("IN"),
-  SET_GPIO_STATE_HIGH_STRING("HIGH"), SET_GPIO_STATE_LOW_STRING("LOW"), GET_GPIO_STATE_STRING("READ"),
-  GET_ADC_VALUE_STRING("ADC"), GET_PING_VALUE_STRING("PING"), SET_DRIVE_POWER_STRING("GO"),
-  SET_DRIVE_SPEED_STRING("GOSPD"), SET_DRIVE_DISTANCE_STRING("TRVL"), SET_STOP_DISTANCE_STRING("STOP"),
-  SET_ROTATE_STRING("TURN"), GET_CURRENT_SPEED_STRING("SPD"), GET_CURRENT_HEADING_STRING("HEAD"),
-  GET_ENCODER_TICKS_STRING("DIST"), RESET_ENCODER_TICKS_STRING("RST"), SET_RAMPING_VALUE_STRING("ACC"),
+Eddie::Eddie() :
+  GPIO_COUNT(10),
+  ADC_PIN_COUNT(8),
+  DIGITAL_PIN_COUNT(10),
+  AUXILIARY_POWER_RELAY_COUNT(3),
+  PARALLAX_MAX_BUFFER(256), 
+  ENCODER_COUNT(2),
+  ADC_VOLTAGE_MULTIPLIER(1 / 819),
+  BATTERY_VOLTAGE_DIVIDER(3.21), 
+  MOTOR_POWER_STOP(0),
+  MOTOR_POWER_MAX_FORWARD(127),
+  MOTOR_POWER_MAX_REVERSE(-127), 
+  TRAVEL_SPEED_MAX_FORWARD(32767),
+  TRAVEL_SPEED_MAX_REVERSE(-32767),
+  TRAVEL_MAX_SPEED(65535), 
+  RELAY_33V_PIN_NUMBER(17),
+  RELAY_5V_PIN_NUMBER(17),
+  RELAY_12V_PIN_NUMBER(18), 
+  PACKET_TERMINATOR('\r'),
+  PARAMETER_DELIMITER(' '),
+  ERROR("ERROR"), 
+  DEFAULT_WHEEL_RADIUS(0.0762),
+  DEFAULT_TICKS_PER_REVOLUTION(36),
+  GET_VERSION_STRING("VER"), 
+  SET_GPIO_DIRECTION_OUT_STRING("OUT"),
+  SET_GPIO_DIRECTION_IN_STRING("IN"),
+  SET_GPIO_STATE_HIGH_STRING("HIGH"), 
+  SET_GPIO_STATE_LOW_STRING("LOW"),
+  GET_GPIO_STATE_STRING("READ"),
+  GET_ADC_VALUE_STRING("ADC"), 
+  GET_PING_VALUE_STRING("PING"),
+  SET_DRIVE_POWER_STRING("GO"),
+  SET_DRIVE_SPEED_STRING("GOSPD"), 
+  SET_DRIVE_DISTANCE_STRING("TRVL"),
+  SET_STOP_DISTANCE_STRING("STOP"),
+  SET_ROTATE_STRING("TURN"), 
+  GET_CURRENT_SPEED_STRING("SPD"),
+  GET_CURRENT_HEADING_STRING("HEAD"),
+  GET_ENCODER_TICKS_STRING("DIST"), 
+  RESET_ENCODER_TICKS_STRING("RST"),
+  SET_RAMPING_VALUE_STRING("ACC"),
   FLUSH_BUFFERS_STRING("\r\r\r")
 {
   sem_init(&mutex, 0, 1);
-  ping_pub_ = node_handle_.advertise<parallax_eddie_robot::Ping > ("ping_data", 1);
-  adc_pub_ = node_handle_.advertise<parallax_eddie_robot::ADC > ("adc_data", 1);
+  ping_pub_ = node_handle_.advertise<parallax_eddie_robot::Ping > ("/eddie/ping_data", 1);
+  adc_pub_ = node_handle_.advertise<parallax_eddie_robot::ADC > ("/eddie/adc_data", 1);
 
   accelerate_srv_ = node_handle_.advertiseService("accelerate", &Eddie::accelerate, this);
   drive_with_distance_srv_ = node_handle_.advertiseService("drive_with_distance", &Eddie::driveWithDistance, this);
@@ -41,6 +95,8 @@ Eddie::Eddie(std::string port) :
   rotate_srv_ = node_handle_.advertiseService("rotate", &Eddie::rotate, this);
   stop_at_distance_srv_ = node_handle_.advertiseService("stop_at_distance", &Eddie::stopAtDistance, this);
 
+  std::string port = "/dev/ttyUSB0";
+  node_handle_.param<std::string>("serial_port", port, port);
   initialize(port);
 }
 
@@ -68,8 +124,6 @@ void Eddie::initialize(std::string port)
 
   tcsetattr(tty_fd, TCSANOW, &tio);
   usleep(100000);
-  //std::string result = command("GO 36 36");
-
 }
 
 std::string Eddie::command(std::string str)
@@ -87,41 +141,54 @@ std::string Eddie::command(std::string str)
     command[i] = str[i];
   }
   command[size - 1] = PACKET_TERMINATOR; // Having exces terminator is okay, it's good to guarantee
+
   written = write(tty_fd, command, size);
-  usleep(100); //Give some time for the board to process
-  while (c != '\r' && count < 1000)
-  {
-    if (read(tty_fd, &c, 1) > 0)
+  while(read(tty_fd, &c, 1) <= 0){
+    usleep(1000);
+    count++;
+    if(count>=80)
     {
-      result << c;
-    }
-    else{
-      count++;
+      ROS_ERROR("ERROR: NO PARALLAX EDDIE ROBOT IS CONNECTED.");
+      break;
     }
   }
-  if(count==1000){
-    ROS_ERROR("ERROR: NO PARALLAX EDDIE ROBOT IS CONNECTED.");
+  if(count<80){
+    result << c;
+    count = 0;
+    while(c != '\r'){
+      if(read(tty_fd, &c, 1)>0)
+        result << c;
+    }
   }
   sem_post(&mutex);
   return result.str();
 }
 
-std::string Eddie::generateCommand(std::string str1){
+std::string Eddie::generateCommand(std::string str1)
+{
   std::stringstream ss;
   ss << str1 << PACKET_TERMINATOR;
   return ss.str();
 }
-std::string Eddie::generateCommand(std::string str1, int num1){
+
+std::string Eddie::generateCommand(std::string str1, int num1)
+{
   std::stringstream ss;
   ss << str1 << PARAMETER_DELIMITER << intToHexString(num1) << PACKET_TERMINATOR;
   return ss.str();
 }
-std::string Eddie::generateCommand(std::string str1, int num1, int num2){
+
+std::string Eddie::generateCommand(std::string str1, int num1, int num2)
+{
   std::stringstream ss;
-  ss << str1 << PARAMETER_DELIMITER << intToHexString(num1) << PARAMETER_DELIMITER << intToHexString(num2) << PACKET_TERMINATOR;
+  ss << str1 << PARAMETER_DELIMITER << 
+    intToHexString(num1) << PARAMETER_DELIMITER <<
+    intToHexString(num2) << PACKET_TERMINATOR;
   return ss.str();
 }
-std::string Eddie::intToHexString(int num){
+
+std::string Eddie::intToHexString(int num)
+{
   std::stringstream ss;
   ss << std::hex << num;
   return ss.str();
@@ -129,7 +196,8 @@ std::string Eddie::intToHexString(int num){
 
 parallax_eddie_robot::Ping Eddie::getPingData()
 {
-  std::string result = command(GET_PING_VALUE_STRING);
+  //std::string result = command(GET_PING_VALUE_STRING);
+  std::string result = "133 3C9 564 0F9 29B 0F0 31A 566 1E0 A97\r";
   parallax_eddie_robot::Ping ping_data;
   if (result.size() <= 1)
   {
@@ -161,7 +229,8 @@ parallax_eddie_robot::Ping Eddie::getPingData()
 
 parallax_eddie_robot::ADC Eddie::getADCData()
 {
-  std::string result = command(GET_ADC_VALUE_STRING);
+  //std::string result = command(GET_ADC_VALUE_STRING);
+  std::string result = "9C7 11E E4E 5AB 20F 97B 767 058\r";
   parallax_eddie_robot::ADC adc_data;
   if (result.size() <= 1)
   {
@@ -189,6 +258,16 @@ parallax_eddie_robot::ADC Eddie::getADCData()
     value.clear();
   }
   return adc_data;
+}
+
+void Eddie::publishPingData()
+{
+  ping_pub_.publish(getPingData());
+}
+
+void Eddie::publishADCData()
+{
+  adc_pub_.publish(getADCData());
 }
 
 bool Eddie::accelerate(parallax_eddie_robot::Accelerate::Request &req,
@@ -230,8 +309,10 @@ bool Eddie::driveWithPower(parallax_eddie_robot::DriveWithPower::Request &req,
   std::string cmd_response = command(cmd);
   if (cmd_response == "\r")
     return true;
-  else
+  else{
+    ROS_ERROR("%s",cmd_response.data());
     return false;
+  }
 }
 
 bool Eddie::driveWithSpeed(parallax_eddie_robot::DriveWithSpeed::Request &req,
@@ -346,17 +427,13 @@ int main(int argc, char** argv)
 {
   ROS_INFO("Parallax Board booting up");
   ros::init(argc, argv, "parallax_board");
-  Eddie eddie("/dev/ttyUSB0"); //set port to connect to Paralax controller board
+  Eddie eddie; //set port to connect to Paralax controller board
   ros::Rate loop_rate(10);
 
-  //int counter = 0;
   while (ros::ok())
   {
-    //ROS_INFO("LOOP STEP [%d]", counter++);
-
-    //THIS SECTION IS COMMENTED OUT JUST FOR THIS DEMO SESSION;
-    //eddie.ping_pub_.publish(eddie.getPingData());
-    //eddie.adc_pub_.publish(eddie.getADCData());
+    eddie.publishPingData();
+    eddie.publishADCData();
 
     ros::spinOnce();
     loop_rate.sleep();

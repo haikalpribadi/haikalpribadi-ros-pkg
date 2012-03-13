@@ -1,8 +1,35 @@
 /*
- * parallax_board.cpp
- * Author: Haikal Pribadi (haikal.pribadi@gmail.com)
+ * Software License Agreement (BSD License)
  *
- * Created on February 24, 2012, 1:58 PM
+ * Copyright (c) 2012, Haikal Pribadi <haikal.pribadi@gmail.com>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *  * Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above
+ *    copyright notice, this list of conditions and the following
+ *    disclaimer in the documentation and/or other materials provided
+ *    with the distribution.
+ *  * Neither the name of the Haikal Pribadi nor the names of other
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  */
 
 #include "ros/ros.h"
@@ -12,14 +39,11 @@
 #include <fcntl.h>
 #include "parallax_eddie_robot/Velocity.h"
 #include "parallax_eddie_robot/KeyStroke.h"
-#include "parallax_eddie_robot/Speech.h"
 
 #define KEYCODE_U 0x41
 #define KEYCODE_D 0x42
 #define KEYCODE_R 0x43
 #define KEYCODE_L 0x44
-#define KEYCODE_x 0x78
-#define KEYCODE_q 0x71
 
 
 int kfd = 0;
@@ -34,29 +58,27 @@ public:
 private:
   ros::NodeHandle node_handle_;
   ros::Publisher velocity_pub_;
-  ros::Publisher keyboard_pub_;
+  ros::Publisher keystroke_pub_;
   ros::Publisher speech_pub_; //THIS IS JUST TEMPORARY FOR DEMO-ING eddie_speech
-  float linear_, angular_, l_scale_, a_scale_;
+  float linear_, angular_;
+  double l_scale_, a_scale_;
 
 };
 
 EddieTeleop::EddieTeleop() :
   linear_(0), angular_(0), l_scale_(2.0), a_scale_(2.0)
 {
-  velocity_pub_ = node_handle_.advertise<parallax_eddie_robot::Velocity > ("command_velocity", 1);
-  keyboard_pub_ = node_handle_.advertise<parallax_eddie_robot::KeyStroke > ("key_stroke", 1);
-  speech_pub_ = node_handle_.advertise<parallax_eddie_robot::Speech > ("text_to_speech", 1);
+  velocity_pub_ = node_handle_.advertise<parallax_eddie_robot::Velocity > ("/eddie/command_velocity", 1);
+  keystroke_pub_ = node_handle_.advertise<parallax_eddie_robot::KeyStroke > ("/eddie/key_stroke", 1);
+
+  node_handle_.param("scale_angular", a_scale_, a_scale_);
+  node_handle_.param("scale_linear", l_scale_, l_scale_);
 }
 
 void EddieTeleop::keyLoop()
 {
-  char c, cb, cp;
-  std::vector<int> stack;
+  char c, cb;
   bool move = false;
-  bool talk = false; //THIS IS JUST TEMPORARY FOR DEMO-ING eddie_speech
-  int r; //THIS IS JUST TEMPORARY FOR DEMO
-
-  std::string text;
 
   //get the console in raw mode
   tcgetattr(kfd, &cooked);
@@ -76,10 +98,9 @@ void EddieTeleop::keyLoop()
   ROS_INFO("=====================");
   ROS_INFO("Use arrow keys to navigate");
 
-  cp = 'x'; //just to initialize;
   while (true)
   {
-    cb = 0;
+    cb = -1;
     usleep(100000); //in microseconds
     //get the next event from the keyboard
     //by getting the very last value stored in the keyboard buffer
@@ -87,24 +108,8 @@ void EddieTeleop::keyLoop()
     {
       cb = c;
     }
-    if (cb == 0)
-    {
-      stack.push_back(KEYCODE_x);
-      if (stack.size() >= 5)
-        c = KEYCODE_x;
-    }
-    else
-    {
-      stack.clear();
-      c = cb;
-    }
+    c = cb;
 
-    if (c == cp || c == 27 || c == 91)
-    {
-      continue;
-    }
-
-    cp = c;
     linear_ = angular_ = 0;
     //ROS_INFO("value: 0x%02X\n", c);
     //ROS_INFO("KEY PRESSED: %s", &c);
@@ -130,68 +135,12 @@ void EddieTeleop::keyLoop()
         linear_ = -1.0;
         move = true;
         break;
-        //the following letters 'a' to 'g' are temporary cases to test eddie_speech and images
-      case 'a':
-        ROS_DEBUG("TALK: Would you like a drink, Sir?");
-        text = "Would you like a drink, Sir?";
-        talk = true;
-        break;
-      case 's':
-        ROS_DEBUG("TALK: Coming right up, Sir!");
-        text = "Coming right up!";
-        talk = true;
-        break;
-      case 'd':
-        ROS_DEBUG("TALK: Yes, Sir!");
-        text = "Yes, Sir!";
-        talk = true;
-        break;
-      case 'f':
-        ROS_DEBUG("TALK: Here you go, Sir!");
-        text = "Here you go, Sir!";
-        talk = true;
-        break;
-      case 'g':
-        ROS_DEBUG("TALK: Thank you, Sir!");
-        text = "Thank you, Sir!";
-        talk = true;
-        break;
-      case 'h':
-        ROS_DEBUG("TALK: I'm sorry, Sir.");
-        text = "I'm sorry, Sir.";
-        talk = true;
-        break;
-      case 'j':
-        ROS_DEBUG("TALK: Why do you want another drink?");
-        text = "Why do you want another drink?";
-        talk = true;
-        break;
-      case 'k':
-        ROS_DEBUG("TALK: Don't you already have enough drinks?");
-        text = "Don't you already have enough drinks?";
-        talk = true;
-        break;
-      case 'i':
-        ROS_DEBUG("TALK: I don't feel really well.");
-        text = "I dont feel really well";
-        talk = true;
-        break;
-      case 'q':
-        r = system("eog -f $HOME/Pictures/black.jpg &");
-        break;
-      case 'w':
-        r = system("eog -f $HOME/Pictures/gin.jpg &");
-        break;
       case ' ':
-      case KEYCODE_x:
-      default:
-        ROS_DEBUG("RELEASE");
+        ROS_DEBUG("STOP");
         linear_ = 0;
-        angular_ = 0;
         move = true;
         break;
     }
-
 
     if (move)
     {
@@ -201,12 +150,10 @@ void EddieTeleop::keyLoop()
       velocity_pub_.publish(vel);
       move = false;
     }
-    if (talk)
-    {
-      parallax_eddie_robot::Speech speech;
-      speech.text = text;
-      speech_pub_.publish(speech);
-      talk = false;
+    if(c!=-1){
+      parallax_eddie_robot::KeyStroke key;
+      key.keycode = c;
+      keystroke_pub_.publish(key);
     }
   }
 }
@@ -218,9 +165,6 @@ void quit(int sig)
   exit(0);
 }
 
-/*
- *
- */
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "eddie_teleop");
