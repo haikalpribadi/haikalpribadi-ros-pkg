@@ -1,10 +1,10 @@
 <package>
-  <description brief="jimmy_robot">
+  <description brief="Jimmy Robot">
 
-     jimmy_robot
+     Jimmy Robot
 
   </description>
-  <author>Haikal Pribadi</author>
+  <author>Haikal Pribadi (haikal.pribadi@gmail.com)</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/jimmy_robot</url>
