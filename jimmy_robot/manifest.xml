@@ -1,0 +1,18 @@
+<package>
+  <description brief="jimmy_robot">
+
+     jimmy_robot
+
+  </description>
+  <author>Haikal Pribadi</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/jimmy_robot</url>
+  <depend package="std_msgs"/>
+  <depend package="roscpp"/>
+  <depend package="parallax_eddie_robot"/>
+  <depend package="pocketsphinx"/>
+
+</package>
+
+
