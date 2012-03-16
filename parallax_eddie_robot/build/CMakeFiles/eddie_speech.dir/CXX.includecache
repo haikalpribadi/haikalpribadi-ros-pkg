@@ -28,11 +28,11 @@ ros/macros.h
 ros/assert.h
 ../msg_gen/cpp/include/parallax_eddie_robot/ros/assert.h
 
-/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/eddie_speech.cpp
+/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/eddie_speech.cpp
 ros/ros.h
-/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/ros/ros.h
+/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/ros/ros.h
 parallax_eddie_robot/Speech.h
-/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/src/parallax_eddie_robot/Speech.h
+/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/parallax_eddie_robot/Speech.h
 festival/festival.h
 -
 
