@@ -50,14 +50,14 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	cd /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot && ${MAKE} -f Makefile
+	cd /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot && ${MAKE} -f Makefile
 
 # Subprojects
 .build-subprojects:
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
-	cd /home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot && ${MAKE} -f Makefile clean
+	cd /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot && ${MAKE} -f Makefile clean
 
 # Subprojects
 .clean-subprojects:

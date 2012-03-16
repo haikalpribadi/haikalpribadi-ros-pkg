@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="62">
   <logicalFolder name="root" displayName="root" projectFiles="true">
-    <df name="parallax_eddie_robot"
-        root="/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot">
+    <df name="parallax_eddie_robot" root=".">
       <df name="bin">
       </df>
       <df name="include">
         <df name="parallax_eddie_robot">
         </df>
       </df>
+      <df name="language">
+      </df>
       <df name="launch">
       </df>
       <df name="msg">
       </df>
+      <df name="msg_gen">
+        <df name="cpp">
+          <df name="include">
+            <df name="parallax_eddie_robot">
+              <in>ADC.h</in>
+              <in>BatteryLevel.h</in>
+              <in>Distances.h</in>
+              <in>KeyStroke.h</in>
+              <in>Ping.h</in>
+              <in>Speech.h</in>
+              <in>Velocity.h</in>
+              <in>Voltages.h</in>
+            </df>
+          </df>
+        </df>
+        <df name="lisp">
+        </df>
+      </df>
       <df name="src">
         <df name="parallax_eddie_robot">
+          <df name="msg">
+          </df>
+          <df name="srv">
+          </df>
         </df>
         <in>eddie.cpp</in>
         <in>eddie.h</in>
@@ -27,16 +50,36 @@
       </df>
       <df name="srv">
       </df>
+      <df name="srv_gen">
+        <df name="cpp">
+          <df name="include">
+            <df name="parallax_eddie_robot">
+              <in>Accelerate.h</in>
+              <in>DriveWithDistance.h</in>
+              <in>DriveWithPower.h</in>
+              <in>DriveWithSpeed.h</in>
+              <in>GetDistance.h</in>
+              <in>GetHeading.h</in>
+              <in>GetSpeed.h</in>
+              <in>ResetEncoder.h</in>
+              <in>Rotate.h</in>
+              <in>StopAtDistance.h</in>
+            </df>
+          </df>
+        </df>
+        <df name="lisp">
+        </df>
+      </df>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
-      <itemPath>/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/Makefile</itemPath>
+      <itemPath>/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/Makefile</itemPath>
       <itemPath>parallax_eddie_robot-Makefile.mk</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>parallax_eddie_robot-Makefile.mk</projectmakefile>
   <confs>
@@ -48,14 +91,19 @@
       </toolsSet>
       <makefileType>
         <makeTool>
-          <buildCommandWorkingDir>/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot</buildCommandWorkingDir>
+          <buildCommandWorkingDir>/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot</buildCommandWorkingDir>
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath></executablePath>
           <ccTool>
             <incDir>
-              <pElem>/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/cpp/include</pElem>
-              <pElem>/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv_gen/cpp/include</pElem>
+              <pElem>/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/msg_gen/cpp/include</pElem>
+              <pElem>/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv_gen/cpp/include</pElem>
+              <pElem>/opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include</pElem>
+              <pElem>/opt/ros/electric/stacks/ros_comm/tools/rosbag/include</pElem>
+              <pElem>/opt/ros/electric/stacks/ros_comm/tools/topic_tools/include</pElem>
+              <pElem>/opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/cpp/include</pElem>
+              <pElem>/opt/ros/electric/stacks/ros_comm/tools/rostest/include</pElem>
               <pElem>/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include</pElem>
               <pElem>/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/cpp/include</pElem>
               <pElem>/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/cpp/include</pElem>
@@ -72,6 +120,7 @@
               <pElem>/opt/ros/electric/ros/core/roslib/include</pElem>
               <pElem>/opt/ros/electric/ros/tools/rospack</pElem>
               <pElem>/opt/ros/electric/ros/tools/rospack/include</pElem>
+              <pElem>/opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/cpp/include</pElem>
             </incDir>
           </ccTool>
         </makeTool>

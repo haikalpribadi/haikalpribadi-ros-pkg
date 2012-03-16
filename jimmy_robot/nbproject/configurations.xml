@@ -38,8 +38,8 @@
           <executablePath></executablePath>
           <ccTool>
             <incDir>
-              <pElem>/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/msg_gen/cpp/include</pElem>
-              <pElem>/home/haikalpribadi/Workspaces/ROS/parallax_eddie_robot/srv_gen/cpp/include</pElem>
+              <pElem>/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/msg_gen/cpp/include</pElem>
+              <pElem>/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv_gen/cpp/include</pElem>
               <pElem>/opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include</pElem>
               <pElem>/opt/ros/electric/stacks/ros_comm/tools/rosbag/include</pElem>
               <pElem>/opt/ros/electric/stacks/ros_comm/tools/topic_tools/include</pElem>
