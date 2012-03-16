@@ -59,7 +59,6 @@ private:
   ros::NodeHandle node_handle_;
   ros::Publisher velocity_pub_;
   ros::Publisher keystroke_pub_;
-  ros::Publisher speech_pub_; //THIS IS JUST TEMPORARY FOR DEMO-ING eddie_speech
   float linear_, angular_;
   double l_scale_, a_scale_;
 
