@@ -239,19 +239,6 @@ eddie_ping/fast:
 .PHONY : eddie_ping/fast
 
 #=============================================================================
-# Target rules for targets named eddie_speech
-
-# Build rule for target.
-eddie_speech: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 eddie_speech
-.PHONY : eddie_speech
-
-# fast build rule for target.
-eddie_speech/fast:
-	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/build
-.PHONY : eddie_speech/fast
-
-#=============================================================================
 # Target rules for targets named eddie_teleop
 
 # Build rule for target.
@@ -263,19 +250,6 @@ eddie_teleop: cmake_check_build_system
 eddie_teleop/fast:
 	$(MAKE) -f CMakeFiles/eddie_teleop.dir/build.make CMakeFiles/eddie_teleop.dir/build
 .PHONY : eddie_teleop/fast
-
-#=============================================================================
-# Target rules for targets named eddie_text
-
-# Build rule for target.
-eddie_text: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 eddie_text
-.PHONY : eddie_text
-
-# fast build rule for target.
-eddie_text/fast:
-	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/build
-.PHONY : eddie_text/fast
 
 #=============================================================================
 # Target rules for targets named rosbuild_precompile
@@ -494,21 +468,6 @@ src/eddie_ping.s:
 .PHONY : src/eddie_ping.s
 
 # target to build an object file
-src/eddie_speech.o:
-	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/src/eddie_speech.o
-.PHONY : src/eddie_speech.o
-
-# target to preprocess a source file
-src/eddie_speech.i:
-	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/src/eddie_speech.i
-.PHONY : src/eddie_speech.i
-
-# target to generate assembly for a file
-src/eddie_speech.s:
-	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/src/eddie_speech.s
-.PHONY : src/eddie_speech.s
-
-# target to build an object file
 src/eddie_teleop.o:
 	$(MAKE) -f CMakeFiles/eddie_teleop.dir/build.make CMakeFiles/eddie_teleop.dir/src/eddie_teleop.o
 .PHONY : src/eddie_teleop.o
@@ -522,21 +481,6 @@ src/eddie_teleop.i:
 src/eddie_teleop.s:
 	$(MAKE) -f CMakeFiles/eddie_teleop.dir/build.make CMakeFiles/eddie_teleop.dir/src/eddie_teleop.s
 .PHONY : src/eddie_teleop.s
-
-# target to build an object file
-src/eddie_text.o:
-	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/src/eddie_text.o
-.PHONY : src/eddie_text.o
-
-# target to preprocess a source file
-src/eddie_text.i:
-	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/src/eddie_text.i
-.PHONY : src/eddie_text.i
-
-# target to generate assembly for a file
-src/eddie_text.s:
-	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/src/eddie_text.s
-.PHONY : src/eddie_text.s
 
 # Help Target
 help:
@@ -555,9 +499,7 @@ help:
 	@echo "... eddie_adc"
 	@echo "... eddie_controller"
 	@echo "... eddie_ping"
-	@echo "... eddie_speech"
 	@echo "... eddie_teleop"
-	@echo "... eddie_text"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
@@ -584,15 +526,9 @@ help:
 	@echo "... src/eddie_ping.o"
 	@echo "... src/eddie_ping.i"
 	@echo "... src/eddie_ping.s"
-	@echo "... src/eddie_speech.o"
-	@echo "... src/eddie_speech.i"
-	@echo "... src/eddie_speech.s"
 	@echo "... src/eddie_teleop.o"
 	@echo "... src/eddie_teleop.i"
 	@echo "... src/eddie_teleop.s"
-	@echo "... src/eddie_text.o"
-	@echo "... src/eddie_text.i"
-	@echo "... src/eddie_text.s"
 .PHONY : help
 
 

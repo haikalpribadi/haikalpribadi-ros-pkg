@@ -161,6 +161,45 @@ clean-test-results/fast:
 .PHONY : clean-test-results/fast
 
 #=============================================================================
+# Target rules for targets named jimmy_speech_command
+
+# Build rule for target.
+jimmy_speech_command: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 jimmy_speech_command
+.PHONY : jimmy_speech_command
+
+# fast build rule for target.
+jimmy_speech_command/fast:
+	$(MAKE) -f CMakeFiles/jimmy_speech_command.dir/build.make CMakeFiles/jimmy_speech_command.dir/build
+.PHONY : jimmy_speech_command/fast
+
+#=============================================================================
+# Target rules for targets named jimmy_speech_talker
+
+# Build rule for target.
+jimmy_speech_talker: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 jimmy_speech_talker
+.PHONY : jimmy_speech_talker
+
+# fast build rule for target.
+jimmy_speech_talker/fast:
+	$(MAKE) -f CMakeFiles/jimmy_speech_talker.dir/build.make CMakeFiles/jimmy_speech_talker.dir/build
+.PHONY : jimmy_speech_talker/fast
+
+#=============================================================================
+# Target rules for targets named jimmy_speech_text_input
+
+# Build rule for target.
+jimmy_speech_text_input: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 jimmy_speech_text_input
+.PHONY : jimmy_speech_text_input
+
+# fast build rule for target.
+jimmy_speech_text_input/fast:
+	$(MAKE) -f CMakeFiles/jimmy_speech_text_input.dir/build.make CMakeFiles/jimmy_speech_text_input.dir/build
+.PHONY : jimmy_speech_text_input/fast
+
+#=============================================================================
 # Target rules for targets named rosbuild_precompile
 
 # Build rule for target.
@@ -224,19 +263,6 @@ rospack_gensrv: cmake_check_build_system
 rospack_gensrv/fast:
 	$(MAKE) -f CMakeFiles/rospack_gensrv.dir/build.make CMakeFiles/rospack_gensrv.dir/build
 .PHONY : rospack_gensrv/fast
-
-#=============================================================================
-# Target rules for targets named speech_listener
-
-# Build rule for target.
-speech_listener: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 speech_listener
-.PHONY : speech_listener
-
-# fast build rule for target.
-speech_listener/fast:
-	$(MAKE) -f CMakeFiles/speech_listener.dir/build.make CMakeFiles/speech_listener.dir/build
-.PHONY : speech_listener/fast
 
 #=============================================================================
 # Target rules for targets named test
@@ -304,19 +330,49 @@ tests/fast:
 .PHONY : tests/fast
 
 # target to build an object file
-src/speech_listener.o:
-	$(MAKE) -f CMakeFiles/speech_listener.dir/build.make CMakeFiles/speech_listener.dir/src/speech_listener.o
-.PHONY : src/speech_listener.o
+src/jimmy_speech_command.o:
+	$(MAKE) -f CMakeFiles/jimmy_speech_command.dir/build.make CMakeFiles/jimmy_speech_command.dir/src/jimmy_speech_command.o
+.PHONY : src/jimmy_speech_command.o
 
 # target to preprocess a source file
-src/speech_listener.i:
-	$(MAKE) -f CMakeFiles/speech_listener.dir/build.make CMakeFiles/speech_listener.dir/src/speech_listener.i
-.PHONY : src/speech_listener.i
+src/jimmy_speech_command.i:
+	$(MAKE) -f CMakeFiles/jimmy_speech_command.dir/build.make CMakeFiles/jimmy_speech_command.dir/src/jimmy_speech_command.i
+.PHONY : src/jimmy_speech_command.i
 
 # target to generate assembly for a file
-src/speech_listener.s:
-	$(MAKE) -f CMakeFiles/speech_listener.dir/build.make CMakeFiles/speech_listener.dir/src/speech_listener.s
-.PHONY : src/speech_listener.s
+src/jimmy_speech_command.s:
+	$(MAKE) -f CMakeFiles/jimmy_speech_command.dir/build.make CMakeFiles/jimmy_speech_command.dir/src/jimmy_speech_command.s
+.PHONY : src/jimmy_speech_command.s
+
+# target to build an object file
+src/jimmy_speech_talker.o:
+	$(MAKE) -f CMakeFiles/jimmy_speech_talker.dir/build.make CMakeFiles/jimmy_speech_talker.dir/src/jimmy_speech_talker.o
+.PHONY : src/jimmy_speech_talker.o
+
+# target to preprocess a source file
+src/jimmy_speech_talker.i:
+	$(MAKE) -f CMakeFiles/jimmy_speech_talker.dir/build.make CMakeFiles/jimmy_speech_talker.dir/src/jimmy_speech_talker.i
+.PHONY : src/jimmy_speech_talker.i
+
+# target to generate assembly for a file
+src/jimmy_speech_talker.s:
+	$(MAKE) -f CMakeFiles/jimmy_speech_talker.dir/build.make CMakeFiles/jimmy_speech_talker.dir/src/jimmy_speech_talker.s
+.PHONY : src/jimmy_speech_talker.s
+
+# target to build an object file
+src/jimmy_speech_text_input.o:
+	$(MAKE) -f CMakeFiles/jimmy_speech_text_input.dir/build.make CMakeFiles/jimmy_speech_text_input.dir/src/jimmy_speech_text_input.o
+.PHONY : src/jimmy_speech_text_input.o
+
+# target to preprocess a source file
+src/jimmy_speech_text_input.i:
+	$(MAKE) -f CMakeFiles/jimmy_speech_text_input.dir/build.make CMakeFiles/jimmy_speech_text_input.dir/src/jimmy_speech_text_input.i
+.PHONY : src/jimmy_speech_text_input.i
+
+# target to generate assembly for a file
+src/jimmy_speech_text_input.s:
+	$(MAKE) -f CMakeFiles/jimmy_speech_text_input.dir/build.make CMakeFiles/jimmy_speech_text_input.dir/src/jimmy_speech_text_input.s
+.PHONY : src/jimmy_speech_text_input.s
 
 # Help Target
 help:
@@ -330,21 +386,29 @@ help:
 	@echo "... ROSBUILD_gensrv_lisp"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
+	@echo "... jimmy_speech_command"
+	@echo "... jimmy_speech_talker"
+	@echo "... jimmy_speech_text_input"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
 	@echo "... rospack_genmsg"
 	@echo "... rospack_genmsg_libexe"
 	@echo "... rospack_gensrv"
-	@echo "... speech_listener"
 	@echo "... test"
 	@echo "... test-future"
 	@echo "... test-results"
 	@echo "... test-results-run"
 	@echo "... tests"
-	@echo "... src/speech_listener.o"
-	@echo "... src/speech_listener.i"
-	@echo "... src/speech_listener.s"
+	@echo "... src/jimmy_speech_command.o"
+	@echo "... src/jimmy_speech_command.i"
+	@echo "... src/jimmy_speech_command.s"
+	@echo "... src/jimmy_speech_talker.o"
+	@echo "... src/jimmy_speech_talker.i"
+	@echo "... src/jimmy_speech_talker.s"
+	@echo "... src/jimmy_speech_text_input.o"
+	@echo "... src/jimmy_speech_text_input.i"
+	@echo "... src/jimmy_speech_text_input.s"
 .PHONY : help
 
 

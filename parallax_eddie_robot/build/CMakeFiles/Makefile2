@@ -407,48 +407,13 @@ clean: CMakeFiles/eddie_ping.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/eddie_speech.dir
-
-# All Build rule for target.
-CMakeFiles/eddie_speech.dir/all: CMakeFiles/rosbuild_precompile.dir/all
-	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/depend
-	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles  61
-	@echo "Built target eddie_speech"
-.PHONY : CMakeFiles/eddie_speech.dir/all
-
-# Include target in all.
-all: CMakeFiles/eddie_speech.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/eddie_speech.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles 57
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/eddie_speech.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles 0
-.PHONY : CMakeFiles/eddie_speech.dir/rule
-
-# Convenience name for target.
-eddie_speech: CMakeFiles/eddie_speech.dir/rule
-.PHONY : eddie_speech
-
-# clean rule for target.
-CMakeFiles/eddie_speech.dir/clean:
-	$(MAKE) -f CMakeFiles/eddie_speech.dir/build.make CMakeFiles/eddie_speech.dir/clean
-.PHONY : CMakeFiles/eddie_speech.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/eddie_speech.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/eddie_teleop.dir
 
 # All Build rule for target.
 CMakeFiles/eddie_teleop.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/eddie_teleop.dir/build.make CMakeFiles/eddie_teleop.dir/depend
 	$(MAKE) -f CMakeFiles/eddie_teleop.dir/build.make CMakeFiles/eddie_teleop.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles  62
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles  61
 	@echo "Built target eddie_teleop"
 .PHONY : CMakeFiles/eddie_teleop.dir/all
 
@@ -474,41 +439,6 @@ CMakeFiles/eddie_teleop.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/eddie_teleop.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/eddie_text.dir
-
-# All Build rule for target.
-CMakeFiles/eddie_text.dir/all: CMakeFiles/rosbuild_precompile.dir/all
-	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/depend
-	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles  63
-	@echo "Built target eddie_text"
-.PHONY : CMakeFiles/eddie_text.dir/all
-
-# Include target in all.
-all: CMakeFiles/eddie_text.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/eddie_text.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles 57
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/eddie_text.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles 0
-.PHONY : CMakeFiles/eddie_text.dir/rule
-
-# Convenience name for target.
-eddie_text: CMakeFiles/eddie_text.dir/rule
-.PHONY : eddie_text
-
-# clean rule for target.
-CMakeFiles/eddie_text.dir/clean:
-	$(MAKE) -f CMakeFiles/eddie_text.dir/build.make CMakeFiles/eddie_text.dir/clean
-.PHONY : CMakeFiles/eddie_text.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/eddie_text.dir/clean
 .PHONY : clean
 
 #=============================================================================

@@ -205,6 +205,111 @@ clean: CMakeFiles/clean-test-results.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/jimmy_speech_command.dir
+
+# All Build rule for target.
+CMakeFiles/jimmy_speech_command.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/jimmy_speech_command.dir/build.make CMakeFiles/jimmy_speech_command.dir/depend
+	$(MAKE) -f CMakeFiles/jimmy_speech_command.dir/build.make CMakeFiles/jimmy_speech_command.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles  1
+	@echo "Built target jimmy_speech_command"
+.PHONY : CMakeFiles/jimmy_speech_command.dir/all
+
+# Include target in all.
+all: CMakeFiles/jimmy_speech_command.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/jimmy_speech_command.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/jimmy_speech_command.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles 0
+.PHONY : CMakeFiles/jimmy_speech_command.dir/rule
+
+# Convenience name for target.
+jimmy_speech_command: CMakeFiles/jimmy_speech_command.dir/rule
+.PHONY : jimmy_speech_command
+
+# clean rule for target.
+CMakeFiles/jimmy_speech_command.dir/clean:
+	$(MAKE) -f CMakeFiles/jimmy_speech_command.dir/build.make CMakeFiles/jimmy_speech_command.dir/clean
+.PHONY : CMakeFiles/jimmy_speech_command.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/jimmy_speech_command.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/jimmy_speech_talker.dir
+
+# All Build rule for target.
+CMakeFiles/jimmy_speech_talker.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/jimmy_speech_talker.dir/build.make CMakeFiles/jimmy_speech_talker.dir/depend
+	$(MAKE) -f CMakeFiles/jimmy_speech_talker.dir/build.make CMakeFiles/jimmy_speech_talker.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles  2
+	@echo "Built target jimmy_speech_talker"
+.PHONY : CMakeFiles/jimmy_speech_talker.dir/all
+
+# Include target in all.
+all: CMakeFiles/jimmy_speech_talker.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/jimmy_speech_talker.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/jimmy_speech_talker.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles 0
+.PHONY : CMakeFiles/jimmy_speech_talker.dir/rule
+
+# Convenience name for target.
+jimmy_speech_talker: CMakeFiles/jimmy_speech_talker.dir/rule
+.PHONY : jimmy_speech_talker
+
+# clean rule for target.
+CMakeFiles/jimmy_speech_talker.dir/clean:
+	$(MAKE) -f CMakeFiles/jimmy_speech_talker.dir/build.make CMakeFiles/jimmy_speech_talker.dir/clean
+.PHONY : CMakeFiles/jimmy_speech_talker.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/jimmy_speech_talker.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/jimmy_speech_text_input.dir
+
+# All Build rule for target.
+CMakeFiles/jimmy_speech_text_input.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/jimmy_speech_text_input.dir/build.make CMakeFiles/jimmy_speech_text_input.dir/depend
+	$(MAKE) -f CMakeFiles/jimmy_speech_text_input.dir/build.make CMakeFiles/jimmy_speech_text_input.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles  3
+	@echo "Built target jimmy_speech_text_input"
+.PHONY : CMakeFiles/jimmy_speech_text_input.dir/all
+
+# Include target in all.
+all: CMakeFiles/jimmy_speech_text_input.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/jimmy_speech_text_input.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/jimmy_speech_text_input.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles 0
+.PHONY : CMakeFiles/jimmy_speech_text_input.dir/rule
+
+# Convenience name for target.
+jimmy_speech_text_input: CMakeFiles/jimmy_speech_text_input.dir/rule
+.PHONY : jimmy_speech_text_input
+
+# clean rule for target.
+CMakeFiles/jimmy_speech_text_input.dir/clean:
+	$(MAKE) -f CMakeFiles/jimmy_speech_text_input.dir/build.make CMakeFiles/jimmy_speech_text_input.dir/clean
+.PHONY : CMakeFiles/jimmy_speech_text_input.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/jimmy_speech_text_input.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/rosbuild_precompile.dir
 
 # All Build rule for target.
@@ -359,41 +464,6 @@ CMakeFiles/rospack_gensrv.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/rospack_gensrv.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/speech_listener.dir
-
-# All Build rule for target.
-CMakeFiles/speech_listener.dir/all: CMakeFiles/rosbuild_precompile.dir/all
-	$(MAKE) -f CMakeFiles/speech_listener.dir/build.make CMakeFiles/speech_listener.dir/depend
-	$(MAKE) -f CMakeFiles/speech_listener.dir/build.make CMakeFiles/speech_listener.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles  1
-	@echo "Built target speech_listener"
-.PHONY : CMakeFiles/speech_listener.dir/all
-
-# Include target in all.
-all: CMakeFiles/speech_listener.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/speech_listener.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/speech_listener.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/jimmy_robot/build/CMakeFiles 0
-.PHONY : CMakeFiles/speech_listener.dir/rule
-
-# Convenience name for target.
-speech_listener: CMakeFiles/speech_listener.dir/rule
-.PHONY : speech_listener
-
-# clean rule for target.
-CMakeFiles/speech_listener.dir/clean:
-	$(MAKE) -f CMakeFiles/speech_listener.dir/build.make CMakeFiles/speech_listener.dir/clean
-.PHONY : CMakeFiles/speech_listener.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/speech_listener.dir/clean
 .PHONY : clean
 
 #=============================================================================
