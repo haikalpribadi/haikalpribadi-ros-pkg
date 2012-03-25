@@ -15,7 +15,9 @@
 	<node pkg="parallax_eddie_robot" type="eddie_teleop" name="eddie_teleop" />
 	-->
 	
-	<node pkg="jimmy_robot" type="jimmy_speech_listener" name="jimmy_speech_listener" />
+	<param name="command_list" value="$(find jimmy_robot)/language/command_set"/>
+	
+	<node pkg="jimmy_robot" type="jimmy_speech_command" name="jimmy_speech_command" />
 	<node pkg="jimmy_robot" type="jimmy_speech_talker" name="jimmy_speech_talker" />
 	<node pkg="jimmy_robot" type="jimmy_speech_text_input" name="jimmy_speech_text_input" />
 	
