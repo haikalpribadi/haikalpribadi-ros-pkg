@@ -1,0 +1,30 @@
+<!--%Tag(FULL)%-->
+<launch>
+	
+	<!--
+	<param name="serial_port" value="/dev/ttyUSB0" />
+	<param name="scale_angular" value="3.0" />
+	<param name="scale_linear" value="3.0" />
+	<param name="left_motor_power" value="30" />
+	<param name="right_motor_power" value="31" />
+	
+	<node pkg="parallax_eddie_robot" type="eddie" name="eddie" />
+	<node pkg="parallax_eddie_robot" type="eddie_ping" name="eddie_ping" />
+	<node pkg="parallax_eddie_robot" type="eddie_adc" name="eddie_adc" />
+	<node pkg="parallax_eddie_robot" type="eddie_controller" name="eddie_controller" />
+	<node pkg="parallax_eddie_robot" type="eddie_teleop" name="eddie_teleop" />
+	-->
+	
+	<param name="command_list" value="$(find speech_interface)/language/command_set"/>
+	
+	<node pkg="speech_interface" type="speech_to_command" name="speech_to_command" />
+	<node pkg="speech_interface" type="text_to_speech_talker" name="text_to_speech_talker" />
+	<node pkg="speech_interface" type="text_to_speech_input" name="text_to_speech_input" />
+	
+	<node name="recognizer" pkg="pocketsphinx" type="recognizer.py" output="log">
+    	<param name="lm" value="$(find speech_interface)/language/vocabulary.lm"/>
+    	<param name="dict" value="$(find speech_interface)/language/vocabulary.dic"/>
+  	</node>
+	
+</launch>
+<!--%EndTag(FULL)%-->
