@@ -13,10 +13,10 @@
 	<node pkg="parallax_eddie_robot" type="eddie_controller" name="eddie_controller" />
 	<node pkg="parallax_eddie_robot" type="eddie_teleop" name="eddie_teleop" />
 	
-	<node name="recognizer" pkg="pocketsphinx" type="recognizer.py" output="screen">
+	<!--%<node name="recognizer" pkg="pocketsphinx" type="recognizer.py" output="screen">
     	<param name="lm" value="$(find parallax_eddie_robot)/language/vocabulary.lm"/>
     	<param name="dict" value="$(find parallax_eddie_robot)/language/vocabulary.dic"/>
-  	</node>
+  	</node>%-->
 	
 </launch>
 <!--%EndTag(FULL)%-->

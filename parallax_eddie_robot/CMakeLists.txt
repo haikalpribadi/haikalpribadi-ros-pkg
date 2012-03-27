@@ -28,7 +28,7 @@ rosbuild_gensrv()
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
-
+include_directories (include)
 rosbuild_add_executable(eddie src/eddie.cpp)
 rosbuild_add_executable(eddie_adc src/eddie_adc.cpp)
 rosbuild_add_executable(eddie_ping src/eddie_ping.cpp)

@@ -1,4 +1,4 @@
-The system is: Linux - 2.6.32-39-generic - x86_64
+The system is: Linux - 2.6.32-40-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/bin/gcc 
 Build flags: 
