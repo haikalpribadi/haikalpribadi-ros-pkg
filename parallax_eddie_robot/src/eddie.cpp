@@ -196,8 +196,8 @@ std::string Eddie::intToHexString(int num)
 
 parallax_eddie_robot::Ping Eddie::getPingData()
 {
-  //std::string result = command(GET_PING_VALUE_STRING);
-  std::string result = "133 3C9 564 0F9 29B 0F0 31A 566 1E0 A97\r";
+  std::string result = command(GET_PING_VALUE_STRING);
+  //std::string result = "133 3C9 564 0F9 29B 0F0 31A 566 1E0 A97\r";
   parallax_eddie_robot::Ping ping_data;
   if (result.size() <= 1)
   {
@@ -229,8 +229,8 @@ parallax_eddie_robot::Ping Eddie::getPingData()
 
 parallax_eddie_robot::ADC Eddie::getADCData()
 {
-  //std::string result = command(GET_ADC_VALUE_STRING);
-  std::string result = "9C7 11E E4E 5AB 20F 97B 767 058\r";
+  std::string result = command(GET_ADC_VALUE_STRING);
+  //std::string result = "9C7 11E E4E 5AB 20F 97B 767 058\r";
   parallax_eddie_robot::ADC adc_data;
   if (result.size() <= 1)
   {
