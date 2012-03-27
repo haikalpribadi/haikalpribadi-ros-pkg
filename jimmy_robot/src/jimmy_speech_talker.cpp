@@ -36,8 +36,10 @@
 #include "std_msgs/String.h"
 #include <festival/festival.h>
 
+/*
+ * JimmySpeechTalker is a speech-to-text program that uses the Festival library
+ */
 class JimmySpeechTalker
-
 {
 public:
   JimmySpeechTalker();

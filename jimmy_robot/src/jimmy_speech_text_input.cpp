@@ -36,6 +36,10 @@
 #include "std_msgs/String.h"
 #include <iostream>
 
+/*
+ * JimmySpeechTextInput is a console program to take text input to publish to
+ * the /jimmy/speech_text_input topic, which will be used by the talker node.
+ */
 class JimmySpeechTextInput
 {
 public:

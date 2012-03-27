@@ -39,7 +39,8 @@
 #include <fstream>
 
 /*
- * 
+ * CommandTrie is a class that contains all the possible valid that could be
+ * understood. It is developed based on the Suffix Trie data structure.
  */
 class CommandTrie
 {
@@ -137,6 +138,11 @@ bool CommandTrie::containsCommand$(std::vector<std::string> sentence, std::vecto
   return false;
 }
 
+/*
+ * JimmySpeechCommand is a class that takes the recognized sentence from the
+ * speech recognizer (pocketsphinx) and extracts the command contained in the
+ * sentence (if there is any).
+ */
 class JimmySpeechCommand
 {
 public:
