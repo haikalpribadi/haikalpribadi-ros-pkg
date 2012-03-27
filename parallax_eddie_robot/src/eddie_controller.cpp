@@ -32,30 +32,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ros/ros.h"
-#include "parallax_eddie_robot/Velocity.h"
-#include "parallax_eddie_robot/DriveWithDistance.h"
-#include "parallax_eddie_robot/DriveWithPower.h"
-#include "parallax_eddie_robot/DriveWithSpeed.h"
-#include "parallax_eddie_robot/Rotate.h"
-#include "parallax_eddie_robot/StopAtDistance.h"
-
-class EddieController
-{
-public:
-  EddieController();
-
-private:
-  ros::NodeHandle node_handle_;
-  ros::Subscriber velocity_sub_;
-  ros::ServiceClient eddie_drive_power_;
-  ros::ServiceClient eddie_turn_;
-  ros::ServiceClient eddie_stop_;
-
-  int left_power_, right_power_;
-
-  void velocityCallback(const parallax_eddie_robot::Velocity::ConstPtr& message);
-};
+#include "eddie_controller.h"
 
 EddieController::EddieController() :
   left_power_(60), right_power_(62)

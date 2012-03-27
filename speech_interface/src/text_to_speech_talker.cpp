@@ -32,24 +32,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include <festival/festival.h>
+
+#include "text_to_speech_talker.h"
 
 /*
  * TextToSpeechTalker is a text-to-speech program that uses the Festival library.
  * Text inputs are taken from the topic /speech/text_to_speech_input
  */
-class TextToSpeechTalker
-{
-public:
-  TextToSpeechTalker();
-
-private:
-  ros::NodeHandle node_handle_;
-  ros::Subscriber speech_sub_;
-  void speechCallback(const std_msgs::String::ConstPtr& message);
-};
 
 TextToSpeechTalker::TextToSpeechTalker()
 {

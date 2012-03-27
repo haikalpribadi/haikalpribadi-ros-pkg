@@ -330,6 +330,21 @@ text_to_speech_talker/fast:
 .PHONY : text_to_speech_talker/fast
 
 # target to build an object file
+src/command_tree.o:
+	$(MAKE) -f CMakeFiles/speech_to_command.dir/build.make CMakeFiles/speech_to_command.dir/src/command_tree.o
+.PHONY : src/command_tree.o
+
+# target to preprocess a source file
+src/command_tree.i:
+	$(MAKE) -f CMakeFiles/speech_to_command.dir/build.make CMakeFiles/speech_to_command.dir/src/command_tree.i
+.PHONY : src/command_tree.i
+
+# target to generate assembly for a file
+src/command_tree.s:
+	$(MAKE) -f CMakeFiles/speech_to_command.dir/build.make CMakeFiles/speech_to_command.dir/src/command_tree.s
+.PHONY : src/command_tree.s
+
+# target to build an object file
 src/speech_to_command.o:
 	$(MAKE) -f CMakeFiles/speech_to_command.dir/build.make CMakeFiles/speech_to_command.dir/src/speech_to_command.o
 .PHONY : src/speech_to_command.o
@@ -400,6 +415,9 @@ help:
 	@echo "... tests"
 	@echo "... text_to_speech_input"
 	@echo "... text_to_speech_talker"
+	@echo "... src/command_tree.o"
+	@echo "... src/command_tree.i"
+	@echo "... src/command_tree.s"
 	@echo "... src/speech_to_command.o"
 	@echo "... src/speech_to_command.i"
 	@echo "... src/speech_to_command.s"

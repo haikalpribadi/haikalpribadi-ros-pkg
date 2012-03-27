@@ -31,7 +31,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include/festival -I/usr/lib/speec
 #target_link_libraries(example ${PROJECT_NAME})
 include_directories (include)
 
-rosbuild_add_executable(speech_to_command src/speech_to_command.cpp)
+rosbuild_add_executable(speech_to_command src/speech_to_command.cpp src/command_tree.cpp)
 rosbuild_add_executable(text_to_speech_talker src/text_to_speech_talker.cpp)
 rosbuild_add_executable(text_to_speech_input src/text_to_speech_input.cpp)
 target_link_libraries(text_to_speech_talker Festival eststring estools estbase)

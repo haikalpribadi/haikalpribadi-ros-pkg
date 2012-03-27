@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+../include/eddie_teleop.h
+ros/ros.h
+../include/ros/ros.h
+signal.h
+-
+termios.h
+-
+stdio.h
+-
+fcntl.h
+-
+parallax_eddie_robot/Velocity.h
+../include/parallax_eddie_robot/Velocity.h
+parallax_eddie_robot/KeyStroke.h
+../include/parallax_eddie_robot/KeyStroke.h
+
 ../msg_gen/cpp/include/parallax_eddie_robot/KeyStroke.h
 string
 -
@@ -51,20 +67,8 @@ ros/assert.h
 ../msg_gen/cpp/include/parallax_eddie_robot/ros/assert.h
 
 /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/eddie_teleop.cpp
-ros/ros.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/ros/ros.h
-signal.h
--
-termios.h
--
-stdio.h
--
-fcntl.h
--
-parallax_eddie_robot/Velocity.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/parallax_eddie_robot/Velocity.h
-parallax_eddie_robot/KeyStroke.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/parallax_eddie_robot/KeyStroke.h
+eddie_teleop.h
+/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/eddie_teleop.h
 
 /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_options.h
 ros/forwards.h

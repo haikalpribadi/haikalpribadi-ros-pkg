@@ -32,47 +32,33 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "text_to_speech_input.h"
+#ifndef _EDDIE_CONTROLLER_H
+#define	_EDDIE_CONTROLLER_H
 
-/*
- * TextToSpeechInput is a console program to take text input to publish to
- * the /speech/text_to_speech_input topic, which will be used by the talker node.
- */
+#include "ros/ros.h"
+#include "parallax_eddie_robot/Velocity.h"
+#include "parallax_eddie_robot/DriveWithDistance.h"
+#include "parallax_eddie_robot/DriveWithPower.h"
+#include "parallax_eddie_robot/DriveWithSpeed.h"
+#include "parallax_eddie_robot/Rotate.h"
+#include "parallax_eddie_robot/StopAtDistance.h"
 
-TextToSpeechInput::TextToSpeechInput()
+class EddieController
 {
-  text_pub_ = node_handle_.advertise<std_msgs::String > ("/speech/text_to_speech_input", 1);
-}
+public:
+  EddieController();
 
-void TextToSpeechInput::readLoop()
-{
-  ROS_INFO("Welcome to text-to-speech input console");
-  ROS_INFO("==================================================");
-  ROS_INFO("TYPE IN A MESSAGE AN HIT ENTER");
+private:
+  ros::NodeHandle node_handle_;
+  ros::Subscriber velocity_sub_;
+  ros::ServiceClient eddie_drive_power_;
+  ros::ServiceClient eddie_turn_;
+  ros::ServiceClient eddie_stop_;
 
-  std_msgs::String speech;
-  std::string message = "";
+  int left_power_, right_power_;
 
-  while (message != "exit" && ros::ok())
-  {
-    getline(std::cin, message); //this might hang the system upon terminating for
-                                //a little while. The trick is to hit enter after
-                                //pressing ctrl+C, so that the line buffer
-                                //returns a value.
-    ROS_INFO("TYPED MESSAGE: %s", message.data());
-    speech.data = message;
-    text_pub_.publish(speech);
-  }
-}
-/*
- * 
- */
-int main(int argc, char** argv)
-{
-  ros::init(argc, argv, "text_to_speech_input");
-  TextToSpeechInput textInput;
-  textInput.readLoop();
+  void velocityCallback(const parallax_eddie_robot::Velocity::ConstPtr& message);
+};
 
-  return (EXIT_SUCCESS);
-}
+#endif	/* _EDDIE_CONTROLLER_H */
 

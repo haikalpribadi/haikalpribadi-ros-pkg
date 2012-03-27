@@ -32,47 +32,40 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "text_to_speech_input.h"
+
+
+#ifndef _SPEECH_TO_COMMAND_H
+#define	_SPEECH_TO_COMMAND_H
+
+#include "ros/ros.h"
+#include "std_msgs/String.h"
+#include "command_tree.h"
+#include <vector>
+#include <sstream>
+#include <fstream>
 
 /*
- * TextToSpeechInput is a console program to take text input to publish to
- * the /speech/text_to_speech_input topic, which will be used by the talker node.
+ * SpeechToCommand is a class that takes the recognized sentence from the
+ * speech recognizer (pocketsphinx) and extracts the command contained in the
+ * sentence (if there is any) based on the given commands that are recognized.
  */
 
-TextToSpeechInput::TextToSpeechInput()
+class SpeechToCommand
 {
-  text_pub_ = node_handle_.advertise<std_msgs::String > ("/speech/text_to_speech_input", 1);
-}
+public:
+  SpeechToCommand();
 
-void TextToSpeechInput::readLoop()
-{
-  ROS_INFO("Welcome to text-to-speech input console");
-  ROS_INFO("==================================================");
-  ROS_INFO("TYPE IN A MESSAGE AN HIT ENTER");
+private:
+  ros::NodeHandle node_handle_;
+  ros::Subscriber speech_sub_;
+  ros::Publisher voice_command_pub_;
+  CommandTree command_tree_;
 
-  std_msgs::String speech;
-  std::string message = "";
+  void speechCallback(const std_msgs::String::ConstPtr& message);
+  void parseCommands(std::string filename);
+  std::vector<std::string> parseString(std::string sentence);
+  std::vector<std::string> cmd;
+};
 
-  while (message != "exit" && ros::ok())
-  {
-    getline(std::cin, message); //this might hang the system upon terminating for
-                                //a little while. The trick is to hit enter after
-                                //pressing ctrl+C, so that the line buffer
-                                //returns a value.
-    ROS_INFO("TYPED MESSAGE: %s", message.data());
-    speech.data = message;
-    text_pub_.publish(speech);
-  }
-}
-/*
- * 
- */
-int main(int argc, char** argv)
-{
-  ros::init(argc, argv, "text_to_speech_input");
-  TextToSpeechInput textInput;
-  textInput.readLoop();
-
-  return (EXIT_SUCCESS);
-}
+#endif	/* _SPEECH_TO_COMMAND_H */
 

@@ -32,26 +32,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ros/ros.h"
-#include "parallax_eddie_robot/Ping.h"
-#include "parallax_eddie_robot/Distances.h"
-
-
-//==============================================================================//
-// This class is provided as a template for future features on the Ping sensors //
-//==============================================================================//
-class EddiePing
-{
-public:
-  EddiePing();
-
-private:
-  ros::NodeHandle node_handle_;
-  ros::Publisher ping_pub_;
-  ros::Subscriber ping_sub_;
-
-  void pingCallback(const parallax_eddie_robot::Ping::ConstPtr& message);
-};
+#include "eddie_ping.h"
 
 EddiePing::EddiePing()
 {

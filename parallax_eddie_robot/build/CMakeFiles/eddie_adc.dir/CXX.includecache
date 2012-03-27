@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+../include/eddie_adc.h
+ros/ros.h
+../include/ros/ros.h
+parallax_eddie_robot/ADC.h
+../include/parallax_eddie_robot/ADC.h
+parallax_eddie_robot/BatteryLevel.h
+../include/parallax_eddie_robot/BatteryLevel.h
+parallax_eddie_robot/Voltages.h
+../include/parallax_eddie_robot/Voltages.h
+
 ../msg_gen/cpp/include/parallax_eddie_robot/ADC.h
 string
 -
@@ -73,14 +83,8 @@ ros/assert.h
 ../msg_gen/cpp/include/parallax_eddie_robot/ros/assert.h
 
 /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/eddie_adc.cpp
-ros/ros.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/ros/ros.h
-parallax_eddie_robot/ADC.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/parallax_eddie_robot/ADC.h
-parallax_eddie_robot/BatteryLevel.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/parallax_eddie_robot/BatteryLevel.h
-parallax_eddie_robot/Voltages.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/parallax_eddie_robot/Voltages.h
+eddie_adc.h
+/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/eddie_adc.h
 
 /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_options.h
 ros/forwards.h

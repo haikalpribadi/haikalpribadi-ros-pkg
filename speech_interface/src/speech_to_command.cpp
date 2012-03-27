@@ -32,133 +32,14 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include <vector>
-#include <sstream>
-#include <fstream>
 
-/*
- * CommandTrie is a class that contains all the possible valid that could be
- * understood. It is developed based on the Suffix Trie data structure.
- */
-class CommandTrie
-{
-public:
-  CommandTrie();
-  std::string element_;
-  std::vector<CommandTrie> children_;
-  void populate(std::vector<std::vector<std::string> > commandSet);
-  void add(std::vector<std::string> command);
-  bool containsCommand(std::vector<std::string> sentence, std::vector<std::string>& cmd);
-private:
-  void add$(std::vector<std::string> command);
-  bool containsCommand$(std::vector<std::string> sentence, std::vector<std::string>& cmd, 
-    CommandTrie* root);
-};
-
-CommandTrie::CommandTrie()
-{
-  element_ = "$root";
-}
-
-void CommandTrie::populate(std::vector<std::vector<std::string> > commandSet)
-{
-  for(uint i=0; i<commandSet.size(); i++){
-    add(commandSet[i]);
-  }
-}
-void CommandTrie::add(std::vector<std::string> command)
-{
-  std::string end = "$end";
-  command.push_back(end);
-  add$(command);
-}
-
-void CommandTrie::add$(std::vector<std::string> command)
-{
-  if(command.size()==0){
-    return;
-  }
-  for(uint i=0; i<children_.size(); i++){
-    if(children_[i].element_==command[0]){
-      if(command.size()>1){
-        std::vector<std::string> sub(&command[1],&command[command.size()]);
-        children_[i].add$(sub);
-      }
-      return;
-    }
-  }
-  CommandTrie child;
-  child.element_ = command[0];
-  if(command.size()>1){
-    std::vector<std::string> sub(&command[1],&command[command.size()]);
-    child.add$(sub);
-  }
-  children_.push_back(child);
-  return;
-}
-
-bool CommandTrie::containsCommand(std::vector<std::string> sentence, std::vector<std::string>& cmd)
-{
-  if(sentence.size()==0)
-    return false;
-  std::string end = "$end";
-  sentence.push_back(end);
-  return containsCommand$(sentence, cmd, const_cast<CommandTrie *>(this));
-}
-
-bool CommandTrie::containsCommand$(std::vector<std::string> sentence, std::vector<std::string>& cmd, 
-  CommandTrie* root)
-{
-  bool star = false;
-  for(uint i=0; i<sentence.size(); i++){
-    for(uint j=0; j<children_.size(); j++){
-      if(sentence[i]==children_[j].element_){
-        if(sentence[i]=="$end"){
-          return true;
-        }
-        else{
-          cmd.push_back(sentence[i]);
-          std::vector<std::string> subsentence(&sentence[i+1], &sentence[sentence.size()]);
-          return children_[j].containsCommand$(subsentence, cmd, root);
-        }
-      }
-      if(children_[j].element_=="*"){
-        star = true;
-      }
-    }
-    if(star){
-      cmd.clear();
-      std::vector<std::string> subsentence(&sentence[i], &sentence[sentence.size()]);
-      return root->containsCommand$(subsentence, cmd, root);
-    }
-  }
-  cmd.clear();
-  return false;
-}
+#include "speech_to_command.h"
 
 /*
  * SpeechToCommand is a class that takes the recognized sentence from the
  * speech recognizer (pocketsphinx) and extracts the command contained in the
  * sentence (if there is any) based on the given commands that are recognized.
  */
-class SpeechToCommand
-{
-public:
-  SpeechToCommand();
-
-private:
-  ros::NodeHandle node_handle_;
-  ros::Subscriber speech_sub_;
-  ros::Publisher voice_command_pub_;
-  CommandTrie command_trie_;
-
-  void speechCallback(const std_msgs::String::ConstPtr& message);
-  void parseCommands(std::string filename);
-  std::vector<std::string> parseString(std::string sentence);
-  std::vector<std::string> cmd;
-};
 
 SpeechToCommand::SpeechToCommand()
 {
@@ -191,7 +72,7 @@ void SpeechToCommand::parseCommands(std::string filename)
     commandSet.push_back(parsedCmd);
   }
   infile.close();
-  command_trie_.populate(commandSet);
+  command_tree_.populate(commandSet);
 }
 
 std::vector<std::string> SpeechToCommand::parseString(std::string sentence)
@@ -214,7 +95,7 @@ void SpeechToCommand::speechCallback(const std_msgs::String::ConstPtr& message)
   std::vector<std::string> command;
   std::string rec("");
   std::vector<std::string> parsedSpch = parseString(speech);
-  if(command_trie_.containsCommand(parsedSpch, command)){
+  if(command_tree_.containsCommand(parsedSpch, command)){
     for(uint i=0; i<command.size(); i++){
       rec += command[i];
       if(i!=command.size()-1)

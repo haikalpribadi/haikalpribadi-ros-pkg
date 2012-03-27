@@ -32,47 +32,36 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "text_to_speech_input.h"
+#ifndef _EDDIE_ADC_H
+#define	_EDDIE_ADC_H
 
-/*
- * TextToSpeechInput is a console program to take text input to publish to
- * the /speech/text_to_speech_input topic, which will be used by the talker node.
- */
+#include "ros/ros.h"
+#include "parallax_eddie_robot/ADC.h"
+#include "parallax_eddie_robot/BatteryLevel.h"
+#include "parallax_eddie_robot/Voltages.h"
 
-TextToSpeechInput::TextToSpeechInput()
+//=============================================================================//
+// This class is provided as a template for future features on the ADC sensors //
+// The callback function may be modified to adapt to custom configurations of  //
+// ADC sensors. Current (default) settings are for a set of IR distance        //
+// sensors and a battery sensor at the very end                                //
+//=============================================================================//
+
+class EddieADC
 {
-  text_pub_ = node_handle_.advertise<std_msgs::String > ("/speech/text_to_speech_input", 1);
-}
+public:
+  EddieADC();
 
-void TextToSpeechInput::readLoop()
-{
-  ROS_INFO("Welcome to text-to-speech input console");
-  ROS_INFO("==================================================");
-  ROS_INFO("TYPE IN A MESSAGE AN HIT ENTER");
+private:
+  ros::NodeHandle node_handle_;
+  ros::Publisher ir_pub_;
+  ros::Publisher battery_pub_;
+  ros::Subscriber adc_sub_;
+  const double ADC_VOLTAGE_DIVIDER;
+  const double BATTERY_VOLTAGE_MULTIPLIER;
 
-  std_msgs::String speech;
-  std::string message = "";
+  void adcCallback(const parallax_eddie_robot::ADC::ConstPtr& message);
+};
 
-  while (message != "exit" && ros::ok())
-  {
-    getline(std::cin, message); //this might hang the system upon terminating for
-                                //a little while. The trick is to hit enter after
-                                //pressing ctrl+C, so that the line buffer
-                                //returns a value.
-    ROS_INFO("TYPED MESSAGE: %s", message.data());
-    speech.data = message;
-    text_pub_.publish(speech);
-  }
-}
-/*
- * 
- */
-int main(int argc, char** argv)
-{
-  ros::init(argc, argv, "text_to_speech_input");
-  TextToSpeechInput textInput;
-  textInput.readLoop();
-
-  return (EXIT_SUCCESS);
-}
+#endif	/* _EDDIE_ADC_H */
 

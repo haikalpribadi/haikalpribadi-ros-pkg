@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+../include/eddie_ping.h
+ros/ros.h
+../include/ros/ros.h
+parallax_eddie_robot/Ping.h
+../include/parallax_eddie_robot/Ping.h
+parallax_eddie_robot/Distances.h
+../include/parallax_eddie_robot/Distances.h
+
 ../msg_gen/cpp/include/parallax_eddie_robot/Distances.h
 string
 -
@@ -51,12 +59,8 @@ ros/assert.h
 ../msg_gen/cpp/include/parallax_eddie_robot/ros/assert.h
 
 /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/eddie_ping.cpp
-ros/ros.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/ros/ros.h
-parallax_eddie_robot/Ping.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/parallax_eddie_robot/Ping.h
-parallax_eddie_robot/Distances.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/parallax_eddie_robot/Distances.h
+eddie_ping.h
+/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/src/eddie_ping.h
 
 /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_options.h
 ros/forwards.h

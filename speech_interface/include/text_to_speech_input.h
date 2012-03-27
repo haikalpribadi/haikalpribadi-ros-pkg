@@ -32,47 +32,30 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "text_to_speech_input.h"
+#ifndef _TEXT_TO_SPEECH_INPUT_H
+#define	_TEXT_TO_SPEECH_INPUT_H
+
+#include "ros/ros.h"
+#include "std_msgs/String.h"
+#include <iostream>
 
 /*
  * TextToSpeechInput is a console program to take text input to publish to
  * the /speech/text_to_speech_input topic, which will be used by the talker node.
  */
 
-TextToSpeechInput::TextToSpeechInput()
+class TextToSpeechInput
 {
-  text_pub_ = node_handle_.advertise<std_msgs::String > ("/speech/text_to_speech_input", 1);
-}
+public:
+  TextToSpeechInput();
+  void readLoop();
 
-void TextToSpeechInput::readLoop()
-{
-  ROS_INFO("Welcome to text-to-speech input console");
-  ROS_INFO("==================================================");
-  ROS_INFO("TYPE IN A MESSAGE AN HIT ENTER");
+private:
+  ros::NodeHandle node_handle_;
+  ros::Publisher text_pub_;
 
-  std_msgs::String speech;
-  std::string message = "";
+};
 
-  while (message != "exit" && ros::ok())
-  {
-    getline(std::cin, message); //this might hang the system upon terminating for
-                                //a little while. The trick is to hit enter after
-                                //pressing ctrl+C, so that the line buffer
-                                //returns a value.
-    ROS_INFO("TYPED MESSAGE: %s", message.data());
-    speech.data = message;
-    text_pub_.publish(speech);
-  }
-}
-/*
- * 
- */
-int main(int argc, char** argv)
-{
-  ros::init(argc, argv, "text_to_speech_input");
-  TextToSpeechInput textInput;
-  textInput.readLoop();
 
-  return (EXIT_SUCCESS);
-}
+#endif	/* _TEXT_TO_SPEECH_INPUT_H */
 

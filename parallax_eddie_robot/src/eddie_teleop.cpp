@@ -32,37 +32,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ros/ros.h"
-#include <signal.h>
-#include <termios.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include "parallax_eddie_robot/Velocity.h"
-#include "parallax_eddie_robot/KeyStroke.h"
-
-#define KEYCODE_U 0x41
-#define KEYCODE_D 0x42
-#define KEYCODE_R 0x43
-#define KEYCODE_L 0x44
-
-
-int kfd = 0;
-struct termios cooked, raw;
-
-class EddieTeleop
-{
-public:
-  EddieTeleop();
-  void keyLoop();
-
-private:
-  ros::NodeHandle node_handle_;
-  ros::Publisher velocity_pub_;
-  ros::Publisher keystroke_pub_;
-  float linear_, angular_;
-  double l_scale_, a_scale_;
-
-};
+#include "eddie_teleop.h"
 
 EddieTeleop::EddieTeleop() :
   linear_(0), angular_(0), l_scale_(2.0), a_scale_(2.0)

@@ -6,13 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/speech_interface/src/text_to_speech_input.cpp
+../include/text_to_speech_input.h
 ros/ros.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/speech_interface/src/ros/ros.h
+../include/ros/ros.h
 std_msgs/String.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/speech_interface/src/std_msgs/String.h
+../include/std_msgs/String.h
 iostream
 -
+
+/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/speech_interface/src/text_to_speech_input.cpp
+text_to_speech_input.h
+/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/speech_interface/src/text_to_speech_input.h
 
 /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_options.h
 ros/forwards.h

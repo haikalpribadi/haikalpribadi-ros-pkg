@@ -32,11 +32,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ros/ros.h"
-#include "parallax_eddie_robot/ADC.h"
-#include "parallax_eddie_robot/BatteryLevel.h"
-#include "parallax_eddie_robot/Voltages.h"
-
+#include "eddie_adc.h"
 
 //=============================================================================//
 // This class is provided as a template for future features on the ADC sensors //
@@ -44,21 +40,6 @@
 // ADC sensors. Current (default) settings are for a set of IR distance        //
 // sensors and a battery sensor at the very end                                //
 //=============================================================================//
-class EddieADC
-{
-public:
-  EddieADC();
-
-private:
-  ros::NodeHandle node_handle_;
-  ros::Publisher ir_pub_;
-  ros::Publisher battery_pub_;
-  ros::Subscriber adc_sub_;
-  const double ADC_VOLTAGE_DIVIDER;
-  const double BATTERY_VOLTAGE_MULTIPLIER;
-
-  void adcCallback(const parallax_eddie_robot::ADC::ConstPtr& message);
-};
 
 EddieADC::EddieADC() :
   ADC_VOLTAGE_DIVIDER(819),

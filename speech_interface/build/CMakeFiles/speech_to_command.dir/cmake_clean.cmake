@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/speech_to_command.dir/src/speech_to_command.o"
+  "CMakeFiles/speech_to_command.dir/src/command_tree.o"
   "../bin/speech_to_command.pdb"
   "../bin/speech_to_command"
 )

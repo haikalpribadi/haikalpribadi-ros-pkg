@@ -32,47 +32,40 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "text_to_speech_input.h"
+#ifndef _EDDIE_TELEOP_H
+#define	_EDDIE_TELEOP_H
 
-/*
- * TextToSpeechInput is a console program to take text input to publish to
- * the /speech/text_to_speech_input topic, which will be used by the talker node.
- */
+#include "ros/ros.h"
+#include <signal.h>
+#include <termios.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include "parallax_eddie_robot/Velocity.h"
+#include "parallax_eddie_robot/KeyStroke.h"
 
-TextToSpeechInput::TextToSpeechInput()
+#define KEYCODE_U 0x41
+#define KEYCODE_D 0x42
+#define KEYCODE_R 0x43
+#define KEYCODE_L 0x44
+
+
+int kfd = 0;
+struct termios cooked, raw;
+
+class EddieTeleop
 {
-  text_pub_ = node_handle_.advertise<std_msgs::String > ("/speech/text_to_speech_input", 1);
-}
+public:
+  EddieTeleop();
+  void keyLoop();
 
-void TextToSpeechInput::readLoop()
-{
-  ROS_INFO("Welcome to text-to-speech input console");
-  ROS_INFO("==================================================");
-  ROS_INFO("TYPE IN A MESSAGE AN HIT ENTER");
+private:
+  ros::NodeHandle node_handle_;
+  ros::Publisher velocity_pub_;
+  ros::Publisher keystroke_pub_;
+  float linear_, angular_;
+  double l_scale_, a_scale_;
 
-  std_msgs::String speech;
-  std::string message = "";
+};
 
-  while (message != "exit" && ros::ok())
-  {
-    getline(std::cin, message); //this might hang the system upon terminating for
-                                //a little while. The trick is to hit enter after
-                                //pressing ctrl+C, so that the line buffer
-                                //returns a value.
-    ROS_INFO("TYPED MESSAGE: %s", message.data());
-    speech.data = message;
-    text_pub_.publish(speech);
-  }
-}
-/*
- * 
- */
-int main(int argc, char** argv)
-{
-  ros::init(argc, argv, "text_to_speech_input");
-  TextToSpeechInput textInput;
-  textInput.readLoop();
-
-  return (EXIT_SUCCESS);
-}
+#endif	/* _EDDIE_TELEOP_H */
 

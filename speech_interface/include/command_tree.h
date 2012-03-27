@@ -32,47 +32,33 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "text_to_speech_input.h"
+
+#ifndef _COMMAND_TREE_H
+#define	_COMMAND_TREE_H
+
+#include "ros/ros.h"
+#include <vector>
+#include <sstream>
 
 /*
- * TextToSpeechInput is a console program to take text input to publish to
- * the /speech/text_to_speech_input topic, which will be used by the talker node.
+ * CommandTrie is a class that contains all the possible valid that could be
+ * understood. It is developed based on the Suffix Trie data structure.
  */
 
-TextToSpeechInput::TextToSpeechInput()
+class CommandTree
 {
-  text_pub_ = node_handle_.advertise<std_msgs::String > ("/speech/text_to_speech_input", 1);
-}
+public:
+  CommandTree();
+  std::string element_;
+  std::vector<CommandTree> children_;
+  void populate(std::vector<std::vector<std::string> > commandSet);
+  void add(std::vector<std::string> command);
+  bool containsCommand(std::vector<std::string> sentence, std::vector<std::string>& cmd);
+private:
+  void add$(std::vector<std::string> command);
+  bool containsCommand$(std::vector<std::string> sentence, std::vector<std::string>& cmd,
+    CommandTree* root);
+};
 
-void TextToSpeechInput::readLoop()
-{
-  ROS_INFO("Welcome to text-to-speech input console");
-  ROS_INFO("==================================================");
-  ROS_INFO("TYPE IN A MESSAGE AN HIT ENTER");
-
-  std_msgs::String speech;
-  std::string message = "";
-
-  while (message != "exit" && ros::ok())
-  {
-    getline(std::cin, message); //this might hang the system upon terminating for
-                                //a little while. The trick is to hit enter after
-                                //pressing ctrl+C, so that the line buffer
-                                //returns a value.
-    ROS_INFO("TYPED MESSAGE: %s", message.data());
-    speech.data = message;
-    text_pub_.publish(speech);
-  }
-}
-/*
- * 
- */
-int main(int argc, char** argv)
-{
-  ros::init(argc, argv, "text_to_speech_input");
-  TextToSpeechInput textInput;
-  textInput.readLoop();
-
-  return (EXIT_SUCCESS);
-}
+#endif	/* _COMMANDTREE_H */
 
