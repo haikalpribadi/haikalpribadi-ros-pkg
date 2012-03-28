@@ -54,10 +54,12 @@ public:
   void populate(std::vector<std::vector<std::string> > commandSet);
   void add(std::vector<std::string> command);
   bool containsCommand(std::vector<std::string> sentence, std::vector<std::string>& cmd);
+  static void print(CommandTree tree);
 private:
   void add$(std::vector<std::string> command);
   bool containsCommand$(std::vector<std::string> sentence, std::vector<std::string>& cmd,
     CommandTree* root);
+  static void print$(CommandTree tree, int depth);
 };
 
 #endif	/* _COMMANDTREE_H */

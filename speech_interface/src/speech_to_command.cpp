@@ -69,10 +69,14 @@ void SpeechToCommand::parseCommands(std::string filename)
   {
     getline(infile, command);
     std::vector<std::string> parsedCmd = parseString(command);
+    if(parsedCmd.size()==0)
+      continue;
     commandSet.push_back(parsedCmd);
   }
   infile.close();
   command_tree_.populate(commandSet);
+  //uncomment the following line to view the command tree build by this parser
+  //CommandTree::print(command_tree_);
 }
 
 std::vector<std::string> SpeechToCommand::parseString(std::string sentence)
@@ -80,11 +84,13 @@ std::vector<std::string> SpeechToCommand::parseString(std::string sentence)
   std::istringstream stream(sentence);
   std::vector<std::string> words;
 
-  do{
+  while(true){
     std::string sub;
     stream >> sub;
+    if(sub.size()==0)
+      break;
     words.push_back(sub);
-  }while(stream);
+  }
   return words;
 }
 

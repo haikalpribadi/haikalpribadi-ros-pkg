@@ -51,6 +51,7 @@ void CommandTree::populate(std::vector<std::vector<std::string> > commandSet)
     add(commandSet[i]);
   }
 }
+
 void CommandTree::add(std::vector<std::string> command)
 {
   std::string end = "$end";
@@ -121,3 +122,28 @@ bool CommandTree::containsCommand$(std::vector<std::string> sentence, std::vecto
   return false;
 }
 
+void CommandTree::print(CommandTree tree)
+{
+  ROS_INFO("Printing CommandTree:");
+  ROS_INFO("=====================");
+  print$(tree, 0);
+}
+
+void CommandTree::print$(CommandTree tree, int depth)
+{
+  std::stringstream stream("");
+  std::string str;
+  for(int i=0; i<depth; i++){
+    if(i<depth-1)
+      stream << "|...";
+    else
+      stream << "|___";
+  }
+  stream << tree.element_;
+  stream >> str;
+
+ ROS_INFO("%s",str.data());
+  for(uint i=0; i<tree.children_.size(); i++){
+    print$(tree.children_[i], depth+1);
+  }
+}

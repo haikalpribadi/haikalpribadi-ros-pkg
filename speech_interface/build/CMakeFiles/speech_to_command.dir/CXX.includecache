@@ -28,10 +28,6 @@ sstream
 fstream
 -
 
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/speech_interface/src/command_tree.cpp
-command_tree.h
-/home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/speech_interface/src/command_tree.h
-
 /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/speech_interface/src/speech_to_command.cpp
 speech_to_command.h
 /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/speech_interface/src/speech_to_command.h

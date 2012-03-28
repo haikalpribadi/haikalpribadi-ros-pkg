@@ -17,11 +17,11 @@
 	
 	<param name="command_list" value="$(find speech_interface)/language/command_set"/>
 	
-	<node pkg="speech_interface" type="speech_to_command" name="speech_to_command" />
+	<node pkg="speech_interface" type="speech_to_command" name="speech_to_command" output="screen"/>
 	<node pkg="speech_interface" type="text_to_speech_talker" name="text_to_speech_talker" />
 	<node pkg="speech_interface" type="text_to_speech_input" name="text_to_speech_input" />
 	
-	<node name="recognizer" pkg="pocketsphinx" type="recognizer.py" output="log">
+	<node name="recognizer" pkg="pocketsphinx" type="recognizer.py">
     	<param name="lm" value="$(find speech_interface)/language/vocabulary.lm"/>
     	<param name="dict" value="$(find speech_interface)/language/vocabulary.dic"/>
   	</node>
