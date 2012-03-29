@@ -1,0 +1,21 @@
+<package>
+  <description brief="Driver for Parallax Eddie Robot">
+
+     ROS bindings for Parallax Eddie robot.
+     
+     This is a generic driver for Parallax Eddie Robot. At the current
+     moment, the development of this package is still on going constantly.
+     This package is still considered unstable until it is stated otherwise.
+
+  </description>
+  <author>Haikal Pribadi (haikal.pribadi@gmail.com)</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/parallax_eddie_robot</url>
+  <depend package="std_msgs"/>
+  <depend package="roscpp"/>
+  <depend package="pocketsphinx"/>
+
+</package>
+
+
