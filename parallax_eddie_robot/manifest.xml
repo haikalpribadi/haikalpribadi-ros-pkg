@@ -3,9 +3,10 @@
 
      ROS bindings for Parallax Eddie robot.
      
-     This is a generic driver for Parallax Eddie Robot. At the current
-     moment, the development of this package is still on going constantly.
-     This package is considered a beta release. Development is still in progress.
+     This is a generic driver for Parallax Eddie Robot 
+     (http://www.parallax.com/eddie). At the current moment, the development of 
+     this package is still on going constantly. This package is considered a 
+     beta release. Development is still in progress.
 
   </description>
   <author>Haikal Pribadi (haikal.pribadi@gmail.com)</author>
