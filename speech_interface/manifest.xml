@@ -1,7 +1,9 @@
 <package>
   <description brief="A Natural Speech Interface">
 
-     A natural speech interface package that is able to extract predefined commands from recognized (natural) speeches, perform text-to-speech functionality, as well as providing a console for text-to-speech input.
+     A natural speech interface package that is able to extract predefined 
+     commands from recognized (natural) speeches, perform text-to-speech 
+     functionality, as well as providing a console for text-to-speech input.
      
   </description>
   <author>Haikal Pribadi (haikal.pribadi@gmail.com)</author>
