@@ -14,7 +14,6 @@
   <url>http://ros.org/wiki/parallax_eddie_robot</url>
   <depend package="std_msgs"/>
   <depend package="roscpp"/>
-  <depend package="pocketsphinx"/>
 
 </package>
 
