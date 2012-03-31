@@ -1,7 +1,7 @@
 
 #parallax_eddie_robot
 ##Parallax Eddie Robot ROS Driver
-###This is a generic driver for Parallax Eddie Robot. At the current moment, the development of this package is still on going constantly. This package is considered a beta release. Development is still in progress.
+###This is a generic driver for Parallax Eddie Robot ( http://www.parallax.com/eddie ). At the current moment, the development of this package is still on going constantly. This package is considered a beta release. Development is still in progress.
 ###Under Development
 
 #speech_interface
