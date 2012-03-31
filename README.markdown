@@ -5,7 +5,7 @@
 ###Under Development
 
 #speech_interface
-##Natural Speech Interface (converted from jimmy_robot package)
+##Natural Speech Interface
 ###A natural speech interface package that is able to extract predefined commands from recognized (natural) speeches, perform text-to-speech functionality, as well as providing a console for text-to-speech input.
 ###Under Development
 

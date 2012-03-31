@@ -1,5 +1,5 @@
 <package>
-  <description brief="A Natural Speech Interface">
+  <description brief="Natural Speech Interface">
 
      A natural speech interface package that is able to extract predefined 
      commands from recognized (natural) speeches, perform text-to-speech 
