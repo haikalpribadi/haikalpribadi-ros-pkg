@@ -81,28 +81,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Ping.lisp
 ../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../msg_gen/lisp/KeyStroke.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../msg_gen/lisp/KeyStroke.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/KeyStroke.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_KeyStroke.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/msg/KeyStroke.msg
@@ -128,28 +110,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Ping.lisp
 ../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../msg_gen/lisp/Speech.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../msg_gen/lisp/Speech.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/Speech.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_Speech.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/msg/Speech.msg
@@ -175,28 +139,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Ping.lisp
 ../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../msg_gen/lisp/ADC.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../msg_gen/lisp/ADC.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/ADC.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_ADC.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/msg/ADC.msg
@@ -222,28 +168,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Ping.lisp
 ../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../msg_gen/lisp/BatteryLevel.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../msg_gen/lisp/BatteryLevel.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/BatteryLevel.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_BatteryLevel.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/msg/BatteryLevel.msg
@@ -269,28 +197,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Ping.lisp
 ../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../msg_gen/lisp/Velocity.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../msg_gen/lisp/Velocity.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/Velocity.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_Velocity.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/msg/Velocity.msg
@@ -316,28 +226,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Ping.lisp
 ../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../msg_gen/lisp/Distances.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../msg_gen/lisp/Distances.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/Distances.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_Distances.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/msg/Distances.msg
@@ -363,28 +255,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Ping.lisp
 ../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../msg_gen/lisp/Voltages.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../msg_gen/lisp/Voltages.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/Voltages.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_Voltages.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/msg/Voltages.msg
@@ -410,28 +284,10 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Ping.lisp
 ../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../msg_gen/lisp/Ping.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../msg_gen/lisp/Ping.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/Ping.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_Ping.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/msg/Ping.msg

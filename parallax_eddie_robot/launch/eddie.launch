@@ -2,15 +2,16 @@
 <launch>
 
 	<param name="serial_port" value="/dev/ttyUSB0" />
-	<param name="scale_angular" value="3.0" />
+	<param name="scale_angular" value="2.0" />
 	<param name="scale_linear" value="3.0" />
 	<param name="left_motor_power" value="30" />
 	<param name="right_motor_power" value="31" />
+	<param name="rotation_speed" value="36" />
 	
 	<node pkg="parallax_eddie_robot" type="eddie" name="eddie" />
 	<node pkg="parallax_eddie_robot" type="eddie_ping" name="eddie_ping" />
 	<node pkg="parallax_eddie_robot" type="eddie_adc" name="eddie_adc" />
-	<node pkg="parallax_eddie_robot" type="eddie_controller" name="eddie_controller" />
+	<node pkg="parallax_eddie_robot" type="eddie_controller" name="eddie_controller" output="screen" />
 	<node pkg="parallax_eddie_robot" type="eddie_teleop" name="eddie_teleop" />
 	
 </launch>

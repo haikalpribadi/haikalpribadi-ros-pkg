@@ -87,28 +87,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_StopAtDistance.lisp
 ../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../srv_gen/lisp/DriveWithSpeed.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../srv_gen/lisp/DriveWithSpeed.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/DriveWithSpeed.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_DriveWithSpeed.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv/DriveWithSpeed.srv
@@ -134,28 +116,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_StopAtDistance.lisp
 ../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../srv_gen/lisp/DriveWithDistance.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../srv_gen/lisp/DriveWithDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/DriveWithDistance.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_DriveWithDistance.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv/DriveWithDistance.srv
@@ -181,28 +145,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_StopAtDistance.lisp
 ../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../srv_gen/lisp/DriveWithPower.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../srv_gen/lisp/DriveWithPower.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/DriveWithPower.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_DriveWithPower.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv/DriveWithPower.srv
@@ -228,28 +174,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_StopAtDistance.lisp
 ../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../srv_gen/lisp/Rotate.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../srv_gen/lisp/Rotate.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/Rotate.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_Rotate.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv/Rotate.srv
@@ -275,28 +203,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_StopAtDistance.lisp
 ../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../srv_gen/lisp/ResetEncoder.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../srv_gen/lisp/ResetEncoder.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/ResetEncoder.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_ResetEncoder.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv/ResetEncoder.srv
@@ -322,28 +232,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_StopAtDistance.lisp
 ../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../srv_gen/lisp/GetSpeed.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../srv_gen/lisp/GetSpeed.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/GetSpeed.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_GetSpeed.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv/GetSpeed.srv
@@ -369,28 +261,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_StopAtDistance.lisp
 ../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../srv_gen/lisp/GetHeading.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../srv_gen/lisp/GetHeading.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/GetHeading.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_GetHeading.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv/GetHeading.srv
@@ -416,28 +290,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_StopAtDistance.lisp
 ../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../srv_gen/lisp/GetDistance.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../srv_gen/lisp/GetDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/GetDistance.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_GetDistance.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv/GetDistance.srv
@@ -463,28 +319,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_StopAtDistance.lisp
 ../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../srv_gen/lisp/Accelerate.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../srv_gen/lisp/Accelerate.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/Accelerate.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_Accelerate.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv/Accelerate.srv
@@ -510,28 +348,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_StopAtDistance.lisp
 ../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../srv_gen/lisp/StopAtDistance.lisp: /home/haikalpribadi/Workspaces/ROS/rharmony/pocketsphinx/manifest.xml
 ../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-../srv_gen/lisp/StopAtDistance.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/StopAtDistance.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_StopAtDistance.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/haikalpribadi/Workspaces/ROS/haikalpribadi-ros-pkg/parallax_eddie_robot/srv/StopAtDistance.srv

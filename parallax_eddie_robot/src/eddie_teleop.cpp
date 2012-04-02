@@ -86,12 +86,14 @@ void EddieTeleop::keyLoop()
     {
       case KEYCODE_L:
         ROS_DEBUG("LEFT");
-        angular_ = -1.0;
+        angular_ = -45;
+        //linear_ = 1.0; //to test movement with linear and angular
         move = true;
         break;
       case KEYCODE_R:
         ROS_DEBUG("RIGHT");
-        angular_ = 1.0;
+        angular_ = 45;
+        //linear_ = 1.0; //to test movement with linear and angular
         move = true;
         break;
       case KEYCODE_U:

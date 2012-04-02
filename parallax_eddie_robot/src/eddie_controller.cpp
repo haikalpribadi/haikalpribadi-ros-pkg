@@ -35,7 +35,7 @@
 #include "eddie_controller.h"
 
 EddieController::EddieController() :
-  left_power_(60), right_power_(62)
+  left_power_(60), right_power_(62), rotation_speed_(36)
 {
   velocity_sub_ = node_handle_.subscribe("/eddie/command_velocity", 1, &EddieController::velocityCallback, this);
   eddie_drive_power_ = node_handle_.serviceClient<parallax_eddie_robot::DriveWithPower > ("drive_with_power");
@@ -44,79 +44,126 @@ EddieController::EddieController() :
 
   node_handle_.param("left_motor_power", left_power_, left_power_);
   node_handle_.param("right_motor_power", right_power_, right_power_);
-
+  node_handle_.param("rotation_speed", rotation_speed_, rotation_speed_);
 }
 
 void EddieController::velocityCallback(const parallax_eddie_robot::Velocity::ConstPtr& message)
 {
   float linear = message->linear;
-  float angular = message->angular;
+  int16_t angular = message->angular;
 
   if (linear == 0 && angular == 0)
   {
-    parallax_eddie_robot::StopAtDistance dist;
-    dist.request.distance = 3;
-    for (int i = 0; !eddie_stop_.call(dist) && i < 5; i++)
-    {
-      ROS_ERROR("ERROR: at trying to stop Eddie. Trying to auto send command again...");
-    }
+    stop();
   }
   else if (linear != 0 && angular == 0)
   {
-    parallax_eddie_robot::DriveWithPower power;
-    int8_t left, right;
-
-    if(left_power_*abs(linear)>127){
-      if (linear > 0)
-        left = 127;
-      else
-        left = -127;
-    }
-    else
-      left = left_power_ * linear;
-
-    if(right_power_*abs(linear)>127){
-      if (linear > 0)
-        right = 127;
-      else
-        right = -127;
-    }
-    else
-      right = right_power_ * linear;
-
-    power.request.left = left;
-    power.request.right = right;
-    if (eddie_drive_power_.call(power))
-    {
-      if (linear / abs(linear) > 0)
-        ROS_INFO("SUCCESS: Moving FORWARD");
-      else
-        ROS_INFO("SUCCESS: Moving REVERSE");
-    }
-    else
-    {
-      ROS_ERROR("ERROR: at trying to move Eddie forward/reverse. Please try sending command again... %d, %d,", left, right);
-    }
+    moveLinear(linear);
   }
   else if (linear == 0 && angular != 0)
   {
-    parallax_eddie_robot::Rotate degree;
-    degree.request.angle = angular * 180;
-    degree.request.speed = 36;
-    if (eddie_turn_.call(degree))
-    {
-      if (angular / abs(angular) > 0)
-        ROS_INFO("SUCCESS: rotating RIGHT");
-      else
-        ROS_INFO("SUCCESS: rotating LEFT");
-    }
+    moveAngular(angular);
+  }
+  else //if (linear!=0 && angular !=0)
+  {
+    moveLinearAngular(linear, angular);
+  }
+}
+void EddieController::stop()
+{
+  parallax_eddie_robot::StopAtDistance dist;
+  dist.request.distance = 3;
+  for (int i = 0; !eddie_stop_.call(dist) && i < 5; i++)
+  {
+    ROS_ERROR("ERROR: at trying to stop Eddie. Trying to auto send command again...");
+  }
+}
+int8_t EddieController::clipPower(int power_unit, float linear)
+{
+  int8_t power;
+  if(power_unit*abs(linear)>127){
+    if (linear > 0)
+      power = 127;
+     else
+      power = -127;
+  }
+  else
+    power = power_unit * linear;
+
+  return power;
+}
+
+void EddieController::moveLinear(float linear)
+{
+  parallax_eddie_robot::DriveWithPower power;
+  int8_t left, right;
+
+  left = clipPower(left_power_, linear);
+  right = clipPower(right_power_, linear);
+
+  power.request.left = left;
+  power.request.right = right;
+  if (eddie_drive_power_.call(power))
+  {
+    if (linear / abs(linear) > 0)
+      ROS_INFO("SUCCESS: Moving FORWARD");
     else
-    {
-      ROS_ERROR("ERROR: at trying to rotate Eddie right/left. Please try sending command again...");
-    }
+      ROS_INFO("SUCCESS: Moving REVERSE");
+  }
+  else
+  {
+    ROS_ERROR("ERROR: at trying to move Eddie forward/reverse. Please try sending command again.");
   }
 }
 
+void EddieController::moveAngular(int16_t angular)
+{
+  parallax_eddie_robot::Rotate degree;
+  degree.request.angle = angular;
+  degree.request.speed = rotation_speed_;
+  if (eddie_turn_.call(degree))
+  {
+    if (angular / abs(angular) > 0)
+      ROS_INFO("SUCCESS: rotating RIGHT");
+    else
+      ROS_INFO("SUCCESS: rotating LEFT");
+  }
+  else
+  {
+    ROS_ERROR("ERROR: at trying to rotate Eddie right/left. Please try sending command again...");
+  }
+}
+
+void EddieController::moveLinearAngular(float linear, int16_t angular)
+{
+  parallax_eddie_robot::DriveWithPower power;
+  int8_t left, right;
+  if(angular>0)
+  {
+    angular = angular % 360;
+    left = clipPower(left_power_, linear);
+    right = left - (int8_t)(left * (float)angular/180);
+  }
+  else
+  {
+    angular = angular % 360;
+    right = clipPower(right_power_, linear);
+    left = right - (int8_t)(right * (float)angular/-180);
+  }
+  power.request.left = left;
+  power.request.right = right;
+  if (eddie_drive_power_.call(power))
+  {
+    if (linear / abs(linear) > 0)
+      ROS_INFO("SUCCESS: Moving with angular. Linear: %f, angular: %d", linear, angular);
+    else
+      ROS_INFO("SUCCESS: Moving with angular. Linear: %f, angular: %d", linear, angular);
+  }
+  else
+  {
+    ROS_ERROR("ERROR: at trying to move Eddie with angular. Please try sending command again.");
+  }
+}
 /*
  * 
  */
