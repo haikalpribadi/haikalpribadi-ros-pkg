@@ -36,8 +36,8 @@
 #define	_CAMERA_TILT_H
 
 #include <ros/ros.h>
-#include <std_msgs/Int32.h>
 #include <std_msgs/Float64.h>
+#include <user_tracker/Coordinate.h>
 #include <user_tracker/GetCameraAngle.h>
 
 class CameraTilt {
@@ -53,7 +53,7 @@ private:
 
     double tilt_angle_;
 
-    void cameraTargetCallback(const std_msgs::Int32::ConstPtr& message);
+    void cameraTargetCallback(const user_tracker::Coordinate::ConstPtr& message);
     void currentAngleCallback(const std_msgs::Float64::ConstPtr& message);
     void setAngleCallback(const std_msgs::Float64::ConstPtr& message);
     bool getAngle(user_tracker::GetCameraAngle::Request &req,

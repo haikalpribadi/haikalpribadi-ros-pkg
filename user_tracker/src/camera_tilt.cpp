@@ -44,7 +44,7 @@ CameraTilt::CameraTilt()
   
 }
 
-void CameraTilt::cameraTargetCallback(const std_msgs::Int32::ConstPtr& message)
+void CameraTilt::cameraTargetCallback(const user_tracker::Coordinate::ConstPtr& message)
 {
   
 }
