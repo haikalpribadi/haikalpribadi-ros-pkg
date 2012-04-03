@@ -32,57 +32,52 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "eddie_adc.h"
+#include "camera_tilt.h"
 
-//=============================================================================//
-// This class is provided as a template for future features on the ADC sensors //
-// The callback function may be modified to adapt to custom configurations of  //
-// ADC sensors. Current (default) settings are for a set of IR distance        //
-// sensors and a battery sensor at the very end                                //
-//=============================================================================//
-
-EddieADC::EddieADC() :
-  ADC_VOLTAGE_DIVIDER(819),
-  BATTERY_VOLTAGE_MULTIPLIER(3.21)
+CameraTilt::CameraTilt()
 {
-  ir_pub_ = node_handle_.advertise<parallax_eddie_robot::Voltages > ("/eddie/ir_voltages", 1);
-  battery_pub_ = node_handle_.advertise<parallax_eddie_robot::BatteryLevel > ("/eddie/battery_level", 1);
-  adc_sub_ = node_handle_.subscribe("/eddie/adc_data", 1, &EddieADC::adcCallback, this);
+  target_angle_sub_ = node_handle_.subscribe("/camera_target", 1, &CameraTilt::cameraTargetCallback, this);
+  current_angle_sub_ = node_handle_.subscribe("/cur_tilt_angle", 1, &CameraTilt::currentAngleCallback, this);
+  set_angle_sub_ = node_handle_.subscribe("/set_camera_angle", 1, &CameraTilt::setAngleCallback, this);
+  set_angle_pub_ = node_handle_.advertise<std_msgs::Float64>("/tilt_angle", 1);
+  get_angle_srv_ = node_handle_.advertiseService("get_camera_angle", &CameraTilt::getAngle, this);
+  
 }
 
-void EddieADC::adcCallback(const parallax_eddie_robot::ADC::ConstPtr& message)
+void CameraTilt::cameraTargetCallback(const std_msgs::Int32::ConstPtr& message)
 {
-  parallax_eddie_robot::Voltages voltages;
-  parallax_eddie_robot::BatteryLevel level;
-  double v, l;
-  if (message->status.substr(0, 5) == "ERROR") // ERROR messages may be longer than 5 if in VERBOSE mode
-  {
-    ROS_INFO("ERROR: Unable to read ADC data for IR");
-    return;
-  }
-
-  uint i;
-  for (i = 0; i < message->value.size() - 1; i++)
-  {
-    v = message->value[i];
-    if (v > 10)
-    {
-      v = v / ADC_VOLTAGE_DIVIDER;
-      voltages.value.push_back(v);
-    }
-  }
-  l = message->value[i];
-  l = l / ADC_VOLTAGE_DIVIDER * BATTERY_VOLTAGE_MULTIPLIER;
-  level.value = l;
-  ir_pub_.publish(voltages);
-  battery_pub_.publish(level);
+  
 }
 
+void CameraTilt::currentAngleCallback(const std_msgs::Float64::ConstPtr& message)
+{
+  tilt_angle_ = message->data;
+}
+
+void CameraTilt::setAngleCallback(const std_msgs::Float64::ConstPtr& message)
+{
+  std_msgs::Float64 angle;
+  angle.data = message->data > 31.0 ? 31.0 : message->data;
+  angle.data = angle.data < -31.0 ? -31.0 : angle.data;
+  set_angle_pub_.publish(angle);
+}
+
+bool CameraTilt::getAngle(user_tracker::GetCameraAngle::Request& req,
+  user_tracker::GetCameraAngle::Response& res)
+{
+  res.angle = tilt_angle_;
+  return true;
+}
+
+/*
+ * 
+ */
 int main(int argc, char** argv)
 {
-  ros::init(argc, argv, "parallax_adc");
-  EddieADC adc;
+  ros::init(argc, argv, "camera_tilt");
+  CameraTilt tilt;
   ros::spin();
-
-  return 0;
+  
+  return (EXIT_SUCCESS);
 }
+

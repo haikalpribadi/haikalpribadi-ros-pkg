@@ -32,3 +32,4 @@ rosbuild_gensrv()
 include_directories (include)
 
 rosbuild_add_executable(joint_position src/joint_position.cpp)
+rosbuild_add_executable(camera_tilt src/camera_tilt.cpp)
