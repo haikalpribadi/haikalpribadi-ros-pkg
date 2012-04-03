@@ -1,6 +1,0 @@
-bin/
-build/
-cmake_install.cmake
-lib/
-msg_gen/
-srv_gen/
