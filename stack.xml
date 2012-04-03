@@ -4,6 +4,8 @@
   <license>BSD</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/haikalpribadi-ros-pkg</url>
+  <depend stack="kinect" /> <!-- kinect_aux -->
+  <depend stack="openni_kinect" /> <!-- openni_tracker -->
   <depend stack="rharmony" /> <!-- pocketsphinx -->
   <depend stack="ros" />
   <depend stack="ros_comm" /> <!-- std_msgs, roscpp -->

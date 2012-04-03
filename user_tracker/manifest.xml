@@ -1,0 +1,18 @@
+<package>
+  <description brief="user_tracker">
+
+     user_tracker
+
+  </description>
+  <author>Haikal Pribadi</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/user_tracker</url>
+  <depend package="std_msgs"/>
+  <depend package="roscpp"/>
+  <depend package="openni_tracker"/>
+  <depend package="kinect_aux"/>
+
+</package>
+
+

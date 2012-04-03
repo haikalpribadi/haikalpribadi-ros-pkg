@@ -35,8 +35,8 @@
 #ifndef _TEXT_TO_SPEECH_TALKER_H
 #define	_TEXT_TO_SPEECH_TALKER_H
 
-#include "ros/ros.h"
-#include "std_msgs/String.h"
+#include <ros/ros.h>
+#include <std_msgs/String.h>
 #include <festival/festival.h>
 
 /*

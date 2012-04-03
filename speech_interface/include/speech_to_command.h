@@ -37,9 +37,9 @@
 #ifndef _SPEECH_TO_COMMAND_H
 #define	_SPEECH_TO_COMMAND_H
 
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include "command_tree.h"
+#include <ros/ros.h>
+#include <std_msgs/String.h>
+#include <command_tree.h>
 #include <vector>
 #include <sstream>
 #include <fstream>

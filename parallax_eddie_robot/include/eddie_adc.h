@@ -35,10 +35,10 @@
 #ifndef _EDDIE_ADC_H
 #define	_EDDIE_ADC_H
 
-#include "ros/ros.h"
-#include "parallax_eddie_robot/ADC.h"
-#include "parallax_eddie_robot/BatteryLevel.h"
-#include "parallax_eddie_robot/Voltages.h"
+#include <ros/ros.h>
+#include <parallax_eddie_robot/ADC.h>
+#include <parallax_eddie_robot/BatteryLevel.h>
+#include <parallax_eddie_robot/Voltages.h>
 
 //=============================================================================//
 // This class is provided as a template for future features on the ADC sensors //

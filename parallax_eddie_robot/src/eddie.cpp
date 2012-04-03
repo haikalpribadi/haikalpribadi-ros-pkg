@@ -32,9 +32,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ros/ros.h"
 #include "eddie.h"
-#include <sstream>
 typedef std::map<std::string, unsigned char[6] > CommandMap;
 
 Eddie::Eddie() :

@@ -35,13 +35,13 @@
 #ifndef _EDDIE_CONTROLLER_H
 #define	_EDDIE_CONTROLLER_H
 
-#include "ros/ros.h"
-#include "parallax_eddie_robot/Velocity.h"
-#include "parallax_eddie_robot/DriveWithDistance.h"
-#include "parallax_eddie_robot/DriveWithPower.h"
-#include "parallax_eddie_robot/DriveWithSpeed.h"
-#include "parallax_eddie_robot/Rotate.h"
-#include "parallax_eddie_robot/StopAtDistance.h"
+#include <ros/ros.h>
+#include <parallax_eddie_robot/Velocity.h>
+#include <parallax_eddie_robot/DriveWithDistance.h>
+#include <parallax_eddie_robot/DriveWithPower.h>
+#include <parallax_eddie_robot/DriveWithSpeed.h>
+#include <parallax_eddie_robot/Rotate.h>
+#include <parallax_eddie_robot/StopAtDistance.h>
 
 class EddieController
 {

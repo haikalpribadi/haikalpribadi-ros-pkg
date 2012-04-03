@@ -37,24 +37,26 @@
 //#include <stdlib.h>
 //#include <stdio.h>
 //#include <unistd.h>
+#include <ros/ros.h>
 #include <fcntl.h>
 #include <termios.h>
 #include <semaphore.h>
 #include <string>
+#include <sstream>
 #include <map>
-#include "parallax_eddie_robot/Ping.h"
-#include "parallax_eddie_robot/ADC.h"
-#include "parallax_eddie_robot/Accelerate.h"
-#include "parallax_eddie_robot/DriveWithDistance.h"
-#include "parallax_eddie_robot/DriveWithPower.h"
-#include "parallax_eddie_robot/DriveWithSpeed.h"
-#include "parallax_eddie_robot/GetDistance.h"
-#include "parallax_eddie_robot/GetHeading.h"
-#include "parallax_eddie_robot/GetSpeed.h"
-#include "parallax_eddie_robot/ResetEncoder.h"
-#include "parallax_eddie_robot/Rotate.h"
-#include "parallax_eddie_robot/StopAtDistance.h"
-#include "parallax_eddie_robot/DriveWithDistance.h"
+#include <parallax_eddie_robot/Ping.h>
+#include <parallax_eddie_robot/ADC.h>
+#include <parallax_eddie_robot/Accelerate.h>
+#include <parallax_eddie_robot/DriveWithDistance.h>
+#include <parallax_eddie_robot/DriveWithPower.h>
+#include <parallax_eddie_robot/DriveWithSpeed.h>
+#include <parallax_eddie_robot/GetDistance.h>
+#include <parallax_eddie_robot/GetHeading.h>
+#include <parallax_eddie_robot/GetSpeed.h>
+#include <parallax_eddie_robot/ResetEncoder.h>
+#include <parallax_eddie_robot/Rotate.h>
+#include <parallax_eddie_robot/StopAtDistance.h>
+#include <parallax_eddie_robot/DriveWithDistance.h>
 
 class Eddie {
 public:

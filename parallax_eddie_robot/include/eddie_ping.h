@@ -35,9 +35,9 @@
 #ifndef _EDDIE_PING_H
 #define	_EDDIE_PING_H
 
-#include "ros/ros.h"
-#include "parallax_eddie_robot/Ping.h"
-#include "parallax_eddie_robot/Distances.h"
+#include <ros/ros.h>
+#include <parallax_eddie_robot/Ping.h>
+#include <parallax_eddie_robot/Distances.h>
 
 //==============================================================================//
 // This class is provided as a template for future features on the Ping sensors //

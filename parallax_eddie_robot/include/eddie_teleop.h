@@ -35,13 +35,13 @@
 #ifndef _EDDIE_TELEOP_H
 #define	_EDDIE_TELEOP_H
 
-#include "ros/ros.h"
+#include <ros/ros.h>
 #include <signal.h>
 #include <termios.h>
 #include <stdio.h>
 #include <fcntl.h>
-#include "parallax_eddie_robot/Velocity.h"
-#include "parallax_eddie_robot/KeyStroke.h"
+#include <parallax_eddie_robot/Velocity.h>
+#include <parallax_eddie_robot/KeyStroke.h>
 
 #define KEYCODE_U 0x41
 #define KEYCODE_D 0x42
