@@ -1,4 +1,4 @@
-string joint
+string joint_frame
 ---
 int32 x
 int32 y

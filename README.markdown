@@ -1,7 +1,7 @@
 
 #parallax_eddie_robot
 ##Parallax Eddie Robot ROS Driver (BETA)
-###This is a generic driver for Parallax Eddie Robot ( http://www.parallax.com/eddie ). At the current moment, the development of this package is still on going constantly. This package is considered a beta release. (development in progress)
+###This is a generic driver for Parallax Eddie Robot ( http://www.parallax.com/eddie ). The package publishes sensor data on several topics, as well as providing services to call functions to the serial board. The package also includes a controller to navigate the robot with linear/angular velocity. At the moment, this package is considered a beta release. Development is still in progress. (development in progress)
 
 #speech_interface
 ##Natural Speech Interface (BETA)

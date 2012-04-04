@@ -34,7 +34,7 @@
 
 #include "camera_tilt.h"
 
-CameraTilt::CameraTilt()
+CameraTilt::CameraTilt(): tilt_angle_(0.0)
 {
   target_angle_sub_ = node_handle_.subscribe("/camera_target", 1, &CameraTilt::cameraTargetCallback, this);
   current_angle_sub_ = node_handle_.subscribe("/cur_tilt_angle", 1, &CameraTilt::currentAngleCallback, this);
@@ -46,7 +46,22 @@ CameraTilt::CameraTilt()
 
 void CameraTilt::cameraTargetCallback(const user_tracker::Coordinate::ConstPtr& message)
 {
-  
+  int x, y, z;
+  x = message->x;
+  y = message->y;
+  z = message->z;
+
+  double diff_angle;
+  diff_angle = atan2(y, z) * 180 / PI;
+  diff_angle = diff_angle>180 ? diff_angle-360 : diff_angle;
+
+  if((tilt_angle_>=30 && diff_angle>0) || (tilt_angle_<=-30 && diff_angle<0))
+    return;
+  std_msgs::Float64 angle;
+  angle.data = tilt_angle_ + diff_angle;
+  angle.data = angle.data > 31.0 ? 31.0 : angle.data;
+  angle.data = angle.data < -31.0 ? -31.0 : angle.data;
+  set_angle_pub_.publish(angle);
 }
 
 void CameraTilt::currentAngleCallback(const std_msgs::Float64::ConstPtr& message)

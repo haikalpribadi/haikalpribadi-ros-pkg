@@ -1,4 +1,4 @@
 festival:
-  ubuntu: festival
+  ubuntu: festival festvox-kallpc16k
 festival-dev:
   ubuntu: festival-dev

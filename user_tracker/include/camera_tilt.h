@@ -40,6 +40,8 @@
 #include <user_tracker/Coordinate.h>
 #include <user_tracker/GetCameraAngle.h>
 
+#define PI 3.14159265
+
 class CameraTilt {
 public:
     CameraTilt();

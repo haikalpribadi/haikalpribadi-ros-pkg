@@ -4,13 +4,13 @@ import struct
 
 
 class GetJointCoordinateRequest(roslib.message.Message):
-  _md5sum = "23b081b5cb543c8335b9afac2f3e238c"
+  _md5sum = "fe72072d29404ccf1ad3f198d9b06e7f"
   _type = "user_tracker/GetJointCoordinateRequest"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """string joint
+  _full_text = """string joint_frame
 
 """
-  __slots__ = ['joint']
+  __slots__ = ['joint_frame']
   _slot_types = ['string']
 
   def __init__(self, *args, **kwds):
@@ -21,7 +21,7 @@ class GetJointCoordinateRequest(roslib.message.Message):
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       joint
+       joint_frame
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -30,10 +30,10 @@ class GetJointCoordinateRequest(roslib.message.Message):
     if args or kwds:
       super(GetJointCoordinateRequest, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
-      if self.joint is None:
-        self.joint = ''
+      if self.joint_frame is None:
+        self.joint_frame = ''
     else:
-      self.joint = ''
+      self.joint_frame = ''
 
   def _get_types(self):
     """
@@ -48,7 +48,7 @@ class GetJointCoordinateRequest(roslib.message.Message):
     @type  buff: StringIO
     """
     try:
-      _x = self.joint
+      _x = self.joint_frame
       length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
     except struct.error as se: self._check_types(se)
@@ -67,7 +67,7 @@ class GetJointCoordinateRequest(roslib.message.Message):
       (length,) = _struct_I.unpack(str[start:end])
       start = end
       end += length
-      self.joint = str[start:end]
+      self.joint_frame = str[start:end]
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -82,7 +82,7 @@ class GetJointCoordinateRequest(roslib.message.Message):
     @type  numpy module
     """
     try:
-      _x = self.joint
+      _x = self.joint_frame
       length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
     except struct.error as se: self._check_types(se)
@@ -103,7 +103,7 @@ class GetJointCoordinateRequest(roslib.message.Message):
       (length,) = _struct_I.unpack(str[start:end])
       start = end
       end += length
-      self.joint = str[start:end]
+      self.joint_frame = str[start:end]
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -226,6 +226,6 @@ _struct_I = roslib.message.struct_I
 _struct_3i = struct.Struct("<3i")
 class GetJointCoordinate(roslib.message.ServiceDefinition):
   _type          = 'user_tracker/GetJointCoordinate'
-  _md5sum = '05a9b7fb8bad578bbc8cb1357787a957'
+  _md5sum = '01ce584302c057f9d4c959335c29d53f'
   _request_class  = GetJointCoordinateRequest
   _response_class = GetJointCoordinateResponse

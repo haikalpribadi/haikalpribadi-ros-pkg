@@ -62,7 +62,7 @@ bool JointPosition::getJointCoordinate(user_tracker::GetJointCoordinate::Request
   tf::StampedTransform joint_transform;
   try
   {
-    tf_kinect_listener_.lookupTransform("/openni_depth_frame", "/"+req.joint,
+    tf_kinect_listener_.lookupTransform("/openni_depth_frame", req.joint_frame,
       ros::Time(0), joint_transform);
   }
   catch(tf::TransformException ex)
