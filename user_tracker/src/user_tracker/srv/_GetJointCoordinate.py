@@ -115,17 +115,17 @@ import struct
 
 
 class GetJointCoordinateResponse(roslib.message.Message):
-  _md5sum = "3cb41a2c4416de195dbb95b7777a06fb"
+  _md5sum = "4a842b65f413084dc2b10fb484ea7f17"
   _type = "user_tracker/GetJointCoordinateResponse"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """int32 x
-int32 y
-int32 z
+  _full_text = """float64 x
+float64 y
+float64 z
 
 
 """
   __slots__ = ['x','y','z']
-  _slot_types = ['int32','int32','int32']
+  _slot_types = ['float64','float64','float64']
 
   def __init__(self, *args, **kwds):
     """
@@ -145,15 +145,15 @@ int32 z
       super(GetJointCoordinateResponse, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
       if self.x is None:
-        self.x = 0
+        self.x = 0.
       if self.y is None:
-        self.y = 0
+        self.y = 0.
       if self.z is None:
-        self.z = 0
+        self.z = 0.
     else:
-      self.x = 0
-      self.y = 0
-      self.z = 0
+      self.x = 0.
+      self.y = 0.
+      self.z = 0.
 
   def _get_types(self):
     """
@@ -169,7 +169,7 @@ int32 z
     """
     try:
       _x = self
-      buff.write(_struct_3i.pack(_x.x, _x.y, _x.z))
+      buff.write(_struct_3d.pack(_x.x, _x.y, _x.z))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -183,8 +183,8 @@ int32 z
       end = 0
       _x = self
       start = end
-      end += 12
-      (_x.x, _x.y, _x.z,) = _struct_3i.unpack(str[start:end])
+      end += 24
+      (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -200,7 +200,7 @@ int32 z
     """
     try:
       _x = self
-      buff.write(_struct_3i.pack(_x.x, _x.y, _x.z))
+      buff.write(_struct_3d.pack(_x.x, _x.y, _x.z))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -216,16 +216,16 @@ int32 z
       end = 0
       _x = self
       start = end
-      end += 12
-      (_x.x, _x.y, _x.z,) = _struct_3i.unpack(str[start:end])
+      end += 24
+      (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = roslib.message.struct_I
-_struct_3i = struct.Struct("<3i")
+_struct_3d = struct.Struct("<3d")
 class GetJointCoordinate(roslib.message.ServiceDefinition):
   _type          = 'user_tracker/GetJointCoordinate'
-  _md5sum = '01ce584302c057f9d4c959335c29d53f'
+  _md5sum = '15b3fbf01a36b9267e016912c56684f4'
   _request_class  = GetJointCoordinateRequest
   _response_class = GetJointCoordinateResponse

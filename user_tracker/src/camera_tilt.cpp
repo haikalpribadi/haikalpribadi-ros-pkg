@@ -38,7 +38,7 @@ CameraTilt::CameraTilt(): tilt_angle_(0.0)
 {
   target_angle_sub_ = node_handle_.subscribe("/camera_target", 1, &CameraTilt::cameraTargetCallback, this);
   current_angle_sub_ = node_handle_.subscribe("/cur_tilt_angle", 1, &CameraTilt::currentAngleCallback, this);
-  set_angle_sub_ = node_handle_.subscribe("/set_camera_angle", 1, &CameraTilt::setAngleCallback, this);
+  set_angle_sub_ = node_handle_.subscribe("/camera_angle", 1, &CameraTilt::setAngleCallback, this);
   set_angle_pub_ = node_handle_.advertise<std_msgs::Float64>("/tilt_angle", 1);
   get_angle_srv_ = node_handle_.advertiseService("get_camera_angle", &CameraTilt::getAngle, this);
   
@@ -52,7 +52,7 @@ void CameraTilt::cameraTargetCallback(const user_tracker::Coordinate::ConstPtr& 
   z = message->z;
 
   double diff_angle;
-  diff_angle = atan2(y, z) * 180 / PI;
+  diff_angle = atan2(z, x) * 180 / PI;
   diff_angle = diff_angle>180 ? diff_angle-360 : diff_angle;
 
   if((tilt_angle_>=30 && diff_angle>0) || (tilt_angle_<=-30 && diff_angle<0))

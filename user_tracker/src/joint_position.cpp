@@ -34,7 +34,6 @@
 
 #include "joint_position.h"
 
-
 JointPosition::JointPosition()
 {
   get_joint_coordinate_srv_ = node_handle_.advertiseService("get_joint_coordinate",
@@ -44,39 +43,28 @@ JointPosition::JointPosition()
 bool JointPosition::getJointCoordinate(user_tracker::GetJointCoordinate::Request& req,
   user_tracker::GetJointCoordinate::Response& res)
 {
-  /*if(req.joint!="head" && req.joint!="neck" && req.joint!="torso"
-     req.joint!="left_shoulder" && req.joint!="left_elbow" && req.joint!="left_hand"
-     req.joint!="right_shoulder" && req.joint!="right_elbow" && req.joint!="right_hand"
-     req.joint!="left_hip" && req.joint!="left_knee" && req.joint!="left_foot"
-     req.joint!="right_hip" && req.joint!="right_knee" && req.joint!="right_foot");
-  {
-    std::string message;
-    message = "Invalid joint name was provided to get_joint_coordinate.";
-    message += "\nPossible joint names are: head, neck, torso, left_shoulder, left_elbow, ";
-    message += "left_hand, right_shoulder, right_elbow, right_hand, left_hip, left_knee, ";
-    message += "left_foot, right_hip, right_knee, right_foot";
-    ROS_ERROR("%s", message);
-    return false;
-  }*/
-
   tf::StampedTransform joint_transform;
   try
   {
-    tf_kinect_listener_.lookupTransform("/openni_depth_frame", req.joint_frame,
-      ros::Time(0), joint_transform);
+    ros::Time now = ros::Time::now();
+    tf_kinect_listener_.waitForTransform("/openni_depth_frame", req.joint_frame, now,
+      ros::Duration(1.0));
+    tf_kinect_listener_.lookupTransform("/openni_depth_frame", req.joint_frame, now,
+      joint_transform);
   }
-  catch(tf::TransformException ex)
+  catch (tf::TransformException ex)
   {
     ROS_ERROR("%s", ex.what());
     return false;
   }
 
-  res.x = joint_transform.getOrigin().x();
-  res.y = joint_transform.getOrigin().y();
-  res.z = joint_transform.getOrigin().z();
+  res.x = joint_transform.getOrigin().x() * 100;
+  res.y = joint_transform.getOrigin().y() * 100;
+  res.z = joint_transform.getOrigin().z() * 100;
 
   return true;
 }
+
 /*
  * 
  */
