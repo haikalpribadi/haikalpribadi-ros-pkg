@@ -36,6 +36,7 @@
 #define	_CAMERA_TILT_H
 
 #include <ros/ros.h>
+#include <semaphore.h>
 #include <std_msgs/Float64.h>
 #include <user_tracker/Coordinate.h>
 #include <user_tracker/GetCameraAngle.h>
@@ -46,6 +47,7 @@ class CameraTilt {
 public:
     CameraTilt();
 private:
+    sem_t mutex;
     ros::NodeHandle node_handle_;
     ros::Subscriber target_angle_sub_;
     ros::Subscriber current_angle_sub_;

@@ -41,7 +41,7 @@ CameraTilt::CameraTilt(): tilt_angle_(0.0)
   set_angle_sub_ = node_handle_.subscribe("/camera_angle", 1, &CameraTilt::setAngleCallback, this);
   set_angle_pub_ = node_handle_.advertise<std_msgs::Float64>("/tilt_angle", 1);
   get_angle_srv_ = node_handle_.advertiseService("get_camera_angle", &CameraTilt::getAngle, this);
-  
+  sem_init(&mutex, 0, 1);
 }
 
 void CameraTilt::cameraTargetCallback(const user_tracker::Coordinate::ConstPtr& message)
@@ -58,15 +58,17 @@ void CameraTilt::cameraTargetCallback(const user_tracker::Coordinate::ConstPtr& 
   if((tilt_angle_>=30 && diff_angle>0) || (tilt_angle_<=-30 && diff_angle<0))
     return;
   std_msgs::Float64 angle;
+  sem_wait(&mutex);
   angle.data = tilt_angle_ + diff_angle;
-  angle.data = angle.data > 31.0 ? 31.0 : angle.data;
-  angle.data = angle.data < -31.0 ? -31.0 : angle.data;
+  sem_post(&mutex);
   set_angle_pub_.publish(angle);
 }
 
 void CameraTilt::currentAngleCallback(const std_msgs::Float64::ConstPtr& message)
 {
+  sem_wait(&mutex);
   tilt_angle_ = message->data;
+  sem_post(&mutex);
 }
 
 void CameraTilt::setAngleCallback(const std_msgs::Float64::ConstPtr& message)
