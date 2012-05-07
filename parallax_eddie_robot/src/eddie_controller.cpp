@@ -81,7 +81,7 @@ void EddieController::velocityCallback(const parallax_eddie_robot::Velocity::Con
 void EddieController::stop()
 {
   parallax_eddie_robot::StopAtDistance dist;
-  dist.request.distance = 10;
+  dist.request.distance = 36;
   for (int i = 0; !eddie_stop_.call(dist) && i < 5; i++)
   {
     ROS_ERROR("ERROR: at trying to stop Eddie. Trying to auto send command again...");
@@ -139,8 +139,8 @@ void EddieController::moveLinear(float linear)
   parallax_eddie_robot::DriveWithSpeed speed;
   int16_t left, right;
 
-  left = clipSpeed(left_power_, linear);
-  right = clipSpeed(right_power_, linear);
+  left = clipSpeed(left_speed_, linear);
+  right = clipSpeed(right_speed_, linear);
 
   speed.request.left = left;
   speed.request.right = right;
@@ -182,15 +182,16 @@ void EddieController::moveLinearAngular(float linear, int16_t angular)
   if (angular > 0)
   {
     angular = angular % 360;
-    left = clipSpeed(left_power_, linear);
+    left = clipSpeed(left_speed_, linear);
     right = left - (int8_t) (left * (float) angular / 180);
   }
   else
   {
     angular = angular % 360;
-    right = clipSpeed(right_power_, linear);
+    right = clipSpeed(right_speed_, linear);
     left = right - (int8_t) (right * (float) angular / -180);
   }
+  ROS_INFO("Driving with wheel speed left: %d, right: %d", left, right);
   speed.request.left = left;
   speed.request.right = right;
   if (eddie_drive_power_.call(speed))
