@@ -82,7 +82,7 @@ Eddie::Eddie() :
   ping_pub_ = node_handle_.advertise<parallax_eddie_robot::Ping > ("/eddie/ping_data", 1);
   adc_pub_ = node_handle_.advertise<parallax_eddie_robot::ADC > ("/eddie/adc_data", 1);
 
-  accelerate_srv_ = node_handle_.advertiseService("accelerate", &Eddie::accelerate, this);
+  accelerate_srv_ = node_handle_.advertiseService("acceleration_rate", &Eddie::accelerate, this);
   drive_with_distance_srv_ = node_handle_.advertiseService("drive_with_distance", &Eddie::driveWithDistance, this);
   drive_with_power_srv_ = node_handle_.advertiseService("drive_with_power", &Eddie::driveWithPower, this);
   drive_with_speed_srv_ = node_handle_.advertiseService("drive_with_speed", &Eddie::driveWithSpeed, this);

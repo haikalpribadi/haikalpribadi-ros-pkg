@@ -35,16 +35,24 @@
 #include "eddie_controller.h"
 
 EddieController::EddieController() :
-  left_power_(60), right_power_(62), rotation_speed_(36)
+  left_power_(60), right_power_(62), rotation_speed_(36),
+  left_speed_(36), right_speed_(36), acceleration_rate_(9)
 {
   velocity_sub_ = node_handle_.subscribe("/eddie/command_velocity", 1, &EddieController::velocityCallback, this);
   eddie_drive_power_ = node_handle_.serviceClient<parallax_eddie_robot::DriveWithPower > ("drive_with_power");
+  eddie_drive_speed_ = node_handle_.serviceClient<parallax_eddie_robot::DriveWithSpeed > ("drive_with_speed");
+  eddie_acceleration_rate_ = node_handle_.serviceClient<parallax_eddie_robot::Accelerate > ("acceleration_rate");
   eddie_turn_ = node_handle_.serviceClient<parallax_eddie_robot::Rotate > ("rotate");
   eddie_stop_ = node_handle_.serviceClient<parallax_eddie_robot::StopAtDistance > ("stop_at_distance");
 
   node_handle_.param("left_motor_power", left_power_, left_power_);
   node_handle_.param("right_motor_power", right_power_, right_power_);
   node_handle_.param("rotation_speed", rotation_speed_, rotation_speed_);
+  node_handle_.param("left_motor_speed", left_speed_, left_speed_);
+  node_handle_.param("right_motor_speed", right_speed_, right_speed_);
+  node_handle_.param("acceleration_rate", acceleration_rate_, acceleration_rate_);
+
+  setAccelerationRate(acceleration_rate_);
 }
 
 void EddieController::velocityCallback(const parallax_eddie_robot::Velocity::ConstPtr& message)
@@ -69,22 +77,25 @@ void EddieController::velocityCallback(const parallax_eddie_robot::Velocity::Con
     moveLinearAngular(linear, angular);
   }
 }
+
 void EddieController::stop()
 {
   parallax_eddie_robot::StopAtDistance dist;
-  dist.request.distance = 3;
+  dist.request.distance = 10;
   for (int i = 0; !eddie_stop_.call(dist) && i < 5; i++)
   {
     ROS_ERROR("ERROR: at trying to stop Eddie. Trying to auto send command again...");
   }
 }
+
 int8_t EddieController::clipPower(int power_unit, float linear)
 {
   int8_t power;
-  if(power_unit*abs(linear)>127){
+  if (power_unit * abs(linear) > 127)
+  {
     if (linear > 0)
       power = 127;
-     else
+    else
       power = -127;
   }
   else
@@ -93,17 +104,47 @@ int8_t EddieController::clipPower(int power_unit, float linear)
   return power;
 }
 
+int16_t EddieController::clipSpeed(int speed_unit, float linear)
+{
+  int16_t speed;
+  if (speed_unit * abs(linear) > 32767)
+  {
+    if (linear > 0)
+      speed = 32767;
+    else
+      speed = -32767;
+  }
+  else
+    speed = speed_unit * linear;
+
+  return speed;
+}
+
+void EddieController::setAccelerationRate(int rate)
+{
+  parallax_eddie_robot::Accelerate acc;
+  acc.request.rate = acceleration_rate_;
+  if (eddie_acceleration_rate_.call(acc))
+  {
+    ROS_INFO("SUCCESS: Set acceleration rate to %d", rate);
+  }
+  else
+  {
+    ROS_ERROR("ERROR: Failed to set acceleration rate to %d", rate);
+  }
+}
+
 void EddieController::moveLinear(float linear)
 {
-  parallax_eddie_robot::DriveWithPower power;
-  int8_t left, right;
+  parallax_eddie_robot::DriveWithSpeed speed;
+  int16_t left, right;
 
-  left = clipPower(left_power_, linear);
-  right = clipPower(right_power_, linear);
+  left = clipSpeed(left_power_, linear);
+  right = clipSpeed(right_power_, linear);
 
-  power.request.left = left;
-  power.request.right = right;
-  if (eddie_drive_power_.call(power))
+  speed.request.left = left;
+  speed.request.right = right;
+  if (eddie_drive_speed_.call(speed))
   {
     if (linear / abs(linear) > 0)
       ROS_INFO("SUCCESS: Moving FORWARD");
@@ -136,23 +177,23 @@ void EddieController::moveAngular(int16_t angular)
 
 void EddieController::moveLinearAngular(float linear, int16_t angular)
 {
-  parallax_eddie_robot::DriveWithPower power;
-  int8_t left, right;
-  if(angular>0)
+  parallax_eddie_robot::DriveWithSpeed speed;
+  int16_t left, right;
+  if (angular > 0)
   {
     angular = angular % 360;
-    left = clipPower(left_power_, linear);
-    right = left - (int8_t)(left * (float)angular/180);
+    left = clipSpeed(left_power_, linear);
+    right = left - (int8_t) (left * (float) angular / 180);
   }
   else
   {
     angular = angular % 360;
-    right = clipPower(right_power_, linear);
-    left = right - (int8_t)(right * (float)angular/-180);
+    right = clipSpeed(right_power_, linear);
+    left = right - (int8_t) (right * (float) angular / -180);
   }
-  power.request.left = left;
-  power.request.right = right;
-  if (eddie_drive_power_.call(power))
+  speed.request.left = left;
+  speed.request.right = right;
+  if (eddie_drive_power_.call(speed))
   {
     if (linear / abs(linear) > 0)
       ROS_INFO("SUCCESS: Moving with angular. Linear: %f, angular: %d", linear, angular);
@@ -164,6 +205,7 @@ void EddieController::moveLinearAngular(float linear, int16_t angular)
     ROS_ERROR("ERROR: at trying to move Eddie with angular. Please try sending command again.");
   }
 }
+
 /*
  * 
  */

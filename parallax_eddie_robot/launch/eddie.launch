@@ -6,6 +6,9 @@
 	<param name="scale_linear" value="3.0" />
 	<param name="left_motor_power" value="30" />
 	<param name="right_motor_power" value="31" />
+	<param name="left_motor_speed" value="36" />
+	<param name="right_motor_speed" value="36" />
+	<param name="acceleration_rate" value="9" />
 	<param name="rotation_speed" value="36" />
 	
 	<node pkg="parallax_eddie_robot" type="eddie" name="eddie" />
