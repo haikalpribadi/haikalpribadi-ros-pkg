@@ -47,7 +47,7 @@ class CameraTilt {
 public:
     CameraTilt();
 private:
-    sem_t mutex;
+    sem_t mutex_;
     ros::NodeHandle node_handle_;
     ros::Subscriber target_angle_sub_;
     ros::Subscriber current_angle_sub_;
