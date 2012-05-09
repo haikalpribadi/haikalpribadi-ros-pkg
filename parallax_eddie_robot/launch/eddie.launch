@@ -9,6 +9,7 @@
 	<param name="left_motor_speed" value="36" />
 	<param name="right_motor_speed" value="36" />
 	<param name="power_acceleration" value="20" />
+	<param name="min_power" value="32"/>
 	<param name="speed_acceleration" value="100" />
 	<param name="rotation_speed" value="36" />
 	
