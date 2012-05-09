@@ -35,7 +35,7 @@
 #include "eddie_controller.h"
 
 EddieController::EddieController() :
-  left_power_(60), right_power_(62), power_acceleration_(24),
+  left_power_(60), right_power_(62), power_acceleration_(24), min_power_(32),
   left_speed_(36), right_speed_(36), rotation_speed_(36), speed_acceleration_(36)
 {
   velocity_sub_ = node_handle_.subscribe("/eddie/command_velocity", 1, &EddieController::velocityCallback, this);
@@ -52,7 +52,8 @@ EddieController::EddieController() :
   node_handle_.param("right_motor_speed", right_speed_, right_speed_);
   node_handle_.param("rotation_speed", rotation_speed_, rotation_speed_);
   node_handle_.param("speed_acceleration", speed_acceleration_, speed_acceleration_);
-
+  node_handle_.param("min_power", min_power_, min_power_);
+  
   sem_init(&mutex_execute_, 0, 1);
   sem_init(&mutex_interrupt_, 0, 1);
   sem_init(&mutex_state_, 0, 1);
@@ -253,6 +254,7 @@ void EddieController::drive(int8_t left, int8_t right)
         power.request.right = current_power_;
         power.request.left = (int8_t)(current_power_ * ((double)left/right));
       }
+      ROS_INFO("Got here is the last point==============================================================================");
       if(eddie_drive_power_.call(power))
       {
         ROS_INFO("SUCCESS: Driving with power left: %d, right: %d", 
@@ -283,11 +285,11 @@ void EddieController::updatePower(int8_t left, int8_t right)
 {
   if(left>0 && right>0)
   {
-    if(current_power_>-16 && current_power_<16)
-      current_power_ = 16;
+    if(current_power_>-1*min_power_ && current_power_<min_power_)
+      current_power_ = min_power_;
 
-    if(current_power_<-16)
-      current_power_ += 8;
+    if(current_power_<-1*min_power_)
+      current_power_ += 10;
     else
       current_power_ += power_acceleration_ / 10;
 
@@ -296,13 +298,13 @@ void EddieController::updatePower(int8_t left, int8_t right)
   }
   else if(left<0 && right<0)
   {
-    if(current_power_>-16 && current_power_<16)
-      current_power_ = -16;
+    if(current_power_>-1*min_power_ && current_power_<min_power_)
+      current_power_ = -1*min_power_;
 
-    if(current_power_>16)
-      current_power_ -= 8;
+    if(current_power_>min_power_)
+      current_power_ -= 10;
     else
-      current_power_ -= power_acceleration_ / 5;
+      current_power_ -= power_acceleration_ / 10;
 
     if(current_power_<left || current_power_<right)
       current_power_ = left<right ? left : right;

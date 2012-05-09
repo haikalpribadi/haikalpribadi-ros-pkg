@@ -63,6 +63,7 @@ private:
     sem_t mutex_interrupt_;
     sem_t mutex_state_;
     int left_power_, right_power_, power_acceleration_;
+    int min_power_;
     int left_speed_, right_speed_, rotation_speed_, speed_acceleration_;
     int8_t left_, right_;
     int16_t current_speed_;
