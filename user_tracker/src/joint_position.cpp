@@ -48,7 +48,7 @@ bool JointPosition::getJointCoordinate(user_tracker::GetJointCoordinate::Request
   {
     ros::Time now = ros::Time::now();
     tf_kinect_listener_.waitForTransform("/openni_depth_frame", req.joint_frame, now,
-      ros::Duration(0.2));
+      ros::Duration(0.3));
     tf_kinect_listener_.lookupTransform("/openni_depth_frame", req.joint_frame, now,
       joint_transform);
   }

@@ -234,6 +234,7 @@ void EddieController::drive(int8_t left, int8_t right)
   parallax_eddie_robot::DriveWithPower power;
   ros::Time now;
   bool shift = true;
+  int8_t previous_power = 0;
   
   //ROS_INFO("GOT HERE 3 left: %d, right: %d, cancel: %d, shift: %d, power: %d", 
   //  left, right, cancel, shift, current_power_);
@@ -242,11 +243,12 @@ void EddieController::drive(int8_t left, int8_t right)
     now = ros::Time::now();
     if ((now.toSec() - accelerate_time_.toSec())>=0.1)
     {
+      previous_power = current_power_;
       updatePower(left, right);
       
       if (left > right)
       {
-        power.request.left += current_power_;
+        power.request.left = current_power_;
         power.request.right = (int8_t)(current_power_ * ((double)right/left));
       }
       else
@@ -254,7 +256,6 @@ void EddieController::drive(int8_t left, int8_t right)
         power.request.right = current_power_;
         power.request.left = (int8_t)(current_power_ * ((double)left/right));
       }
-      ROS_INFO("Got here is the last point==============================================================================");
       if(eddie_drive_power_.call(power))
       {
         ROS_INFO("SUCCESS: Driving with power left: %d, right: %d", 
@@ -262,7 +263,7 @@ void EddieController::drive(int8_t left, int8_t right)
         accelerate_time_ = ros::Time::now();
       }
       else{
-        current_power_ -= power_acceleration_;
+        current_power_ = previous_power;
       }
     }
     ros::spinOnce();
@@ -270,9 +271,7 @@ void EddieController::drive(int8_t left, int8_t right)
     sem_wait(&mutex_interrupt_);
     cancel = interrupt_;
     sem_post(&mutex_interrupt_);
-    if(left>0 && right>0 && (left>current_power_ || right>current_power_))
-      shift = true;
-    else if(left<0 && right<0 && (left<current_power_ || right<current_power_))
+    if(left!=current_power_ || right!=current_power_)
       shift = true;
     else
       shift = false;
@@ -288,26 +287,29 @@ void EddieController::updatePower(int8_t left, int8_t right)
     if(current_power_>-1*min_power_ && current_power_<min_power_)
       current_power_ = min_power_;
 
-    if(current_power_<-1*min_power_)
+    if(current_power_>power_acceleration_+left && current_power_>power_acceleration_+right)
+      current_power_ = left>right ? left-power_acceleration_ : right-power_acceleration_;
+    else if(current_power_>left || current_power_>right)
+      current_power_ = left>right ? left : right;
+    else if(current_power_<-1*min_power_)
       current_power_ += 10;
     else
       current_power_ += power_acceleration_ / 10;
-
-    if(current_power_>left || current_power_>right)
-      current_power_ = left>right ? left : right;
+    
   }
   else if(left<0 && right<0)
   {
     if(current_power_>-1*min_power_ && current_power_<min_power_)
       current_power_ = -1*min_power_;
 
-    if(current_power_>min_power_)
+    if(current_power_<left-power_acceleration_ && current_power_<right-power_acceleration_)
+      current_power_ = left>right ? left-power_acceleration_ : right-power_acceleration_;
+    else if(current_power_<left || current_power_<right)
+      current_power_ = left<right ? left : right;
+    else if(current_power_>min_power_)
       current_power_ -= 10;
     else
       current_power_ -= power_acceleration_ / 10;
-
-    if(current_power_<left || current_power_<right)
-      current_power_ = left<right ? left : right;
   }
 }
 
