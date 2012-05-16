@@ -46,7 +46,7 @@ void EddiePing::pingCallback(const parallax_eddie_robot::Ping::ConstPtr& message
   uint16_t d;
   if (message->status.substr(0, 5) == "ERROR") // ERROR messages may be longer than 5 if in VERBOSE mode
   {
-    ROS_INFO("ERROR: Unable to read Ping data from ping sensors");
+    ROS_ERROR("ERROR: Unable to read Ping data from ping sensors");
     return;
   }
   for (uint i = 0; i < message->value.size(); i++)

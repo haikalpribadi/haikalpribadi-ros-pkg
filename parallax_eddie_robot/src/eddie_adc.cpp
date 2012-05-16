@@ -57,7 +57,7 @@ void EddieADC::adcCallback(const parallax_eddie_robot::ADC::ConstPtr& message)
   double v, l;
   if (message->status.substr(0, 5) == "ERROR") // ERROR messages may be longer than 5 if in VERBOSE mode
   {
-    ROS_INFO("ERROR: Unable to read ADC data for IR");
+    ROS_ERROR("ERROR: Unable to read ADC data for IR");
     return;
   }
 

@@ -64,8 +64,8 @@ void EddieTeleop::keyLoop()
   fcntl(0, F_SETFL, flags);
 
   ROS_INFO("Reading from keyboard");
-  ROS_INFO("=====================");
-  ROS_INFO("Use arrow keys to navigate");
+  ROS_INFO("================================================");
+  ROS_INFO("Use arrow keys to navigate and space bar to stop");
 
   while (true)
   {
@@ -86,13 +86,13 @@ void EddieTeleop::keyLoop()
     {
       case KEYCODE_L:
         ROS_DEBUG("LEFT");
-        angular_ = -180;
+        angular_ = -10;
         //linear_ = 1.0; //to test movement with linear and angular
         move = true;
         break;
       case KEYCODE_R:
         ROS_DEBUG("RIGHT");
-        angular_ = 180;
+        angular_ = 10;
         //linear_ = 1.0; //to test movement with linear and angular
         move = true;
         break;

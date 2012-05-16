@@ -18,8 +18,8 @@
 	<node pkg="parallax_eddie_robot" type="eddie" name="eddie" />
 	<node pkg="parallax_eddie_robot" type="eddie_ping" name="eddie_ping" />
 	<node pkg="parallax_eddie_robot" type="eddie_adc" name="eddie_adc" />
-	<node pkg="parallax_eddie_robot" type="eddie_controller" name="eddie_controller" output="screen" />
-	<node pkg="parallax_eddie_robot" type="eddie_teleop" name="eddie_teleop" />
+	<node pkg="parallax_eddie_robot" type="eddie_controller" name="eddie_controller" />
+	<node pkg="parallax_eddie_robot" type="eddie_teleop" name="eddie_teleop" output="screen" />
 	
 </launch>
 <!--%EndTag(FULL)%-->

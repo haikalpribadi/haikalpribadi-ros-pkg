@@ -122,14 +122,8 @@ void EddieController::setAccelerationRate(int rate)
 {
   parallax_eddie_robot::Accelerate acc;
   acc.request.rate = acceleration_speed_;
-  if (eddie_acceleration_rate_.call(acc))
-  {
-    ROS_INFO("SUCCESS: Set acceleration rate to %d", rate);
-  }
-  else
-  {
+  if (!eddie_acceleration_rate_.call(acc))
     ROS_ERROR("ERROR: Failed to set acceleration rate to %d", rate);
-  }
 }
 
 void EddieController::moveLinear(float linear)
@@ -220,15 +214,9 @@ void EddieController::drive(int8_t left, int8_t right)
         power.request.left = (int8_t) (current_power_ * ((double) left / right));
       }
       if (eddie_drive_power_.call(power))
-      {
-        ROS_INFO("SUCCESS: Driving with power left: %d, right: %d",
-          power.request.left, power.request.right);
         last_cmd_time_ = ros::Time::now();
-      }
       else
-      {
         current_power_ = previous_power;
-      }
 
       if (left != current_power_ || right != current_power_)
         shift = true;
@@ -282,7 +270,6 @@ void EddieController::rotate(int16_t angular)
   left = angular > 0 ? rotation_power_ : -1 * rotation_power_;
   right = angular > 0 ? -1 * rotation_power_ : rotation_power_;
 
-  ROS_INFO("Rotating with angular: %d, from current angle at: %d", angular, temp_angle);
   while (ros::ok() && shift && !cancel)
   {
     now = ros::Time::now();
@@ -314,7 +301,6 @@ void EddieController::rotate(int16_t angular)
         for (int i = 0; !eddie_stop_.call(dist) && i < 5; i++)
           ROS_ERROR("ERROR: at trying to stop Eddie. Trying to auto send command again...");
         current_power_ = 0;
-        ROS_INFO("Reached heading at: %d", current_angle_);
       }
       else
       {
@@ -323,15 +309,9 @@ void EddieController::rotate(int16_t angular)
         power.request.left = angular > 0 ? current_power_ : -1 * current_power_;
         power.request.right = angular > 0 ? -1 * current_power_ : current_power_;
         if (eddie_drive_power_.call(power))
-        {
-          ROS_INFO("SUCCESS: Rotating with power left: %d, right: %d, heading: %d",
-            power.request.left, power.request.right, current_angle_);
           last_cmd_time_ = ros::Time::now();
-        }
         else
-        {
           current_power_ = previous_power;
-        }
       }
     }
     ros::spinOnce();
