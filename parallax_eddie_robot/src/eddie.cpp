@@ -96,6 +96,8 @@ Eddie::Eddie() :
   std::string port = "/dev/ttyUSB0";
   node_handle_.param<std::string>("serial_port", port, port);
   initialize(port);
+  
+  command(RESET_ENCODER_TICKS_STRING);
 }
 
 Eddie::~Eddie()
@@ -425,7 +427,7 @@ int main(int argc, char** argv)
 {
   ROS_INFO("Parallax Board booting up");
   ros::init(argc, argv, "parallax_board");
-  Eddie eddie; //set port to connect to Paralax controller board
+  Eddie eddie; //set port to connect to Parallax controller board
   ros::Rate loop_rate(10);
 
   while (ros::ok())

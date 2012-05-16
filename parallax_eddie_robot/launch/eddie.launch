@@ -4,14 +4,16 @@
 	<param name="serial_port" value="/dev/ttyUSB0" />
 	<param name="scale_angular" value="2.0" />
 	<param name="scale_linear" value="3.0" />
-	<param name="left_motor_power" value="32" />
-	<param name="right_motor_power" value="32" />
-	<param name="left_motor_speed" value="36" />
-	<param name="right_motor_speed" value="36" />
-	<param name="power_acceleration" value="20" />
+	<param name="left_power" value="32" />
+	<param name="right_power" value="32" />
+	<param name="rotation_power" value="70" />
+	<param name="acceleration_power" value="30" />
+	<param name="deceleration_power" value="100" />
 	<param name="min_power" value="32"/>
-	<param name="speed_acceleration" value="100" />
+	<param name="left_speed" value="36" />
+	<param name="right_speed" value="36" />
 	<param name="rotation_speed" value="36" />
+	<param name="acceleration_speed" value="100" />
 	
 	<node pkg="parallax_eddie_robot" type="eddie" name="eddie" />
 	<node pkg="parallax_eddie_robot" type="eddie_ping" name="eddie_ping" />

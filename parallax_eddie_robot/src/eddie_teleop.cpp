@@ -86,13 +86,13 @@ void EddieTeleop::keyLoop()
     {
       case KEYCODE_L:
         ROS_DEBUG("LEFT");
-        angular_ = -45;
+        angular_ = -180;
         //linear_ = 1.0; //to test movement with linear and angular
         move = true;
         break;
       case KEYCODE_R:
         ROS_DEBUG("RIGHT");
-        angular_ = 45;
+        angular_ = 180;
         //linear_ = 1.0; //to test movement with linear and angular
         move = true;
         break;
@@ -116,8 +116,8 @@ void EddieTeleop::keyLoop()
     if (move)
     {
       parallax_eddie_robot::Velocity vel;
-      vel.angular = a_scale_ * angular_;
-      vel.linear = l_scale_ * linear_;
+      vel.angular = angular_ * a_scale_;
+      vel.linear = linear_ * l_scale_;
       velocity_pub_.publish(vel);
       move = false;
     }

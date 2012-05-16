@@ -35,8 +35,9 @@
 #include "eddie_controller.h"
 
 EddieController::EddieController() :
-  left_power_(60), right_power_(62), power_acceleration_(24), min_power_(32),
-  left_speed_(36), right_speed_(36), rotation_speed_(36), speed_acceleration_(36)
+  left_power_(60), right_power_(62), rotation_power_(40),
+  acceleration_power_(30), deceleration_power_(100), min_power_(32),
+  left_speed_(36), right_speed_(36), rotation_speed_(36), acceleration_speed_(36)
 {
   velocity_sub_ = node_handle_.subscribe("/eddie/command_velocity", 1, &EddieController::velocityCallback, this);
   eddie_drive_power_ = node_handle_.serviceClient<parallax_eddie_robot::DriveWithPower > ("drive_with_power");
@@ -44,33 +45,39 @@ EddieController::EddieController() :
   eddie_acceleration_rate_ = node_handle_.serviceClient<parallax_eddie_robot::Accelerate > ("acceleration_rate");
   eddie_turn_ = node_handle_.serviceClient<parallax_eddie_robot::Rotate > ("rotate");
   eddie_stop_ = node_handle_.serviceClient<parallax_eddie_robot::StopAtDistance > ("stop_at_distance");
+  eddie_heading_ = node_handle_.serviceClient<parallax_eddie_robot::GetHeading > ("get_heading");
+  eddie_reset_ = node_handle_.serviceClient<parallax_eddie_robot::ResetEncoder > ("reset_encoder");
 
-  node_handle_.param("left_motor_power", left_power_, left_power_);
-  node_handle_.param("right_motor_power", right_power_, right_power_);
-  node_handle_.param("power_acceleration", power_acceleration_, power_acceleration_);
-  node_handle_.param("left_motor_speed", left_speed_, left_speed_);
-  node_handle_.param("right_motor_speed", right_speed_, right_speed_);
-  node_handle_.param("rotation_speed", rotation_speed_, rotation_speed_);
-  node_handle_.param("speed_acceleration", speed_acceleration_, speed_acceleration_);
+  node_handle_.param("left_power", left_power_, left_power_);
+  node_handle_.param("right_power", right_power_, right_power_);
+  node_handle_.param("rotation_power", rotation_power_, rotation_power_);
+  node_handle_.param("acceleration_power", acceleration_power_, acceleration_power_);
+  node_handle_.param("deceleration_power", deceleration_power_, deceleration_power_);
   node_handle_.param("min_power", min_power_, min_power_);
-  
+  node_handle_.param("left_speed", left_speed_, left_speed_);
+  node_handle_.param("right_speed", right_speed_, right_speed_);
+  node_handle_.param("rotation_speed", rotation_speed_, rotation_speed_);
+  node_handle_.param("acceleration_speed", acceleration_speed_, acceleration_speed_);
+
+
   sem_init(&mutex_execute_, 0, 1);
   sem_init(&mutex_interrupt_, 0, 1);
   sem_init(&mutex_state_, 0, 1);
 
   sem_wait(&mutex_state_);
-  current_speed_ = 0;
   current_power_ = 16;
   left_ = 0;
   right_ = 0;
+  angular_ = 0;
+  rotate_ = false;
   process_ = false;
-  accelerate_time_ = ros::Time::now();
+  last_cmd_time_ = ros::Time::now();
   sem_post(&mutex_state_);
   sem_wait(&mutex_interrupt_);
   interrupt_ = false;
   sem_post(&mutex_interrupt_);
 
-  setAccelerationRate(speed_acceleration_);
+  setAccelerationRate(acceleration_speed_);
 }
 
 void EddieController::velocityCallback(const parallax_eddie_robot::Velocity::ConstPtr& message)
@@ -100,16 +107,286 @@ void EddieController::stop()
 {
   parallax_eddie_robot::StopAtDistance dist;
   dist.request.distance = 4;
-  
+
   sem_wait(&mutex_interrupt_);
   interrupt_ = true;
   sem_post(&mutex_interrupt_);
-  
+
   for (int i = 0; !eddie_stop_.call(dist) && i < 5; i++)
-  {
     ROS_ERROR("ERROR: at trying to stop Eddie. Trying to auto send command again...");
-  }
+
   current_power_ = 0;
+}
+
+void EddieController::setAccelerationRate(int rate)
+{
+  parallax_eddie_robot::Accelerate acc;
+  acc.request.rate = acceleration_speed_;
+  if (eddie_acceleration_rate_.call(acc))
+  {
+    ROS_INFO("SUCCESS: Set acceleration rate to %d", rate);
+  }
+  else
+  {
+    ROS_ERROR("ERROR: Failed to set acceleration rate to %d", rate);
+  }
+}
+
+void EddieController::moveLinear(float linear)
+{
+  int8_t left, right;
+  left = clipPower(left_power_, linear);
+  right = clipPower(right_power_, linear);
+
+  sem_wait(&mutex_interrupt_);
+  left_ = left;
+  right_ = right;
+  rotate_ = false;
+  process_ = true;
+  interrupt_ = true;
+  sem_post(&mutex_interrupt_);
+}
+
+void EddieController::moveAngular(int16_t angular)
+{
+  sem_wait(&mutex_interrupt_);
+  left_ = 0;
+  right_ = 0;
+  if (!rotate_)
+    current_power_ = 0;
+  angular_ = angular;
+  rotate_ = true;
+  process_ = true;
+  interrupt_ = true;
+  sem_post(&mutex_interrupt_);
+}
+
+void EddieController::moveLinearAngular(float linear, int16_t angular)
+{
+  int8_t left, right;
+  if (angular > 0)
+  {
+    angular = angular % 360;
+    left = clipPower(left_power_, linear);
+    right = left - (int8_t) (left * (float) angular / 180);
+  }
+  else
+  {
+    angular = angular % 360;
+    right = clipPower(right_power_, linear);
+    left = right - (int8_t) (right * (float) angular / -180);
+  }
+
+  sem_wait(&mutex_interrupt_);
+  left_ = left;
+  right_ = right;
+  rotate_ = false;
+  process_ = true;
+  interrupt_ = true;
+  sem_post(&mutex_interrupt_);
+}
+
+void EddieController::drive(int8_t left, int8_t right)
+{
+  sem_wait(&mutex_execute_);
+  sem_wait(&mutex_interrupt_);
+  interrupt_ = false;
+  bool cancel = interrupt_;
+  sem_post(&mutex_interrupt_);
+
+  parallax_eddie_robot::DriveWithPower power;
+  ros::Time now;
+  bool shift = true;
+  int8_t previous_power = 0;
+
+  //ROS_INFO("GOT HERE 3 left: %d, right: %d, cancel: %d, shift: %d, power: %d", 
+  //  left, right, cancel, shift, current_power_);
+  while (ros::ok() && shift && !cancel)
+  {
+    now = ros::Time::now();
+    if ((now.toSec() - last_cmd_time_.toSec()) >= 0.1)
+    {
+      previous_power = current_power_;
+      updatePower(left, right);
+
+      if (left > right)
+      {
+        power.request.left = current_power_;
+        power.request.right = (int8_t) (current_power_ * ((double) right / left));
+      }
+      else
+      {
+        power.request.right = current_power_;
+        power.request.left = (int8_t) (current_power_ * ((double) left / right));
+      }
+      if (eddie_drive_power_.call(power))
+      {
+        ROS_INFO("SUCCESS: Driving with power left: %d, right: %d",
+          power.request.left, power.request.right);
+        last_cmd_time_ = ros::Time::now();
+      }
+      else
+      {
+        current_power_ = previous_power;
+      }
+
+      if (left != current_power_ || right != current_power_)
+        shift = true;
+      else
+        shift = false;
+    }
+    ros::spinOnce();
+    usleep(1000);
+    sem_wait(&mutex_interrupt_);
+    cancel = interrupt_;
+    sem_post(&mutex_interrupt_);
+  }
+
+  sem_post(&mutex_execute_);
+}
+
+void EddieController::rotate(int16_t angular)
+{
+  sem_wait(&mutex_execute_);
+  sem_wait(&mutex_interrupt_);
+  interrupt_ = false;
+  angular_ = 0;
+  bool cancel = interrupt_;
+  sem_post(&mutex_interrupt_);
+
+  //angular = 0.75 * angular;
+  parallax_eddie_robot::DriveWithPower power;
+  parallax_eddie_robot::GetHeading heading;
+  ros::Time now;
+  bool shift = true, headed = false;
+  int16_t temp_angle = 0, target_angle;
+  int8_t left, right, previous_power;
+
+  parallax_eddie_robot::ResetEncoder reset;
+  eddie_reset_.call(reset);
+  for (int i = 0; !(headed = eddie_heading_.call(heading)) && i < 5; i++)
+    usleep(100);
+  if (!headed)
+  {
+    ROS_ERROR("Unable to get current Heading value. Encoder will now be reseted.");
+    sem_post(&mutex_execute_);
+    return;
+  }
+  else
+  {
+    temp_angle = heading.response.heading;
+    if (temp_angle > 3736) temp_angle -= 4096;
+  }
+  target_angle = temp_angle + angular;
+
+  left = angular > 0 ? rotation_power_ : -1 * rotation_power_;
+  right = angular > 0 ? -1 * rotation_power_ : rotation_power_;
+
+  ROS_INFO("Rotating with angular: %d, from current angle at: %d", angular, temp_angle);
+  while (ros::ok() && shift && !cancel)
+  {
+    now = ros::Time::now();
+    if ((now.toSec() - last_cmd_time_.toSec()) >= 0.1)
+    {
+      eddie_heading_.call(heading);
+      current_angle_ = heading.response.heading;
+      if (current_angle_ > 3736) 
+        current_angle_ -= 4096;
+      
+      if(angular>0 && current_angle_<temp_angle)
+        current_angle_ = temp_angle>0 ? current_angle_+360 : current_angle_;
+      else if(angular<0 && current_angle_>temp_angle)
+        current_angle_ = temp_angle<0 ? current_angle_-360 : current_angle_;
+      
+      temp_angle = current_angle_;
+      
+      if (angular > 0 && current_angle_ < target_angle)
+        shift = true;
+      else if (angular < 0 && current_angle_ > target_angle)
+        shift = true;
+      else
+        shift = false;
+
+      if (!shift)
+      {
+        parallax_eddie_robot::StopAtDistance dist;
+        dist.request.distance = 2;
+        for (int i = 0; !eddie_stop_.call(dist) && i < 5; i++)
+          ROS_ERROR("ERROR: at trying to stop Eddie. Trying to auto send command again...");
+        current_power_ = 0;
+        ROS_INFO("Reached heading at: %d", current_angle_);
+      }
+      else
+      {
+        previous_power = current_power_;
+        updatePower(left, right);
+        power.request.left = angular > 0 ? current_power_ : -1 * current_power_;
+        power.request.right = angular > 0 ? -1 * current_power_ : current_power_;
+        if (eddie_drive_power_.call(power))
+        {
+          ROS_INFO("SUCCESS: Rotating with power left: %d, right: %d, heading: %d",
+            power.request.left, power.request.right, current_angle_);
+          last_cmd_time_ = ros::Time::now();
+        }
+        else
+        {
+          current_power_ = previous_power;
+        }
+      }
+    }
+    ros::spinOnce();
+    usleep(1000);
+    sem_wait(&mutex_interrupt_);
+    cancel = interrupt_;
+    if(!rotate_)
+      current_power_ = 0;
+    sem_post(&mutex_interrupt_);
+  }
+  
+
+  sem_post(&mutex_execute_);
+}
+
+void EddieController::updatePower(int8_t left, int8_t right)
+{
+  if (left > 0 && right > 0)
+  {
+    if (current_power_>-1 * min_power_ && current_power_ < min_power_)
+      current_power_ = min_power_;
+    else if (current_power_ > acceleration_power_ + left && current_power_ > acceleration_power_ + right)
+      current_power_ = left > right ? left - acceleration_power_ : right - acceleration_power_;
+    else if (current_power_<-1 * min_power_)
+      current_power_ += deceleration_power_ / 10;
+    else
+      current_power_ += acceleration_power_ / 10;
+
+    if (current_power_ > left || current_power_ > right)
+      current_power_ = left > right ? left : right;
+  }
+  else if (left < 0 && right < 0)
+  {
+    if (current_power_>-1 * min_power_ && current_power_ < min_power_)
+      current_power_ = -1 * min_power_;
+    else if (current_power_ < left - acceleration_power_ && current_power_ < right - acceleration_power_)
+      current_power_ = left > right ? left - acceleration_power_ : right - acceleration_power_;
+    else if (current_power_ > min_power_)
+      current_power_ -= deceleration_power_ / 10;
+    else
+      current_power_ -= acceleration_power_ / 10;
+
+    if (current_power_ < left || current_power_ < right)
+      current_power_ = left < right ? left : right;
+  }
+  else
+  {
+    if (current_power_ < min_power_)
+      current_power_ = min_power_;
+    else if (current_power_ < left || current_power_ < right)
+      current_power_ += acceleration_power_ / 10;
+
+    if (current_power_ > left && current_power_ > right)
+      current_power_ = left > right ? left : right;
+  }
 }
 
 int8_t EddieController::clipPower(int power_unit, float linear)
@@ -144,193 +421,29 @@ int16_t EddieController::clipSpeed(int speed_unit, float linear)
   return speed;
 }
 
-void EddieController::setAccelerationRate(int rate)
-{
-  parallax_eddie_robot::Accelerate acc;
-  acc.request.rate = speed_acceleration_;
-  if (eddie_acceleration_rate_.call(acc))
-  {
-    ROS_INFO("SUCCESS: Set acceleration rate to %d", rate);
-  }
-  else
-  {
-    ROS_ERROR("ERROR: Failed to set acceleration rate to %d", rate);
-  }
-}
-
-void EddieController::moveLinear(float linear)
-{
-  parallax_eddie_robot::DriveWithPower power;
-  int8_t left, right;
-
-  left = clipPower(left_power_, linear);
-  right = clipPower(right_power_, linear);
-  
-  sem_wait(&mutex_interrupt_);
-  interrupt_ = true;
-  left_ = left;
-  right_ = right;
-  process_ = true;
-  sem_post(&mutex_interrupt_);
-  //drive(left, right);
-}
-
-void EddieController::moveAngular(int16_t angular)
-{
-  parallax_eddie_robot::Rotate degree;
-  degree.request.angle = angular;
-  degree.request.speed = rotation_speed_;
-  
-  sem_wait(&mutex_interrupt_);
-  interrupt_ = true;
-  sem_post(&mutex_interrupt_);
-  if (eddie_turn_.call(degree))
-  {
-    if (angular / abs(angular) > 0)
-      ROS_INFO("SUCCESS: Rotating RIGHT");
-    else
-      ROS_INFO("SUCCESS: Rotating LEFT");
-  }
-  else
-  {
-    ROS_ERROR("ERROR: at trying to rotate Eddie right/left. Please try sending command again...");
-  }
-}
-
-void EddieController::moveLinearAngular(float linear, int16_t angular)
-{
-  parallax_eddie_robot::DriveWithPower power;
-  int8_t left, right;
-  if (angular > 0)
-  {
-    angular = angular % 360;
-    left = clipPower(left_power_, linear);
-    right = left - (int8_t) (left * (float) angular / 180);
-  }
-  else
-  {
-    angular = angular % 360;
-    right = clipPower(right_power_, linear);
-    left = right - (int8_t) (right * (float) angular / -180);
-  }
-  
-  sem_wait(&mutex_interrupt_);
-  interrupt_ = true;
-  left_ = left;
-  right_ = right;
-  process_ = true;
-  sem_post(&mutex_interrupt_);
-  //drive(left, right);
-}
-
-void EddieController::drive(int8_t left, int8_t right)
-{
-  sem_wait(&mutex_execute_);
-  sem_wait(&mutex_interrupt_);
-  interrupt_ = false;
-  bool cancel = interrupt_;
-  sem_post(&mutex_interrupt_);
-  
-  parallax_eddie_robot::DriveWithPower power;
-  ros::Time now;
-  bool shift = true;
-  int8_t previous_power = 0;
-  
-  //ROS_INFO("GOT HERE 3 left: %d, right: %d, cancel: %d, shift: %d, power: %d", 
-  //  left, right, cancel, shift, current_power_);
-  while (ros::ok() && shift && !cancel)
-  {
-    now = ros::Time::now();
-    if ((now.toSec() - accelerate_time_.toSec())>=0.1)
-    {
-      previous_power = current_power_;
-      updatePower(left, right);
-      
-      if (left > right)
-      {
-        power.request.left = current_power_;
-        power.request.right = (int8_t)(current_power_ * ((double)right/left));
-      }
-      else
-      {
-        power.request.right = current_power_;
-        power.request.left = (int8_t)(current_power_ * ((double)left/right));
-      }
-      if(eddie_drive_power_.call(power))
-      {
-        ROS_INFO("SUCCESS: Driving with power left: %d, right: %d", 
-          power.request.left, power.request.right);
-        accelerate_time_ = ros::Time::now();
-      }
-      else{
-        current_power_ = previous_power;
-      }
-    }
-    ros::spinOnce();
-    usleep(1000);
-    sem_wait(&mutex_interrupt_);
-    cancel = interrupt_;
-    sem_post(&mutex_interrupt_);
-    if(left!=current_power_ || right!=current_power_)
-      shift = true;
-    else
-      shift = false;
-  }
-    
-  sem_post(&mutex_execute_);
-}
-
-void EddieController::updatePower(int8_t left, int8_t right)
-{
-  if(left>0 && right>0)
-  {
-    if(current_power_>-1*min_power_ && current_power_<min_power_)
-      current_power_ = min_power_;
-
-    if(current_power_>power_acceleration_+left && current_power_>power_acceleration_+right)
-      current_power_ = left>right ? left-power_acceleration_ : right-power_acceleration_;
-    else if(current_power_>left || current_power_>right)
-      current_power_ = left>right ? left : right;
-    else if(current_power_<-1*min_power_)
-      current_power_ += 10;
-    else
-      current_power_ += power_acceleration_ / 10;
-    
-  }
-  else if(left<0 && right<0)
-  {
-    if(current_power_>-1*min_power_ && current_power_<min_power_)
-      current_power_ = -1*min_power_;
-
-    if(current_power_<left-power_acceleration_ && current_power_<right-power_acceleration_)
-      current_power_ = left>right ? left-power_acceleration_ : right-power_acceleration_;
-    else if(current_power_<left || current_power_<right)
-      current_power_ = left<right ? left : right;
-    else if(current_power_>min_power_)
-      current_power_ -= 10;
-    else
-      current_power_ -= power_acceleration_ / 10;
-  }
-}
-
 void EddieController::execute()
 {
   ros::Rate rate(1000);
-  while(ros::ok())
+  while (ros::ok())
   {
     sem_wait(&mutex_interrupt_);
     bool ex = process_;
     sem_post(&mutex_interrupt_);
-    if(ex)
+    if (ex)
     {
       sem_wait(&mutex_interrupt_);
       process_ = false;
       int8_t l = left_;
       int8_t r = right_;
+      bool rot = rotate_;
+      int16_t angular = angular_;
       sem_post(&mutex_interrupt_);
-      drive(l, r);
+      if (rot)
+        rotate(angular);
+      else
+        drive(l, r);
     }
-    
+
     ros::spinOnce();
     rate.sleep();
   }

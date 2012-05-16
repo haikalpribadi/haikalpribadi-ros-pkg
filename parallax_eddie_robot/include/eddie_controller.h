@@ -44,6 +44,8 @@
 #include <parallax_eddie_robot/Accelerate.h>
 #include <parallax_eddie_robot/Rotate.h>
 #include <parallax_eddie_robot/StopAtDistance.h>
+#include <parallax_eddie_robot/GetHeading.h>
+#include <parallax_eddie_robot/ResetEncoder.h>
 
 class EddieController {
 public:
@@ -58,30 +60,34 @@ private:
     ros::ServiceClient eddie_acceleration_rate_;
     ros::ServiceClient eddie_turn_;
     ros::ServiceClient eddie_stop_;
+    ros::ServiceClient eddie_heading_;
+    ros::ServiceClient eddie_reset_;
 
     sem_t mutex_execute_;
     sem_t mutex_interrupt_;
     sem_t mutex_state_;
-    int left_power_, right_power_, power_acceleration_;
-    int min_power_;
-    int left_speed_, right_speed_, rotation_speed_, speed_acceleration_;
+    int left_power_, right_power_, rotation_power_;
+    int acceleration_power_, deceleration_power_, min_power_;
+    int left_speed_, right_speed_, rotation_speed_, acceleration_speed_;
     int8_t left_, right_;
-    int16_t current_speed_;
     int8_t current_power_;
+    int16_t current_angle_, angular_;
+    bool rotate_;
     bool interrupt_;
     bool process_;
-    ros::Time accelerate_time_;
+    ros::Time last_cmd_time_;
 
     void velocityCallback(const parallax_eddie_robot::Velocity::ConstPtr& message);
     void stop();
-    int8_t clipPower(int power_unit, float linear);
-    int16_t clipSpeed(int speed_unit, float linear);
     void setAccelerationRate(int rate);
     void moveLinear(float linear);
     void moveAngular(int16_t angular);
     void moveLinearAngular(float linear, int16_t angular);
     void drive(int8_t left, int8_t right);
+    void rotate(int16_t angular);
     void updatePower(int8_t left, int8_t right);
+    int8_t clipPower(int power_unit, float linear);
+    int16_t clipSpeed(int speed_unit, float linear);
 };
 
 #endif	/* _EDDIE_CONTROLLER_H */
