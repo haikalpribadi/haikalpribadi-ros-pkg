@@ -2,8 +2,8 @@
 <launch>
 
 	<param name="serial_port" value="/dev/ttyUSB0" />
-	<param name="scale_angular" value="2.0" />
-	<param name="scale_linear" value="3.0" />
+	<param name="angular_scale" value="2.0" />
+	<param name="linear_scale" value="3.0" />
 	<param name="left_power" value="32" />
 	<param name="right_power" value="32" />
 	<param name="rotation_power" value="70" />

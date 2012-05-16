@@ -40,8 +40,8 @@ EddieTeleop::EddieTeleop() :
   velocity_pub_ = node_handle_.advertise<parallax_eddie_robot::Velocity > ("/eddie/command_velocity", 1);
   keystroke_pub_ = node_handle_.advertise<parallax_eddie_robot::KeyStroke > ("/eddie/key_stroke", 1);
 
-  node_handle_.param("scale_angular", a_scale_, a_scale_);
-  node_handle_.param("scale_linear", l_scale_, l_scale_);
+  node_handle_.param("angular_scale", a_scale_, a_scale_);
+  node_handle_.param("linear_scale", l_scale_, l_scale_);
 }
 
 void EddieTeleop::keyLoop()
