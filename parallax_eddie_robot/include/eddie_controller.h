@@ -37,15 +37,16 @@
 
 #include <ros/ros.h>
 #include <semaphore.h>
-#include <parallax_eddie_robot/Velocity.h>
+#include <std_msgs/Bool.h>
+#include <parallax_eddie_robot/Accelerate.h>
 #include <parallax_eddie_robot/DriveWithDistance.h>
 #include <parallax_eddie_robot/DriveWithPower.h>
 #include <parallax_eddie_robot/DriveWithSpeed.h>
-#include <parallax_eddie_robot/Accelerate.h>
-#include <parallax_eddie_robot/Rotate.h>
-#include <parallax_eddie_robot/StopAtDistance.h>
 #include <parallax_eddie_robot/GetHeading.h>
 #include <parallax_eddie_robot/ResetEncoder.h>
+#include <parallax_eddie_robot/Rotate.h>
+#include <parallax_eddie_robot/StopAtDistance.h>
+#include <parallax_eddie_robot/Velocity.h>
 
 class EddieController {
 public:

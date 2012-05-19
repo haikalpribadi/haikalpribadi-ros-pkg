@@ -203,7 +203,7 @@ void EddieController::drive(int8_t left, int8_t right)
       previous_power = current_power_;
       updatePower(left, right);
 
-      if (left > right)
+      if (abs(left) > abs(right))
       {
         power.request.left = current_power_;
         power.request.right = (int8_t) (current_power_ * ((double) right / left));
