@@ -1,5 +1,6 @@
 from ._Rotate import *
 from ._GetSpeed import *
+from ._GetStatus import *
 from ._GetHeading import *
 from ._DriveWithPower import *
 from ._StopAtDistance import *

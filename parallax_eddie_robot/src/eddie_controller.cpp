@@ -37,9 +37,13 @@
 EddieController::EddieController() :
   left_power_(60), right_power_(62), rotation_power_(40),
   acceleration_power_(30), deceleration_power_(100), min_power_(32),
-  left_speed_(36), right_speed_(36), rotation_speed_(36), acceleration_speed_(36)
+  left_speed_(36), right_speed_(36), rotation_speed_(36), acceleration_speed_(36),
+  linear_scale_(1.0), angular_scale_(1.0)
 {
   velocity_sub_ = node_handle_.subscribe("/eddie/command_velocity", 1, &EddieController::velocityCallback, this);
+  ping_distances_sub_ = node_handle_.subscribe("/eddie/ping_distances", 1, &EddieController::distanceCallback, this);
+  ir_distances_sub_ = node_handle_.subscribe("/eddie/ir_voltages", 1, &EddieController::irCallback, this);
+  eddie_status_srv_ = node_handle_.advertiseService("emergency_status", &EddieController::getStatus, this);
   eddie_drive_power_ = node_handle_.serviceClient<parallax_eddie_robot::DriveWithPower > ("drive_with_power");
   eddie_drive_speed_ = node_handle_.serviceClient<parallax_eddie_robot::DriveWithSpeed > ("drive_with_speed");
   eddie_acceleration_rate_ = node_handle_.serviceClient<parallax_eddie_robot::Accelerate > ("acceleration_rate");
@@ -59,10 +63,13 @@ EddieController::EddieController() :
   node_handle_.param("rotation_speed", rotation_speed_, rotation_speed_);
   node_handle_.param("acceleration_speed", acceleration_speed_, acceleration_speed_);
 
+  node_handle_.param("angular_scale", angular_scale_, angular_scale_);
+  node_handle_.param("linear_scale", linear_scale_, linear_scale_);
 
   sem_init(&mutex_execute_, 0, 1);
   sem_init(&mutex_interrupt_, 0, 1);
   sem_init(&mutex_state_, 0, 1);
+  sem_init(&mutex_ping_, 0, 1);
 
   sem_wait(&mutex_state_);
   current_power_ = 16;
@@ -101,6 +108,52 @@ void EddieController::velocityCallback(const parallax_eddie_robot::Velocity::Con
   {
     moveLinearAngular(linear, angular);
   }
+}
+
+void EddieController::distanceCallback(const parallax_eddie_robot::Distances::ConstPtr& message)
+{
+  sem_wait(&mutex_ping_);
+  bool okay = true;
+  for (uint i = 0; i < message->value.size(); i++)
+  {
+    if (message->value[i]!=0 && message->value[i] < 150)
+      okay = false;
+  }
+  ping_distances_okay_ = okay;
+  if (!okay)
+    stop();
+  sem_post(&mutex_ping_);
+}
+
+void EddieController::irCallback(const parallax_eddie_robot::Voltages::ConstPtr& message)
+{
+  sem_wait(&mutex_ir_);
+  bool okay = true;
+  for (uint i = 0; i < message->value.size(); i++)
+  {
+    if (message->value[i]!=0 && message->value[i] > 1.7)
+      okay = false;
+  }
+  ir_distances_okay_ = okay;
+  if (!okay)
+    stop();
+  sem_post(&mutex_ir_);
+}
+
+bool EddieController::getStatus(parallax_eddie_robot::GetStatus::Request& req,
+  parallax_eddie_robot::GetStatus::Response& res)
+{
+  sem_wait(&mutex_ping_);
+  sem_wait(&mutex_ir_);
+
+  if (ping_distances_okay_ && ir_distances_okay_)
+    res.okay = true;
+  else
+    res.okay = false;
+
+  sem_post(&mutex_ping_);
+  sem_post(&mutex_ir_);
+  return true;
 }
 
 void EddieController::stop()
@@ -203,10 +256,14 @@ void EddieController::drive(int8_t left, int8_t right)
       previous_power = current_power_;
       updatePower(left, right);
 
-      if (abs(left) > abs(right))
+      if (abs(left) < abs(right))
       {
         power.request.left = current_power_;
         power.request.right = (int8_t) (current_power_ * ((double) right / left));
+        //if(power.request.right<min_power_){
+          //power.request.right = min_power+(acceleration_power_/10);
+          //power.request.left = power.request.right * ((double)left/right)
+        //}
       }
       else
       {
@@ -218,7 +275,7 @@ void EddieController::drive(int8_t left, int8_t right)
       else
         current_power_ = previous_power;
 
-      if (left != current_power_ || right != current_power_)
+      if (left != current_power_ && right != current_power_)
         shift = true;
       else
         shift = false;
@@ -277,16 +334,16 @@ void EddieController::rotate(int16_t angular)
     {
       eddie_heading_.call(heading);
       current_angle_ = heading.response.heading;
-      if (current_angle_ > 3736) 
+      if (current_angle_ > 3736)
         current_angle_ -= 4096;
-      
-      if(angular>0 && current_angle_<temp_angle)
-        current_angle_ = temp_angle>0 ? current_angle_+360 : current_angle_;
-      else if(angular<0 && current_angle_>temp_angle)
-        current_angle_ = temp_angle<0 ? current_angle_-360 : current_angle_;
-      
+
+      if (angular > 0 && current_angle_ < temp_angle)
+        current_angle_ = temp_angle > 0 ? current_angle_ + 360 : current_angle_;
+      else if (angular < 0 && current_angle_ > temp_angle)
+        current_angle_ = temp_angle < 0 ? current_angle_ - 360 : current_angle_;
+
       temp_angle = current_angle_;
-      
+
       if (angular > 0 && current_angle_ < target_angle)
         shift = true;
       else if (angular < 0 && current_angle_ > target_angle)
@@ -318,11 +375,11 @@ void EddieController::rotate(int16_t angular)
     usleep(1000);
     sem_wait(&mutex_interrupt_);
     cancel = interrupt_;
-    if(!rotate_)
+    if (!rotate_)
       current_power_ = 0;
     sem_post(&mutex_interrupt_);
   }
-  
+
 
   sem_post(&mutex_execute_);
 }

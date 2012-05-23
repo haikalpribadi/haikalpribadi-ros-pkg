@@ -39,14 +39,17 @@
 #include <semaphore.h>
 #include <std_msgs/Bool.h>
 #include <parallax_eddie_robot/Accelerate.h>
+#include <parallax_eddie_robot/Distances.h>
 #include <parallax_eddie_robot/DriveWithDistance.h>
 #include <parallax_eddie_robot/DriveWithPower.h>
 #include <parallax_eddie_robot/DriveWithSpeed.h>
 #include <parallax_eddie_robot/GetHeading.h>
+#include <parallax_eddie_robot/GetStatus.h>
 #include <parallax_eddie_robot/ResetEncoder.h>
 #include <parallax_eddie_robot/Rotate.h>
 #include <parallax_eddie_robot/StopAtDistance.h>
 #include <parallax_eddie_robot/Velocity.h>
+#include <parallax_eddie_robot/Voltages.h>
 
 class EddieController {
 public:
@@ -56,6 +59,9 @@ public:
 private:
     ros::NodeHandle node_handle_;
     ros::Subscriber velocity_sub_;
+    ros::Subscriber ping_distances_sub_;
+    ros::Subscriber ir_distances_sub_;
+    ros::ServiceServer eddie_status_srv_;
     ros::ServiceClient eddie_drive_power_;
     ros::ServiceClient eddie_drive_speed_;
     ros::ServiceClient eddie_acceleration_rate_;
@@ -67,18 +73,25 @@ private:
     sem_t mutex_execute_;
     sem_t mutex_interrupt_;
     sem_t mutex_state_;
+    sem_t mutex_ping_, mutex_ir_;
     int left_power_, right_power_, rotation_power_;
     int acceleration_power_, deceleration_power_, min_power_;
     int left_speed_, right_speed_, rotation_speed_, acceleration_speed_;
+    double linear_scale_, angular_scale_;
     int8_t left_, right_;
     int8_t current_power_;
     int16_t current_angle_, angular_;
     bool rotate_;
     bool interrupt_;
     bool process_;
+    bool ping_distances_okay_, ir_distances_okay_;
     ros::Time last_cmd_time_;
 
     void velocityCallback(const parallax_eddie_robot::Velocity::ConstPtr& message);
+    void distanceCallback(const parallax_eddie_robot::Distances::ConstPtr& message);
+    void irCallback(const parallax_eddie_robot::Voltages::ConstPtr& message);
+    bool getStatus(parallax_eddie_robot::GetStatus::Request& req,
+            parallax_eddie_robot::GetStatus::Response& res);
     void stop();
     void setAccelerationRate(int rate);
     void moveLinear(float linear);
