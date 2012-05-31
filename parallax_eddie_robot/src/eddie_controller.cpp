@@ -246,8 +246,6 @@ void EddieController::drive(int8_t left, int8_t right)
   bool shift = true;
   int8_t previous_power = 0;
 
-  //ROS_INFO("GOT HERE 3 left: %d, right: %d, cancel: %d, shift: %d, power: %d", 
-  //  left, right, cancel, shift, current_power_);
   while (ros::ok() && shift && !cancel)
   {
     now = ros::Time::now();
@@ -260,10 +258,6 @@ void EddieController::drive(int8_t left, int8_t right)
       {
         power.request.left = current_power_;
         power.request.right = (int8_t) (current_power_ * ((double) right / left));
-        //if(power.request.right<min_power_){
-          //power.request.right = min_power+(acceleration_power_/10);
-          //power.request.left = power.request.right * ((double)left/right)
-        //}
       }
       else
       {
