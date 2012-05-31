@@ -304,7 +304,7 @@ void EddieController::rotate(int16_t angular)
   parallax_eddie_robot::GetHeading heading;
   ros::Time now;
   bool shift = true, headed = false;
-  int16_t temp_angle = 0, target_angle;
+  int16_t init_angle = 0, target_angle;
   int8_t left, right, previous_power;
 
   parallax_eddie_robot::ResetEncoder reset;
@@ -319,10 +319,10 @@ void EddieController::rotate(int16_t angular)
   }
   else
   {
-    temp_angle = heading.response.heading;
-    if (temp_angle > 3736) temp_angle -= 4096;
+    init_angle = heading.response.heading;
+    if (init_angle > 3736) init_angle -= 4096;
   }
-  target_angle = temp_angle + angular;
+  target_angle = init_angle + angular;
 
   left = angular > 0 ? rotation_power_ : -1 * rotation_power_;
   right = angular > 0 ? -1 * rotation_power_ : rotation_power_;
@@ -337,12 +337,12 @@ void EddieController::rotate(int16_t angular)
       if (current_angle_ > 3736)
         current_angle_ -= 4096;
 
-      if (angular > 0 && current_angle_ < temp_angle)
-        current_angle_ = temp_angle > 0 ? current_angle_ + 360 : current_angle_;
-      else if (angular < 0 && current_angle_ > temp_angle)
-        current_angle_ = temp_angle < 0 ? current_angle_ - 360 : current_angle_;
+      if (angular > 0 && current_angle_ < init_angle)
+        current_angle_ = init_angle > 0 ? current_angle_ + 360 : current_angle_;
+      else if (angular < 0 && current_angle_ > init_angle)
+        current_angle_ = init_angle < 0 ? current_angle_ - 360 : current_angle_;
 
-      temp_angle = current_angle_;
+      init_angle = current_angle_;
 
       if (angular > 0 && current_angle_ < target_angle)
         shift = true;
