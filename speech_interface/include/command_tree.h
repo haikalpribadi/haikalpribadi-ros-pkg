@@ -40,6 +40,9 @@
 #include <vector>
 #include <sstream>
 
+#define root$ "$root"
+#define end$ "$end"
+
 /*
  * CommandTrie is a class that contains all the possible valid that could be
  * understood. It is developed based on the Suffix Trie data structure.

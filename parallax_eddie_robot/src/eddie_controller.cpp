@@ -380,43 +380,54 @@ void EddieController::rotate(int16_t angular)
 
 void EddieController::updatePower(int8_t left, int8_t right)
 {
+  int deceleration_rate = deceleration_power_ / 10;
+  int acceleration_rate = acceleration_power_ / 10;
   if (left > 0 && right > 0)
   {
     if (current_power_>-1 * min_power_ && current_power_ < min_power_)
       current_power_ = min_power_;
-    else if (current_power_ > acceleration_power_ + left && current_power_ > acceleration_power_ + right)
-      current_power_ = left > right ? left - acceleration_power_ : right - acceleration_power_;
-    else if (current_power_<-1 * min_power_)
-      current_power_ += deceleration_power_ / 10;
+    else if (current_power_ > deceleration_rate + left || current_power_ > deceleration_rate + right)
+      current_power_ -= deceleration_rate;
     else
-      current_power_ += acceleration_power_ / 10;
-
-    if (current_power_ > left || current_power_ > right)
-      current_power_ = left > right ? left : right;
+    {
+      if (current_power_<-1 * min_power_)
+        current_power_ += deceleration_rate;
+      else
+        current_power_ += acceleration_rate;
+      
+      if (current_power_ > left || current_power_ > right)
+        current_power_ = left < right ? left : right;
+    }
   }
   else if (left < 0 && right < 0)
   {
     if (current_power_>-1 * min_power_ && current_power_ < min_power_)
       current_power_ = -1 * min_power_;
-    else if (current_power_ < left - acceleration_power_ && current_power_ < right - acceleration_power_)
-      current_power_ = left > right ? left - acceleration_power_ : right - acceleration_power_;
-    else if (current_power_ > min_power_)
-      current_power_ -= deceleration_power_ / 10;
+    else if (current_power_ < left - deceleration_rate || current_power_ < right - deceleration_rate)
+      current_power_ += deceleration_rate;
     else
-      current_power_ -= acceleration_power_ / 10;
-
-    if (current_power_ < left || current_power_ < right)
-      current_power_ = left < right ? left : right;
+    {
+      if (current_power_ > min_power_)
+        current_power_ -= deceleration_rate;
+      else
+        current_power_ -= acceleration_rate;
+      
+      if (current_power_ < left || current_power_ < right)
+        current_power_ = left > right ? left : right;
+    }
   }
   else
   {
     if (current_power_ < min_power_)
       current_power_ = min_power_;
-    else if (current_power_ < left || current_power_ < right)
-      current_power_ += acceleration_power_ / 10;
+    else
+    {
+      if (current_power_ < left || current_power_ < right)
+        current_power_ += acceleration_rate;
 
-    if (current_power_ > left && current_power_ > right)
-      current_power_ = left > right ? left : right;
+      if (current_power_ > left && current_power_ > right)
+        current_power_ = left > right ? left : right;
+    }
   }
 }
 

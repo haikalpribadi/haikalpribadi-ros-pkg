@@ -42,7 +42,7 @@
 
 CommandTree::CommandTree()
 {
-  element_ = "$root";
+  element_ = root$;
 }
 
 void CommandTree::populate(std::vector<std::vector<std::string> > commandSet)
@@ -54,7 +54,7 @@ void CommandTree::populate(std::vector<std::vector<std::string> > commandSet)
 
 void CommandTree::add(std::vector<std::string> command)
 {
-  std::string end = "$end";
+  std::string end = end$;
   command.push_back(end);
   add$(command);
 }
@@ -87,7 +87,7 @@ bool CommandTree::containsCommand(std::vector<std::string> sentence, std::vector
 {
   if(sentence.size()==0)
     return false;
-  std::string end = "$end";
+  std::string end = end$;
   sentence.push_back(end);
   return containsCommand$(sentence, cmd, const_cast<CommandTree *>(this));
 }
@@ -99,7 +99,7 @@ bool CommandTree::containsCommand$(std::vector<std::string> sentence, std::vecto
   for(uint i=0; i<sentence.size(); i++){
     for(uint j=0; j<children_.size(); j++){
       if(sentence[i]==children_[j].element_){
-        if(sentence[i]=="$end"){
+        if(sentence[i]==end$){
           return true;
         }
         else{
