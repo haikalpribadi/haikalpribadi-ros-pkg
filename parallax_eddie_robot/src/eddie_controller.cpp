@@ -116,7 +116,7 @@ void EddieController::distanceCallback(const parallax_eddie_robot::Distances::Co
   bool okay = true;
   for (uint i = 0; i < message->value.size(); i++)
   {
-    if (message->value[i]!=0 && message->value[i] < 150)
+    if (message->value[i] != 0 && message->value[i] < 150)
       okay = false;
   }
   ping_distances_okay_ = okay;
@@ -131,7 +131,7 @@ void EddieController::irCallback(const parallax_eddie_robot::Voltages::ConstPtr&
   bool okay = true;
   for (uint i = 0; i < message->value.size(); i++)
   {
-    if (message->value[i]!=0 && message->value[i] > 1.7)
+    if (message->value[i] != 0 && message->value[i] > 1.7)
       okay = false;
   }
   ir_distances_okay_ = okay;
@@ -221,9 +221,9 @@ void EddieController::moveLinearAngular(float linear, int16_t angular)
   {
     angular = angular % 360;
     right = clipPower(right_power_, linear);
-    left = right - (int8_t) (right * (float) angular / -180);
+    left = right - (int8_t) (right * (float) abs(angular) / 180);
   }
-
+  
   sem_wait(&mutex_interrupt_);
   left_ = left;
   right_ = right;
@@ -380,54 +380,43 @@ void EddieController::rotate(int16_t angular)
 
 void EddieController::updatePower(int8_t left, int8_t right)
 {
-  int deceleration_rate = deceleration_power_ / 10;
-  int acceleration_rate = acceleration_power_ / 10;
   if (left > 0 && right > 0)
   {
     if (current_power_>-1 * min_power_ && current_power_ < min_power_)
       current_power_ = min_power_;
-    else if (current_power_ > deceleration_rate + left || current_power_ > deceleration_rate + right)
-      current_power_ -= deceleration_rate;
+    else if (current_power_ > acceleration_power_ + left && current_power_ > acceleration_power_ + right)
+      current_power_ = left > right ? left - acceleration_power_ : right - acceleration_power_;
+    else if (current_power_<-1 * min_power_)
+      current_power_ += deceleration_power_ / 10;
     else
-    {
-      if (current_power_<-1 * min_power_)
-        current_power_ += deceleration_rate;
-      else
-        current_power_ += acceleration_rate;
-      
-      if (current_power_ > left || current_power_ > right)
-        current_power_ = left < right ? left : right;
-    }
+      current_power_ += acceleration_power_ / 10;
+
+    if (current_power_ > left || current_power_ > right)
+      current_power_ = left > right ? left : right;
   }
   else if (left < 0 && right < 0)
   {
     if (current_power_>-1 * min_power_ && current_power_ < min_power_)
       current_power_ = -1 * min_power_;
-    else if (current_power_ < left - deceleration_rate || current_power_ < right - deceleration_rate)
-      current_power_ += deceleration_rate;
+    else if (current_power_ < left - acceleration_power_ && current_power_ < right - acceleration_power_)
+      current_power_ = left > right ? left - acceleration_power_ : right - acceleration_power_;
+    else if (current_power_ > min_power_)
+      current_power_ -= deceleration_power_ / 10;
     else
-    {
-      if (current_power_ > min_power_)
-        current_power_ -= deceleration_rate;
-      else
-        current_power_ -= acceleration_rate;
-      
-      if (current_power_ < left || current_power_ < right)
-        current_power_ = left > right ? left : right;
-    }
+      current_power_ -= acceleration_power_ / 10;
+
+    if (current_power_ < left || current_power_ < right)
+      current_power_ = left < right ? left : right;
   }
   else
   {
     if (current_power_ < min_power_)
       current_power_ = min_power_;
-    else
-    {
-      if (current_power_ < left || current_power_ < right)
-        current_power_ += acceleration_rate;
+    else if (current_power_ < left || current_power_ < right)
+      current_power_ += acceleration_power_ / 10;
 
-      if (current_power_ > left && current_power_ > right)
-        current_power_ = left > right ? left : right;
-    }
+    if (current_power_ > left && current_power_ > right)
+      current_power_ = left > right ? left : right;
   }
 }
 
