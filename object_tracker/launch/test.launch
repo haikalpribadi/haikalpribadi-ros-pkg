@@ -1,0 +1,12 @@
+<!--%Tag(FULL)%-->
+<launch>
+	<!-- Launch kinect nodes -->
+	<include file="$(find openni_camera)/launch/openni_node.launch"/>
+	<node pkg="openni_tracker" type="openni_tracker" name="openni_tracker" />
+	<node pkg="kinect_aux" type="kinect_aux_node" name="kinect_aux_node" />
+	
+	<!-- Launch object_tracker nodes -->
+	<node pkg="object_tracker" type="image_converter" name="image_converter" />
+	
+</launch>
+<!--%EndTag(FULL)%-->
