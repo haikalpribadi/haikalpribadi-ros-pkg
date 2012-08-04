@@ -11,14 +11,10 @@ ImageConverter::ImageConverter() : img_transport_(node_handle_)
 {
   img_pub_ = img_transport_.advertise("/cv_image", 1);
   img_sub_ = img_transport_.subscribe("/camera/rgb/image_color", 1, &ImageConverter::imageCallback, this);
-
-  //just for testing
-  cv::namedWindow("Image window");
 }
 
 ImageConverter::~ImageConverter()
 {
-  cv::destroyWindow("Image window");
 }
 
 void ImageConverter::imageCallback(const sensor_msgs::ImageConstPtr& message)
@@ -34,11 +30,8 @@ void ImageConverter::imageCallback(const sensor_msgs::ImageConstPtr& message)
     return;
   }
   
-  if(cv_ptr->image.rows>60 && cv_ptr->image.cols>60)
-    cv::circle(cv_ptr->image, cv::Point(50,50), 10, CV_RGB(255,0,0));
-  
-  cv::imshow("Image window", cv_ptr->image);
-  cv::waitKey(3);
+  cv::circle(cv_ptr->image, cv::Point(cv_ptr->image.cols/2,cv_ptr->image.rows/2), 
+    50, CV_RGB(255,0,0));
   
   img_pub_.publish(cv_ptr->toImageMsg());
 }
