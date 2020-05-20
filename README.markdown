@@ -10,6 +10,3 @@
 #user_tracker
 ##User Tracker using Kinect (UNDER DEVELOPMENT)
 ###User tracking using the skeletal tracker from openni_tracker ROS package. It returns the coordinates of specific [requested] joints of the user relative within the sight of the camera. It also contains a node to manipulate the tilt angle of the Kinect camera manually and automatically. (development in progress)
-
-
-By Haikal Pribadi (haikal.pribadi@gmail.com)
